@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AssistanceName__c</fullName>
+    <externalId>false</externalId>
+    <label>Nombre de la asistencia</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Exequial</fullName>
+                <default>false</default>
+                <label>Exequial</label>
+            </value>
+            <value>
+                <fullName>Hurto</fullName>
+                <default>false</default>
+                <label>Hurto</label>
+            </value>
+            <value>
+                <fullName>Médica</fullName>
+                <default>false</default>
+                <label>Médica</label>
+            </value>
+            <value>
+                <fullName>Viajes</fullName>
+                <default>false</default>
+                <label>Viajes</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

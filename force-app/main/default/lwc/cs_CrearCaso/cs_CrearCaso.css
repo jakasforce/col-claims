@@ -1,0 +1,12 @@
+.actionBody {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.colorAzul{
+    color: blue;
+}
+
+.inlineTitle {
+    border-bottom: var(--lwc-borderWidthThin, 1px) solid var(--lwc-colorBorder,rgb(229, 229, 229));
+}

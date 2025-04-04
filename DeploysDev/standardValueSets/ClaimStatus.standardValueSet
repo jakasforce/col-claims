@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Abierto</fullName>
+        <default>true</default>
+        <label>Abierto</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Análisis</fullName>
+        <default>false</default>
+        <label>Análisis</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>En Pagador</fullName>
+        <default>false</default>
+        <label>En Pagador</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pagado</fullName>
+        <default>false</default>
+        <label>Pagado</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pago parcial</fullName>
+        <default>false</default>
+        <label>Pago parcial</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Objetado</fullName>
+        <default>false</default>
+        <label>Objetado</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Suspendido</fullName>
+        <default>false</default>
+        <label>Suspendido</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cerrado</fullName>
+        <default>false</default>
+        <label>Cerrado</label>
+        <closed>true</closed>
+    </standardValue>
+</StandardValueSet>

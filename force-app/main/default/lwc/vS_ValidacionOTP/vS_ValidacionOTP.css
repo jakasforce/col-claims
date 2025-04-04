@@ -1,0 +1,13 @@
+.THIS .custom-spinner{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+}
+.custom-all-rows {
+    cursor: pointer;
+  }
+
+.custom-selected {
+    background-color: #f0f0f0; /* Cambia el color de fondo cuando se selecciona una fila */
+  }

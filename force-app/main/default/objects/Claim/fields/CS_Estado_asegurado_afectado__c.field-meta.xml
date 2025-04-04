@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Estado_asegurado_afectado__c</fullName>
+    <description>Estado de cliente del asegurado afectado</description>
+    <externalId>false</externalId>
+    <formula>CS_Asegurado_Afectado__r.PrimaryParticipantAccount.CS_ClienteActivo__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Estado cliente del asegurado afectado</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

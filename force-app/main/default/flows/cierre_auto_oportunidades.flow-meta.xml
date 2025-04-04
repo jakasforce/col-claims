@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>cierre auto oportunidades {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>cierre auto oportunidades</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>UpdateOpporutnity</name>
+        <label>Actualiza Oportunidad a cerrada perdida</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Se cierra oportunidad por abandono de proceso de parte del cliente.</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Motivo_de_perdida__c</field>
+            <value>
+                <stringValue>No Interesado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Cerrada Perdida</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Sub_motivo_de_perdida__c</field>
+            <value>
+                <stringValue>Abandono de proceso</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>UpdateOpporutnity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AmbiguityOpportunity__c</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <numberValue>10.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>opportunitySource__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>ORG005</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>creationMedium__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Whatsapp</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

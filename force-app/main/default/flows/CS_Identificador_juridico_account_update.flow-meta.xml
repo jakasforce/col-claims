@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <description>Se valida si alguno de los valores requeridos en el campo identificador como lo son :  Cs_TipoIdnetificador y CS_NumeroIdentificador fue actualizado</description>
+        <name>Copia_1_de_Se_modifico_algun_valor_requerido_para_identifiador</name>
+        <label>Copia 1 de Se modifico algun valor requerido para identifiador</label>
+        <locationX>710</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>No se modificoPC</defaultConnectorLabel>
+        <rules>
+            <name>Si_se_modificoPC</name>
+            <conditionLogic>(1 OR 2) AND 3 AND 4 AND 5</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CS_TipoIdentificacionCP__pc</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CS_NumeroIdentificacionCP__pc</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CS_TipoIdentificacionCP__pc</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CS_NumeroIdentificacionCP__pc</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RecordTypeCuentaPersonal</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Actualizar_campo_identificadorPC</targetReference>
+            </connector>
+            <label>Si se modificoPC</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Se valida si es cuenta Juridica o Cuenta personal</description>
+        <name>CS_Es_Cuenta_Juridica</name>
+        <label>Es Cuenta Juridica</label>
+        <locationX>446</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>GetRecordTypePC</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No es cuenta jurídica</defaultConnectorLabel>
+        <rules>
+            <name>Si_es_cuenta_jur_dica</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsPersonAccount</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetRecordypeAccount</targetReference>
+            </connector>
+            <label>Si es cuenta jurídica</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Se valida si alguno de los valores requeridos en el campo identificador como lo son :  Cs_TipoIdnetificador y CS_NumeroIdentificador fue actualizado</description>
+        <name>Se_modifico_algun_valor_requerido_para_identifiador</name>
+        <label>Se modifico algun valor requerido para identifiador</label>
+        <locationX>182</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>No se modifico</defaultConnectorLabel>
+        <rules>
+            <name>Si_se_modifico</name>
+            <conditionLogic>(1 OR 2) AND 3 AND 4 AND 5</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CS_TipoIdentificacion__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CS_NumeroIdentificacion__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CS_TipoIdentificacion__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CS_NumeroIdentificacion__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RecordTypeJuridico</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Actualizar_campo_identifiador</targetReference>
+            </connector>
+            <label>Si se modifico</label>
+        </rules>
+    </decisions>
+    <description>Se encarga de actualizar el valor del ampo CS_Identificador cuando se modifican los campos de Tipo Identificación o Número de Identificación.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>se asignan los valores a la variable para actualizar el valor del campo identifiador</description>
+        <name>CS_Identificador</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!$Record.CS_TipoIdentificacion__c})+&apos;-&apos;+{!$Record.CS_NumeroIdentificacion__c}</expression>
+    </formulas>
+    <formulas>
+        <description>Almacena el valor concatenado que se le colocara al campo CS_IdentificadorPC</description>
+        <name>CS_identificadorPC</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!$Record.CS_TipoIdentificacionCP__pc})+&apos;-&apos;+{!$Record.CS_NumeroIdentificacionCP__pc}</expression>
+    </formulas>
+    <interviewLabel>Identificador juridico account update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Identificador juridico account update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>se asigna el tipo de registro de cuenta personal a la variable correspondiente</description>
+        <name>GetRecordTypePC</name>
+        <label>GetRecordTypePC</label>
+        <locationX>710</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copia_1_de_Se_modifico_algun_valor_requerido_para_identifiador</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PersonAccount</stringValue>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <outputAssignments>
+            <assignToReference>RecordTypeCuentaPersonal</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>se asigna el tipo de registro de cuenta juridica a la variable correspondiente</description>
+        <name>GetRecordypeAccount</name>
+        <label>GetRecordypeAccount</label>
+        <locationX>182</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Se_modifico_algun_valor_requerido_para_identifiador</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CS_Juridico</stringValue>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <outputAssignments>
+            <assignToReference>RecordTypeJuridico</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <description>Se actualiza el campo del idnetificador</description>
+        <name>Actualizar_campo_identifiador</name>
+        <label>Actualizar campo identifiador</label>
+        <locationX>50</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>CS_Identificador__c</field>
+            <value>
+                <elementReference>CS_Identificador</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Actualizar_campo_identificadorPC</name>
+        <label>Actualizar campo identificadorPC</label>
+        <locationX>578</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>CS_Identificador__c</field>
+            <value>
+                <elementReference>CS_identificadorPC</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CS_Es_Cuenta_Juridica</targetReference>
+        </connector>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Tipo de cuenta personal</description>
+        <name>RecordTypeCuentaPersonal</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>tipo de cuenta jurídica</description>
+        <name>RecordTypeJuridico</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Presidente_Colmena_Seguros_Claim</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Presidente Colmena Seguros</label>
+    <queue>Presidente_Colmena_Seguros</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

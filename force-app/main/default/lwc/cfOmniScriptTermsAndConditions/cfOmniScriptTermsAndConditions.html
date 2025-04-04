@@ -1,0 +1,57 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative ">
+            <div style="position: fixed;z-index: 999999;top: 0;right: 0;">
+  <omnistudio-toast class="flexcard-toast-element" theme="slds" title="" message="" styletype=""> </omnistudio-toast>
+</div>
+            <div if:true={showLoader} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: transparent; z-index: 99;">
+  <div>
+   <omnistudio-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></omnistudio-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                      <omnistudio-flex-card-state   data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-m-top_small " style="      
+         ">
+          <div data-style-id="state0element0" class="slds-col   slds-size_5-of-12  " data-rindex={rindex} style="" ><omnistudio-output-field data-style-id="state0element0_child"   card={card}  record={record}  merge-field="%3Cdiv%20class=%22slds-text-align_left%22%3EAutorizo%20los%20t&eacute;rminos%20y%20condiciones.%3C/div%3E"  theme="slds"  ></omnistudio-output-field>
+      </div><div data-style-id="state0element1" class="slds-col   slds-size_2-of-12  " data-rindex={rindex} style="" ><omnistudio-flex-action data-style-id="state0element1_child"  tracking-obj={_childCardTrackingObj}  class= "state0element1_child flexActionElement" 
+        data-action-element-class="state0element1_child" data-action-key="state0element1" onexecuteaction={performAction} data-show-spinner="false"
+        data-element-label="action1"   state-obj={record}  card={card}  record={record}  label="Ver más."  icon-name="standard-default"  action-list='\[{"key":"1721691606812-nvyjm0uun","label":"TermsAndConditions","draggable":true,"isOpen":true,"card":"{card}","stateAction":{"id":"flex-action-1721693858039","type":"Flyout","displayName":"Action","vlocityIcon":"standard-default","openUrlIn":"Current Window","flyoutType":"childCard","openFlyoutIn":"Modal","channelName":"close_modal","cardName":"TermsAndConditions","flyoutLwc":"TermsAndConditions"},"actionIndex":0}]'  flyout-details='\{"openFlyoutIn":"Modal"}'  flyout-channel="close_modal"  hide-action-icon="true"  display-as-button="false"  aria-label="Ver más"  button-variant="brand"  styles='\{"label":{"color":"#00A2FF"}}'  theme="slds"  ><div slot="modalflyout" class="action1action0 " > <c-cf-terms-and-conditions data-style-id="state0element1_child"  parent-record={record}  records={_records}  parent-mergefields={card}  record-id={recordId}  object-api-name={objectApiName}  parent-attribute='\{}'  ></c-cf-terms-and-conditions></div></omnistudio-flex-action>
+      </div>
+        </div>
+      </omnistudio-flex-card-state>
+                </template>
+                <template if:false={hasRecords}>
+                      <omnistudio-flex-card-state   data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-m-top_small " style="      
+         ">
+          <div data-style-id="state0element0" class="slds-col   slds-size_5-of-12  " data-rindex={rindex} style="" ><omnistudio-output-field data-style-id="state0element0_child"   card={card}  record={record}  merge-field="%3Cdiv%20class=%22slds-text-align_left%22%3EAutorizo%20los%20t&eacute;rminos%20y%20condiciones.%3C/div%3E"  theme="slds"  ></omnistudio-output-field>
+      </div><div data-style-id="state0element1" class="slds-col   slds-size_2-of-12  " data-rindex={rindex} style="" ><omnistudio-flex-action data-style-id="state0element1_child"  tracking-obj={_childCardTrackingObj}  class= "state0element1_child flexActionElement" 
+        data-action-element-class="state0element1_child" data-action-key="state0element1" onexecuteaction={performAction} data-show-spinner="false"
+        data-element-label="action1"   state-obj={record}  card={card}  record={record}  label="Ver más."  icon-name="standard-default"  action-list='\[{"key":"1721691606812-nvyjm0uun","label":"TermsAndConditions","draggable":true,"isOpen":true,"card":"{card}","stateAction":{"id":"flex-action-1721693858039","type":"Flyout","displayName":"Action","vlocityIcon":"standard-default","openUrlIn":"Current Window","flyoutType":"childCard","openFlyoutIn":"Modal","channelName":"close_modal","cardName":"TermsAndConditions","flyoutLwc":"TermsAndConditions"},"actionIndex":0}]'  flyout-details='\{"openFlyoutIn":"Modal"}'  flyout-channel="close_modal"  hide-action-icon="true"  display-as-button="false"  aria-label="Ver más"  button-variant="brand"  styles='\{"label":{"color":"#00A2FF"}}'  theme="slds"  ><div slot="modalflyout" class="action1action0 " > <c-cf-terms-and-conditions data-style-id="state0element1_child"  parent-record={record}  records={_records}  parent-mergefields={card}  record-id={recordId}  object-api-name={objectApiName}  parent-attribute='\{}'  ></c-cf-terms-and-conditions></div></omnistudio-flex-action>
+      </div>
+        </div>
+      </omnistudio-flex-card-state>
+                </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <omnistudio-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+      
+      </omnistudio-action>
+  
+            <omnistudio-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+            
+            </omnistudio-action>
+            </div>
+          </template>

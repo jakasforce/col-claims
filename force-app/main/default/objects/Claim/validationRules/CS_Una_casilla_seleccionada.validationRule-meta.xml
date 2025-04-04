@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Una_casilla_seleccionada</fullName>
+    <active>true</active>
+    <description>Se debe seleccionar mínimo una de las cuatro casillas</description>
+    <errorConditionFormula>AND( RecordType.Name = &quot;Contingencia AT&quot;,(
+NOT(OR(AND(IsLunchTime__c,  NOT(IsWorkAtHome__c),  NOT(IsInsideTheCompany__c),  NOT(IsBiologicalRisk__c)), AND(NOT(IsLunchTime__c),  IsWorkAtHome__c,  NOT(IsInsideTheCompany__c),  NOT(IsBiologicalRisk__c) ), AND(NOT(IsLunchTime__c),  NOT(IsWorkAtHome__c),  IsInsideTheCompany__c,  NOT(IsBiologicalRisk__c) ), AND(NOT(IsLunchTime__c),  NOT(IsWorkAtHome__c),  NOT(IsInsideTheCompany__c),  IsBiologicalRisk__c )))
+))</errorConditionFormula>
+    <errorMessage>Debe escoger una de las casillas de verificación entre Hora del almuerzo, Trabajo en casa, Riesgo biológico y Dentro de la empresa.</errorMessage>
+</ValidationRule>

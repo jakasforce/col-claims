@@ -1,0 +1,13 @@
+<template>
+    <template lwc:if={typeRoom}>
+        <c-lwc-room-type record-id={recordId} product-type={productType} default-ish={defaultIsh} onmain={backToMain} onaddproducts={addProducts}></c-lwc-room-type>
+    </template>
+
+    <template lwc:elseif={typeEvent}>
+        <c-cr-programmed-event-type record-id={recordId} product-type={productType} lounges-in-hotel={loungesInHotel} onmain={backToMain} onaddproducts={addProducts}></c-cr-programmed-event-type>
+    </template>
+
+    <template lwc:elseif={typeTip}>
+        <c-lwc-tip-type record-id={recordId} product-type={productType} onmain={backToMain} onaddproducts={addProducts}></c-lwc-tip-type>
+    </template>
+</template>

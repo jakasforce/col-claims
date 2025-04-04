@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Envio de Notificacion cuando se gestiona modificacion en el formulario de autegestion de un Claim</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Notification Update Claim</name>
+    <relatedEntityType>Claim</relatedEntityType>
+    <style>none</style>
+    <subject>Confirmación actualización solicitud de indemnización No.{{{Claim.ClaimNumber__c}}}</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

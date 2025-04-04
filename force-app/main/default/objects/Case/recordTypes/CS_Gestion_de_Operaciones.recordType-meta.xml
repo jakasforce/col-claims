@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Gestion_de_Operaciones</fullName>
+    <active>true</active>
+    <businessProcess>CS_Indemnizacion</businessProcess>
+    <label>Gestión de Operaciones</label>
+    <picklistValues>
+        <picklist>AccidentHardness__c</picklist>
+        <values>
+            <fullName>Alta Inmediata</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grave</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leve</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moderado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Muy Leve</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Severo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sin Seleccionar</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>AssistanceName__c</picklist>
+        <values>
+            <fullName>Exequial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hurto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Médica</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Viajes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Banco__c</picklist>
+        <values>
+            <fullName>02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>07</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>08</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>121</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>13</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>14</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>19</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>23</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>283</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>289</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>292</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>32</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>40</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>507</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>51</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>52</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>59</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>61</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>62</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>63</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>64</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>65</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>66</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>68</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>70</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>71</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NO DEFINIDA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Days_of_Term_Extension__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origin</picklist>
+        <values>
+            <fullName>Aplicación móvil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Audio Respuesta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call center</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Correo Electrónico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oficina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Otros Puntos de recepción</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Twitter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YouTube</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>colmenabuzonsle%40gmail%2Ecom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>colmenasle2%40gmail%2Ecom</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>Alto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bajo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medio</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>QueueRouting__c</picklist>
+        <values>
+            <fullName>Asesor Virtual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autogestionable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autorizaciones</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Biológico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buena Venta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colmena Gestión</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deudores Vida</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Estándares Mínimos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intermediarios</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Línea Información</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Novedades</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Servicio al cliente ARL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Servicio al cliente Vida</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason</picklist>
+        <values>
+            <fullName>APT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Afiliación%2FIBC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asesoría Derecho Petición y otros</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Audiencias</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autorización de Traslado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autorización prestación médica</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COVID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Charlas %2F Conversatorios%2F Reuniones</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comité Pensiones</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comité Siniestros</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complex functionality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contra de Colmena ARL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contra terceros</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Copia de la respuesta requerimientos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EPP %E2%80%93 Pruebas %E2%80%93P%26P</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IPP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Implementación de normas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Información afiliados en mora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Información eventos mortales %E2%80%93 AT grave</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Información procesos judiciales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Información sobre asesoría PyP%2FSGSST</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Informes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inspección o visitas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instructions not clear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Interpretación normativa%2F Conceptos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Licitaciones</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medicamentos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No registra DP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No respuesta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No resuelve de fondo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P%26P</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pago Honorarios</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pago de honorarios JCI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pensión %E2%80%93 Aux%2E Funerario</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prest%2E Asistenciales y económicas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proc%2E Calificación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procesos judiciales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proyectos normativos %2F Apoyo iniciativas -proyectos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reembolso de gastos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reintegro Laboral tercero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reportes Periodicos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Societario</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suministro PAE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>User didn%27t attend training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vincula Compañía</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Feature Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Question</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

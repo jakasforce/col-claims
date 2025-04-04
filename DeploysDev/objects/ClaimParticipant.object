@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CS_AccountHolderDocumentNumber__c</fullName>
+        <externalId>false</externalId>
+        <label>Numero de Documento Titular de la Cuenta</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Direccion</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_BankAccountNumber__c</fullName>
+        <description>Numero de cuenta Bancaria.</description>
+        <externalId>false</externalId>
+        <label>Numero de Cuenta</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CS_BankAccountType__c</fullName>
+        <description>Tipo de cuenta Bancaria.</description>
+        <externalId>false</externalId>
+        <label>Tipo de Cuenta</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Ahorros</fullName>
+                    <default>false</default>
+                    <label>Ahorros</label>
+                </value>
+                <value>
+                    <fullName>Corriente</fullName>
+                    <default>false</default>
+                    <label>Corriente</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CS_BankingEntity__c</fullName>
+        <description>Entidad Bancaria.</description>
+        <externalId>false</externalId>
+        <label>Entidad Bancaria</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>52</fullName>
+                    <default>false</default>
+                    <label>Av Villas</label>
+                </value>
+                <value>
+                    <fullName>40</fullName>
+                    <default>false</default>
+                    <label>Banco Agrario</label>
+                </value>
+                <value>
+                    <fullName>032</fullName>
+                    <default>false</default>
+                    <label>Banco Caja Social (Colmena)</label>
+                </value>
+                <value>
+                    <fullName>66</fullName>
+                    <default>false</default>
+                    <label>Banco Cooperativo Coopcentral</label>
+                </value>
+                <value>
+                    <fullName>558</fullName>
+                    <default>false</default>
+                    <label>Banco Credifinanciera S.A.</label>
+                </value>
+                <value>
+                    <fullName>01</fullName>
+                    <default>false</default>
+                    <label>Banco de Bogota (Megabanco)</label>
+                </value>
+                <value>
+                    <fullName>59</fullName>
+                    <default>false</default>
+                    <label>Banco de las Microfinanzas - Bancamia S.A.</label>
+                </value>
+                <value>
+                    <fullName>23</fullName>
+                    <default>false</default>
+                    <label>Banco de Occidente(Banco Unión-Aliadas-Interbanco)</label>
+                </value>
+                <value>
+                    <fullName>62</fullName>
+                    <default>false</default>
+                    <label>Banco Falabella</label>
+                </value>
+                <value>
+                    <fullName>63</fullName>
+                    <default>false</default>
+                    <label>Banco Finandina S.A.</label>
+                </value>
+                <value>
+                    <fullName>07</fullName>
+                    <default>false</default>
+                    <label>Bancolombia</label>
+                </value>
+                <value>
+                    <fullName>61</fullName>
+                    <default>false</default>
+                    <label>Bancoomeva</label>
+                </value>
+                <value>
+                    <fullName>60</fullName>
+                    <default>false</default>
+                    <label>Banco Pichincha S.A.</label>
+                </value>
+                <value>
+                    <fullName>02</fullName>
+                    <default>false</default>
+                    <label>Banco Popular</label>
+                </value>
+                <value>
+                    <fullName>65</fullName>
+                    <default>false</default>
+                    <label>Banco Santander de Negocios Colombia S.A.</label>
+                </value>
+                <value>
+                    <fullName>069</fullName>
+                    <default>false</default>
+                    <label>Banco Serfinanza S.A.</label>
+                </value>
+                <value>
+                    <fullName>53</fullName>
+                    <default>false</default>
+                    <label>Banco W S.A</label>
+                </value>
+                <value>
+                    <fullName>13</fullName>
+                    <default>false</default>
+                    <label>BBVA (Banco Granahorrar)</label>
+                </value>
+                <value>
+                    <fullName>09</fullName>
+                    <default>false</default>
+                    <label>Citibank</label>
+                </value>
+                <value>
+                    <fullName>19</fullName>
+                    <default>false</default>
+                    <label>Colpatria (Scotiabank)</label>
+                </value>
+                <value>
+                    <fullName>370</fullName>
+                    <default>false</default>
+                    <label>Coltefinanciera S.A.</label>
+                </value>
+                <value>
+                    <fullName>292</fullName>
+                    <default>false</default>
+                    <label>Confiar</label>
+                </value>
+                <value>
+                    <fullName>289</fullName>
+                    <default>false</default>
+                    <label>Cooperativa Financiera Cotrafa</label>
+                </value>
+                <value>
+                    <fullName>283</fullName>
+                    <default>false</default>
+                    <label>Cooperativa Financiera de Antioquia</label>
+                </value>
+                <value>
+                    <fullName>51</fullName>
+                    <default>false</default>
+                    <label>Davivienda(Bancafe-Bansuperior-Granbanco)</label>
+                </value>
+                <value>
+                    <fullName>121</fullName>
+                    <default>false</default>
+                    <label>Financiera Juriscoop</label>
+                </value>
+                <value>
+                    <fullName>303</fullName>
+                    <default>false</default>
+                    <label>Giros y Finanzas CF-Banco Unión</label>
+                </value>
+                <value>
+                    <fullName>12</fullName>
+                    <default>false</default>
+                    <label>GNB Sudameris (GNB Colombia-HSBC-Tequendama)</label>
+                </value>
+                <value>
+                    <fullName>14</fullName>
+                    <default>false</default>
+                    <label>Helm Bank</label>
+                </value>
+                <value>
+                    <fullName>637</fullName>
+                    <default>false</default>
+                    <label>Iris</label>
+                </value>
+                <value>
+                    <fullName>06</fullName>
+                    <default>false</default>
+                    <label>Itaú Banco Corbanca Colombia (Santander)</label>
+                </value>
+                <value>
+                    <fullName>507</fullName>
+                    <default>false</default>
+                    <label>Nequi</label>
+                </value>
+                <value>
+                    <fullName>58</fullName>
+                    <default>false</default>
+                    <label>Procredit</label>
+                </value>
+                <value>
+                    <fullName>502</fullName>
+                    <default>false</default>
+                    <label>Skandia</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CS_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Ciudad</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Cities</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CS_Deparment__c</fullName>
+        <externalId>false</externalId>
+        <label>Departamento</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Departments</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CS_DestinationAccountNumber__c</fullName>
+        <description>Numero de cuenta Destino.</description>
+        <externalId>false</externalId>
+        <label>Numero de Cuenta Destino</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_DocumentNumber__c</fullName>
+        <description>Numero de Identificacion de un solicitante.</description>
+        <externalId>false</externalId>
+        <label>Numero de Documento</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_DocumentTypeAccountHolder__c</fullName>
+        <externalId>false</externalId>
+        <label>Tipo Documento Titular de la Cuenta</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>CS_PersonType__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>Cédula de ciudadanía</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>Cédula de extranjería</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>Tarjeta de identificación</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>Registro civil</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>NIT</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Natural</controllingFieldValue>
+                <valueName>1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Natural</controllingFieldValue>
+                <valueName>2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Natural</controllingFieldValue>
+                <valueName>3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Natural</controllingFieldValue>
+                <valueName>4</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Jurídica</controllingFieldValue>
+                <valueName>5</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CS_DocumentType__c</fullName>
+        <description>Campo que almacena los tipos de documentos en una reclamación</description>
+        <externalId>false</externalId>
+        <label>Tipo Documento</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>Cédula de ciudadanía</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>Cédula de extranjería</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>Tarjeta de identificación</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>Registro civil</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NIT</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CS_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_FirstLastNameOfAccountHolder__c</fullName>
+        <externalId>false</externalId>
+        <label>Primer Apellido Titular de la Cuenta</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_FirstNameOfAccountHolder__c</fullName>
+        <externalId>false</externalId>
+        <label>Primer Nombre Titular de la Cuenta</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_FirstName__c</fullName>
+        <description>Primer nombre del solicitante.</description>
+        <externalId>false</externalId>
+        <label>Primer Nombre</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_LastName__c</fullName>
+        <description>Primer apellido del solicitante.</description>
+        <externalId>false</externalId>
+        <label>Primer Apellido</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_MaskDocumentNumber__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(!ISBLANK(CS_BankAccountNumber__c), 
+    &apos;XXXXXXXX&apos; + RIGHT(CS_BankAccountNumber__c,4),
+    IF(!ISBLANK(CS_DestinationAccountNumber__c), &apos;XXXXXXXX&apos; + RIGHT(CS_DestinationAccountNumber__c, 4),&apos;&apos;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Número de cuenta enmascarado</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_PaymentMethod__c</fullName>
+        <description>Se listan medios de pago para una reclamacion.</description>
+        <externalId>false</externalId>
+        <label>Medio de pago</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Transferencia bancaria</fullName>
+                    <default>false</default>
+                    <label>Transferencia bancaria</label>
+                </value>
+                <value>
+                    <fullName>Nequi</fullName>
+                    <default>false</default>
+                    <label>Nequi</label>
+                </value>
+                <value>
+                    <fullName>Daviplata</fullName>
+                    <default>false</default>
+                    <label>Daviplata</label>
+                </value>
+                <value>
+                    <fullName>Billetera Tpaga</fullName>
+                    <default>false</default>
+                    <label>Billetera Tpaga</label>
+                </value>
+                <value>
+                    <fullName>Efecty</fullName>
+                    <default>false</default>
+                    <label>Efecty</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CS_PersonType__c</fullName>
+        <description>Campo que almacena tipo persona en reclamación</description>
+        <externalId>false</externalId>
+        <label>Tipo Persona</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Natural</fullName>
+                    <default>false</default>
+                    <label>Natural</label>
+                </value>
+                <value>
+                    <fullName>Jurídica</fullName>
+                    <default>false</default>
+                    <label>Jurídica</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CS_PhoneNumber__c</fullName>
+        <externalId>false</externalId>
+        <label>Numero de Telefono</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>CS_RolesBeneficiary__c</fullName>
+        <externalId>false</externalId>
+        <label>Roles Beneficiario</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cónyuge</fullName>
+                    <default>false</default>
+                    <label>Cónyuge</label>
+                </value>
+                <value>
+                    <fullName>Compañera(o) Permanente</fullName>
+                    <default>false</default>
+                    <label>Compañera(o) Permanente</label>
+                </value>
+                <value>
+                    <fullName>Padre</fullName>
+                    <default>false</default>
+                    <label>Padre</label>
+                </value>
+                <value>
+                    <fullName>Hijo(a)</fullName>
+                    <default>false</default>
+                    <label>Hijo(a)</label>
+                </value>
+                <value>
+                    <fullName>Madre</fullName>
+                    <default>false</default>
+                    <label>Madre</label>
+                </value>
+                <value>
+                    <fullName>Hermano(s)</fullName>
+                    <default>false</default>
+                    <label>Hermano(s)</label>
+                </value>
+                <value>
+                    <fullName>Primo(a)</fullName>
+                    <default>false</default>
+                    <label>Primo(a)</label>
+                </value>
+                <value>
+                    <fullName>Hijastro(a)</fullName>
+                    <default>false</default>
+                    <label>Hijastro(a)</label>
+                </value>
+                <value>
+                    <fullName>Abuelo(a)</fullName>
+                    <default>false</default>
+                    <label>Abuelo(a)</label>
+                </value>
+                <value>
+                    <fullName>Tio(a)</fullName>
+                    <default>false</default>
+                    <label>Tio(a)</label>
+                </value>
+                <value>
+                    <fullName>Cuñado(a)</fullName>
+                    <default>false</default>
+                    <label>Cuñado(a)</label>
+                </value>
+                <value>
+                    <fullName>Sobrino(a)</fullName>
+                    <default>false</default>
+                    <label>Sobrino(a)</label>
+                </value>
+                <value>
+                    <fullName>Otro Parentesco</fullName>
+                    <default>false</default>
+                    <label>Otro Parentesco</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CS_SecondLastName__c</fullName>
+        <description>Segundo apellido solicitante.</description>
+        <externalId>false</externalId>
+        <label>Segundo Apellido</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_SecondLastNameofAccountHolder__c</fullName>
+        <externalId>false</externalId>
+        <label>Segundo Apellido Titular de la Cuenta</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_SecondNameOfAccountHolder__c</fullName>
+        <externalId>false</externalId>
+        <label>Segundo Nombre Titular de la Cuenta</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_SecondName__c</fullName>
+        <description>Segundo nombre solicitante.</description>
+        <externalId>false</externalId>
+        <label>Segundo Nombre</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsClaimant__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Campo que valida si es un reclamante</description>
+        <externalId>false</externalId>
+        <label>Es reclamante</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>OtherRoles__c</fullName>
+        <description>Campo que almacena otros roles de la reclamación</description>
+        <externalId>false</externalId>
+        <label>Otro Parentesco</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+</CustomObject>

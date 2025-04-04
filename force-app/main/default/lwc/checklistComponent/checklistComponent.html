@@ -1,0 +1,96 @@
+<template>
+    <lightning-card variant="Narrow" title="Check List Validación Propuesta de Prospecto Proveedor" icon-name="action:approval">
+        <div class="slds-align_absolute-center">
+            <lightning-button label="Registrar Validación Proveedor" onclick={openModal}></lightning-button>
+            <br>
+        </div>
+    </lightning-card>
+    
+    <template if:true={isModalOpen}>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Check List Validación Propuesta de Prospecto Proveedor</h2>
+                    <template if:true={showMessage}>
+                        <div class="slds-notify slds-notify_alert-texture" role="alert">
+                            <span class="slds-assistive-text">Mensaje</span>
+                            <template if:true={isError}>
+                                <!-- Estilo para mensajes de error -->
+                                <div class="slds-notify__content slds-theme_error">
+                                    <lightning-icon icon-name="utility:error" alternative-text="Error"></lightning-icon>
+                                    <span>{message}</span>
+                                </div>
+                            </template>
+                            <template if:false={isError}>
+                                <!-- Estilo para mensajes de éxito -->
+                                <div class="slds-notify__content slds-theme_success">
+                                    <lightning-icon icon-name="utility:success" alternative-text="Success"></lightning-icon>
+                                    <span>{message}</span>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="Close" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-scrollable  slds-m-around_medium">
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered   slds-table_bordered slds-table_col-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col" style="max-width: 200px;">Criterio</th>
+                                    <th scope="col" style="max-width: 200px;">Subcriterio</th>
+                                    <th scope="col" style="max-width: 100px;">Estado</th>
+                                    <th scope="col" style="max-width: 100px;">Calificación</th>
+                                    <th scope="col">Observación de la calificación</th>
+                                    <th scope="col">Observación en caso de inactivación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={evaluaciones} for:item="evaluacion" for:index="index">
+                                    <tr key={evaluacion.id}>
+                                        <td data-label="Id">{evaluacion.ids}</td>
+                                        <td data-label="Criterio" style="max-width: 200px;">
+                                            <div style="white-space: normal; word-wrap: break-word; text-align: justify;">{evaluacion.criterio}</div>
+                                        </td>
+                                        <td data-label="Subcriterio" style="max-width: 200px;">
+                                            <div style="white-space: normal; word-wrap: break-word; text-align: justify;">{evaluacion.subCriterio}</div>
+                                        </td>
+                                        <td data-label="Estado" style="max-width: 100px;">
+                                            <lightning-combobox value={evaluacion.estado} options={statusOptions} onchange={handleChange} data-id={evaluacion.id} data-field="estado"></lightning-combobox>
+                                        </td>
+                                        <td data-label="Calificación" style="max-width: 150px;">
+                                            <lightning-combobox value={evaluacion.calificacion} options={ratingOptions} onchange={handleChange} data-id={evaluacion.id} data-field="calificacion"></lightning-combobox>
+                                        </td>
+                                        <td data-label="Observación de la calificación">
+                                            <lightning-input value={evaluacion.observacionCalificacion} onchange={handleChange} data-id={evaluacion.id} data-field="observacionCalificacion"></lightning-input>
+                                        </td>
+                                        <td data-label="Observación en caso de inactivación">
+                                            <template if:true={evaluacion.mostrarObservacion}>
+                                                <lightning-input type="text" data-id={evaluacion.id} data-field="observacionInactivacion" value={evaluacion.observacionInactivacion} onchange={handleChange}></lightning-input>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                            
+                            
+                        </table>
+                    </div>
+                    
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Guardar y Descargar PDF" onclick={guardarEvaluacion}></lightning-button>
+                    <lightning-button label="Cancelar" onclick={closeModal} variant="neutral"></lightning-button>
+                </footer>
+            </div>
+             
+        </section>
+
+    </template>
+</template>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AffectedBodyParts__c</fullName>
+    <externalId>false</externalId>
+    <label>Partes del cuerpo afectada</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>100</fullName>
+                <default>false</default>
+                <label>Cabeza</label>
+            </value>
+            <value>
+                <fullName>112</fullName>
+                <default>false</default>
+                <label>Ojo</label>
+            </value>
+            <value>
+                <fullName>200</fullName>
+                <default>false</default>
+                <label>Cuello</label>
+            </value>
+            <value>
+                <fullName>300</fullName>
+                <default>false</default>
+                <label>Tronco</label>
+            </value>
+            <value>
+                <fullName>332</fullName>
+                <default>false</default>
+                <label>Tórax</label>
+            </value>
+            <value>
+                <fullName>333</fullName>
+                <default>false</default>
+                <label>Abdomen</label>
+            </value>
+            <value>
+                <fullName>400</fullName>
+                <default>false</default>
+                <label>Miembros superiores</label>
+            </value>
+            <value>
+                <fullName>446</fullName>
+                <default>false</default>
+                <label>Manos</label>
+            </value>
+            <value>
+                <fullName>500</fullName>
+                <default>false</default>
+                <label>Miembros inferiores</label>
+            </value>
+            <value>
+                <fullName>556</fullName>
+                <default>false</default>
+                <label>Pies</label>
+            </value>
+            <value>
+                <fullName>600</fullName>
+                <default>false</default>
+                <label>Ubicaciones múltiples</label>
+            </value>
+            <value>
+                <fullName>700</fullName>
+                <default>false</default>
+                <label>Lesiones generales u otras</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <decisions>
+        <description>Valida si la indemnizacion es de tipo innominada, esta se determina con e campo Funciones del objeto Participante de reclamación al contener el valor Otro/Tercero &quot;Otro Parentesco&quot;</description>
+        <name>ValidateClaimInnominada</name>
+        <label>Validación si la indemnización es innominada</label>
+        <locationX>446</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>IsInnominada</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetClaimParticipant.Roles</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Otro/Tercero</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateStatus</targetReference>
+            </connector>
+            <label>Es Innominada</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Acciones que se ejecutan en las etapas del caso.</description>
+        <name>ValidateStatusChange</name>
+        <label>Validacion de cambio de etapa</label>
+        <locationX>776</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>ClosedCase</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cerrado</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ValidationEventFrom</targetReference>
+            </connector>
+            <label>Cierre de caso</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Valida que evento disparo la creacion del caso.
+.</description>
+        <name>ValidationEventFrom</name>
+        <label>Validacion de tipo de caso por su creación</label>
+        <locationX>446</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>CaseCoverage</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ClaimCoverage__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateClaimCoverage</targetReference>
+            </connector>
+            <label>Caso de cobertura</label>
+        </rules>
+        <rules>
+            <name>CaseSinister</name>
+            <conditionLogic>2 AND 1</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Claim__r.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CS_ClaimCompensation</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Claim__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetClaimParticipant</targetReference>
+            </connector>
+            <label>Caso de Siniestro</label>
+        </rules>
+    </decisions>
+    <description>Flujo para definir las acciones a realizar para el tipo de caso de &quot;Gestión de Operaciones&quot;</description>
+    <environments>Default</environments>
+    <interviewLabel>Acciones Caso de Gestion de Operaciones {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Acciones Caso de Gestion de Operaciones</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Obtenemos participante reclamante para validar campo posteriormente.</description>
+        <name>GetClaimParticipant</name>
+        <label>Obtener Participante Indemnización Reclamante</label>
+        <locationX>446</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ValidateClaimInnominada</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ClaimId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Claim__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClaimant__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ClaimParticipant</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Roles</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>UpdateClaimCoverage</name>
+        <label>Actualizar Cobertura de reclamación</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>CS_SubStatus__c</field>
+            <value>
+                <stringValue>Caso gestionado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Analisis</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.ClaimCoverage__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Actualiza el estado de la indemnización.</description>
+        <name>UpdateStatus</name>
+        <label>Actualiza a estado</label>
+        <locationX>314</locationX>
+        <locationY>755</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Consultar y Radicar VT</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Claim__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>650</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>ValidateStatusChange</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeCase__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Gestión de Operaciones</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

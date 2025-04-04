@@ -1,0 +1,81 @@
+<template>
+    <div style="display: none;">
+        {recordId}
+    </div> 
+    <div style="width:115%;margin-left:-32px;margin-top:-15px;" class="slds-col modal-header slds-modal__header">
+        <h2 class="title slds-text-heading_medium">Datos Financieros</h2>
+    </div>
+
+    <div style="height: 280px; max-height: 400px; overflow-y: auto !important;margin-left: -05%;width: 110%;padding-top: 0px;"
+        class="slds-col modal-body scrollable slds-var-p-around_medium">
+        <!-- Content Modal-->
+        <div style="max-width: 95%;margin: auto; margin-top: 10px;">
+            <div if:true={isLoading} class="custom-spinner" style="position: relative;margin-top: 140px;">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+            <div if:false={isLoading}>
+                <div if:true={isError}>
+                    <div style="margin-top: 100px;" class="slds-notify slds-notify_alert slds-alert_warning" role="alert">
+                        <span class="slds-assistive-text">warning</span>
+                        <h2 style="color: aliceblue;">{warningMessage}
+                        </h2>
+                    </div>
+                </div>
+
+                <div if:false={isError}>
+                    <div if:true={screenA}>
+                        <h2 class="slds-align_absolute-center" style="font-weight: bold;font-size: 13px; margin-bottom: 10px;margin-top: 20px;">Resultado de la información consultada para la cuenta</h2>
+
+                        <div class="form_grid slds-grid slds-wrap slds-size_12-of-12 slds-align_absolute-center">
+                            <div if:true={showInput} class="slds-form-element slds-col slds-size_12-of-12 slds-var-p-around_medium">
+                                <lightning-combobox
+                                    name="Banco"
+                                    label="Banco"
+                                    value={WSInfoFinancialWorker.bankKey}
+                                    placeholder="Banco"
+                                    options={bankList}
+                                    onchange={handleInputChange}
+                                    disabled={isReadOnly}>
+                                    >
+                                </lightning-combobox>
+                            </div>
+                            <div class="slds-form-element slds-col slds-size_6-of-12 slds-var-p-around_medium">
+                                <lightning-combobox
+                                    name="TipoCuenta"
+                                    label="Tipo de Cuenta"
+                                    value={WSInfoFinancialWorker.accountType}
+                                    placeholder="Tipo de Cuenta"
+                                    options={typeFinancialAccountList}
+                                    onchange={handleInputChange} >
+                                </lightning-combobox>
+                            </div>
+                            <div if:true={showInput} class="slds-form-element slds-col slds-size_6-of-12 slds-var-p-around_medium">
+                                <lightning-input required type="text" name="NumeroCuenta"
+                                    label="Número de Cuenta" placeholder="Número de Cuenta"
+                                    value={WSInfoFinancialWorker.bankAccount}
+                                    onchange={handleInputChange}
+                                    >
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div if:true={screenA}>
+            <div style="text-align: end">
+                <div style="border: 1px solid #c7c7c7;width: 120%;margin-left: -44px;margin-bottom: 10px;"></div>
+                <!--lightning-button style="margin-right: 15px;" title="Anterior" label="Anterior" onclick={handleGoSelectPerson} disabled={disableNextButton}></lightning-button-->
+                <div style="display: flex;">
+                    <h2 style="font-size: 9px;padding-left: 100px;padding-top: 3px;">Al presionar 'Guardar', la información de los datos financieros se guardará en Salesforce y en el sistema externo Apolo</h2>
+                    <lightning-icon style="margin: 0px 7px 0px 7px;padding-top: 3px;" icon-name="utility:warning" alternative-text="Warning!" title="Warning" size="small" ></lightning-icon>
+                    <lightning-button title="Guardar" label="Guardar" variant="brand" onclick={savingFinancialAccount} disabled={disableNextButton}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

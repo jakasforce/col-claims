@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Entity_Banking__c</fullName>
+    <externalId>false</externalId>
+    <label>Payment Entity Banking</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>52</fullName>
+                <default>false</default>
+                <label>Av Villas</label>
+            </value>
+            <value>
+                <fullName>40</fullName>
+                <default>false</default>
+                <label>Banco Agrario</label>
+            </value>
+            <value>
+                <fullName>032</fullName>
+                <default>false</default>
+                <label>Banco Caja Social (Colmena)</label>
+            </value>
+            <value>
+                <fullName>66</fullName>
+                <default>false</default>
+                <label>Banco Cooperativo Coopcentral</label>
+            </value>
+            <value>
+                <fullName>558</fullName>
+                <default>false</default>
+                <label>Banco Credifinanciera S.A.</label>
+            </value>
+            <value>
+                <fullName>01</fullName>
+                <default>false</default>
+                <label>Banco de Bogota (Megabanco)</label>
+            </value>
+            <value>
+                <fullName>59</fullName>
+                <default>false</default>
+                <label>Banco de las Microfinanzas - Bancamia S.A.</label>
+            </value>
+            <value>
+                <fullName>23</fullName>
+                <default>false</default>
+                <label>Banco de Occidente(Banco Unión-Aliadas-Interbanco)</label>
+            </value>
+            <value>
+                <fullName>62</fullName>
+                <default>false</default>
+                <label>Banco Falabella</label>
+            </value>
+            <value>
+                <fullName>63</fullName>
+                <default>false</default>
+                <label>Banco Finandina S.A.</label>
+            </value>
+            <value>
+                <fullName>07</fullName>
+                <default>false</default>
+                <label>Bancolombia</label>
+            </value>
+            <value>
+                <fullName>61</fullName>
+                <default>false</default>
+                <label>Bancoomeva</label>
+            </value>
+            <value>
+                <fullName>60</fullName>
+                <default>false</default>
+                <label>Banco Pichincha S.A.</label>
+            </value>
+            <value>
+                <fullName>02</fullName>
+                <default>false</default>
+                <label>Banco Popular</label>
+            </value>
+            <value>
+                <fullName>65</fullName>
+                <default>false</default>
+                <label>Banco Santander de Negocios Colombia S.A.</label>
+            </value>
+            <value>
+                <fullName>069</fullName>
+                <default>false</default>
+                <label>Banco Serfinanza S.A.</label>
+            </value>
+            <value>
+                <fullName>53</fullName>
+                <default>false</default>
+                <label>Banco W S.A</label>
+            </value>
+            <value>
+                <fullName>13</fullName>
+                <default>false</default>
+                <label>BBVA (Banco Granahorrar)</label>
+            </value>
+            <value>
+                <fullName>09</fullName>
+                <default>false</default>
+                <label>Citibank</label>
+            </value>
+            <value>
+                <fullName>19</fullName>
+                <default>false</default>
+                <label>Colpatria (Scotiabank)</label>
+            </value>
+            <value>
+                <fullName>370</fullName>
+                <default>false</default>
+                <label>Coltefinanciera S.A.</label>
+            </value>
+            <value>
+                <fullName>292</fullName>
+                <default>false</default>
+                <label>Confiar</label>
+            </value>
+            <value>
+                <fullName>289</fullName>
+                <default>false</default>
+                <label>Cooperativa Financiera Cotrafa</label>
+            </value>
+            <value>
+                <fullName>283</fullName>
+                <default>false</default>
+                <label>Cooperativa Financiera de Antioquia</label>
+            </value>
+            <value>
+                <fullName>51</fullName>
+                <default>false</default>
+                <label>Davivienda(Bancafe-Bansuperior-Granbanco)</label>
+            </value>
+            <value>
+                <fullName>121</fullName>
+                <default>false</default>
+                <label>Financiera Juriscoop</label>
+            </value>
+            <value>
+                <fullName>303</fullName>
+                <default>false</default>
+                <label>Giros y Finanzas CF-Banco Unión</label>
+            </value>
+            <value>
+                <fullName>12</fullName>
+                <default>false</default>
+                <label>GNB Sudameris (GNB Colombia-HSBC-Tequendama)</label>
+            </value>
+            <value>
+                <fullName>14</fullName>
+                <default>false</default>
+                <label>Helm Bank</label>
+            </value>
+            <value>
+                <fullName>637</fullName>
+                <default>false</default>
+                <label>Iris</label>
+            </value>
+            <value>
+                <fullName>06</fullName>
+                <default>false</default>
+                <label>Itaú Banco Corbanca Colombia (Santander)</label>
+            </value>
+            <value>
+                <fullName>507</fullName>
+                <default>false</default>
+                <label>Nequi</label>
+            </value>
+            <value>
+                <fullName>58</fullName>
+                <default>false</default>
+                <label>Procredit</label>
+            </value>
+            <value>
+                <fullName>502</fullName>
+                <default>false</default>
+                <label>Skandia</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

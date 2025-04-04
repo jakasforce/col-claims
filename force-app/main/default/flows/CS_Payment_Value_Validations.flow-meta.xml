@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <assignments>
+        <name>Asignar_valor_a_pagar_bucle</name>
+        <label>Asignar valor a pagar bucle</label>
+        <locationX>270</locationX>
+        <locationY>539</locationY>
+        <assignmentItems>
+            <assignToReference>ValorPagadoAcum</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Recorrer_Pagos_por_cobertura.CS_PaymentValue__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Recorrer_Pagos_por_cobertura</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>Mostrar_Alerta</name>
+        <label>Mostrar Alerta</label>
+        <locationX>50</locationX>
+        <locationY>839</locationY>
+        <customErrorMessages>
+            <errorMessage>El Valor a pagar {!$Record.CS_PaymentValue__c} con acumulado {!ValorPagadoAcum} ingresado es mayor al valor de idemnizacion {!$Record.ClaimCoverage.CS_CompensationValue__c} de la cobertura</errorMessage>
+            <fieldSelection>CS_PaymentValue__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Validar_valor_a_pagar_acumulado</name>
+        <label>Validar valor a pagar acumulado</label>
+        <locationX>182</locationX>
+        <locationY>731</locationY>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>Valor_a_Pagar_Mayor_Valor_Indemnizacion</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ClaimCoverage.CS_CompensationValue__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>ValorPagadoAcum</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mostrar_Alerta</targetReference>
+            </connector>
+            <label>Valor a Pagar Mayor Valor Indemnizacion</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>CS Payment Value Validations {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CS Payment Value Validations</label>
+    <loops>
+        <name>Recorrer_Pagos_por_cobertura</name>
+        <label>Recorrer Pagos por cobertura</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <collectionReference>Obtener_pagos_por_cobertura</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Asignar_valor_a_pagar_bucle</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Validar_valor_a_pagar_acumulado</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Obtener_pagos_por_cobertura</name>
+        <label>Obtener pagos por cobertura</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Recorrer_Pagos_por_cobertura</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ClaimCoverageId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ClaimCoverageId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>ClaimCoveragePaymentDetail</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Obtener_pagos_por_cobertura</targetReference>
+        </connector>
+        <object>ClaimCoveragePaymentDetail</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>ValorPagadoAcum</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+</Flow>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>AzureB2CAuthProviderPlugin</members>
+		<members>AzureB2CAuthProviderPluginTest</members>
+		<members>AzureB2CRegisterHandler</members>
+		<members>AzureB2CRegisterHandlerTest</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>AzureB2CProvider</members>
+		<name>AuthProvider</name>
+	</types>
+	<types>
+		<members>AzureB2CAuthProvider__mdt.Access_Token_Url__c</members>
+		<members>AzureB2CAuthProvider__mdt.AuthProviderName__c</members>
+		<members>AzureB2CAuthProvider__mdt.Auth_Url__c</members>
+		<members>AzureB2CAuthProvider__mdt.Consumer_Key__c</members>
+		<members>AzureB2CAuthProvider__mdt.Consumer_Secret__c</members>
+		<members>AzureB2CAuthProvider__mdt.Policy__c</members>
+		<members>AzureB2CAuthProvider__mdt.Proxy_Redirect_URL__c</members>
+		<members>AzureB2CAuthProvider__mdt.codeChallengeMethod__c</members>
+		<name>CustomField</name>
+	</types>
+	<types>
+		<members>AzureB2CAuthProvider.AzureB2CProvider</members>
+		<name>CustomMetadata</name>
+	</types>
+	<types>
+		<members>AzureB2CAuthProvider__mdt</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>AzureB2CAuthProvider__mdt-Azure B2C provider Layout</members>
+		<name>Layout</name>
+	</types>
+	<version>62.0</version>
+</Package>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Muerte_seleccionada</fullName>
+    <active>true</active>
+    <description>Si el usuario activa la casilla muerte el campo fecha de muerte se convierte en obligatorio</description>
+    <errorConditionFormula>AND( RecordType.Name = &quot;Contingencia AT&quot;,
+OR( 
+AND(
+   IsDeath__c ,
+   ISNULL(DeathDate__c)
+),
+AND(
+    NOT(IsDeath__c) ,
+    NOT(ISNULL(DeathDate__c))
+))
+)</errorConditionFormula>
+    <errorMessage>La fecha de muerte y la casilla muerte son campos dependientes.</errorMessage>
+</ValidationRule>

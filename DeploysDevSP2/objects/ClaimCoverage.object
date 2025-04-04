@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CS_CoverageType__c</fullName>
+        <externalId>false</externalId>
+        <label>Coverage type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CS_CoverageType</valueSetName>
+        </valueSet>
+    </fields>
+</CustomObject>

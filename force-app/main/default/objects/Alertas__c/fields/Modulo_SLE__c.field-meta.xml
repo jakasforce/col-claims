@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Modulo_SLE__c</fullName>
+    <description>Campo parametrizado para SLE</description>
+    <externalId>false</externalId>
+    <label>Modulo</label>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Capitalizadora</fullName>
+                <default>false</default>
+                <label>Capitalizadora</label>
+            </value>
+            <value>
+                <fullName>Información y Medios</fullName>
+                <default>false</default>
+                <label>Información y Medios</label>
+            </value>
+            <value>
+                <fullName>Medicalización</fullName>
+                <default>false</default>
+                <label>Medicalización</label>
+            </value>
+            <value>
+                <fullName>Prevención</fullName>
+                <default>false</default>
+                <label>Prevención</label>
+            </value>
+            <value>
+                <fullName>Seguros de Vida</fullName>
+                <default>false</default>
+                <label>Seguros de Vida</label>
+            </value>
+            <value>
+                <fullName>Seguros Generales</fullName>
+                <default>false</default>
+                <label>Seguros Generales</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

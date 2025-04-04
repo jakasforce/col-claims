@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NotificationValidity__c</fullName>
+    <description>Configuración de campo para mapear la frecuencia de notificación en días.</description>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Ingresar valor en números ,  valor que sera tomado como rango de tiempo en Años para envió de notificación.</inlineHelpText>
+    <label>Vigencia de notificación</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

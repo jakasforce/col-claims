@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Analista-Profesional</label>
+    <permissionSets>CS_EditClaimParticipant</permissionSets>
+    <permissionSets>CS_ProfesionalAnalystCustomPermission</permissionSets>
+    <permissionSets>CS_documentManagement</permissionSets>
+    <permissionSets>CS_seeCoverage</permissionSets>
+    <permissionSets>EditClaims</permissionSets>
+    <permissionSets>editReports</permissionSets>
+    <permissionSets>force__FSCInsurance</permissionSets>
+    <permissionSets>seeAccounts</permissionSets>
+    <permissionSets>seeCases</permissionSets>
+    <permissionSets>seeContacts</permissionSets>
+    <permissionSets>seePolicies</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

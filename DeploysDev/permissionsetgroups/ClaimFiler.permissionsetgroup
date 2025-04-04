@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Este grupo de conjunto de permisos contiene los privilegios requeridos parea radicar siniestros</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Radicador de Siniestros</label>
+    <permissionSets>ClaimFIlerManage</permissionSets>
+    <permissionSets>ClaimFilerBase</permissionSets>
+    <permissionSets>FinServ__ApexAuraAccess</permissionSets>
+    <permissionSets>FinServ__FinancialServicesCloudStandard</permissionSets>
+    <permissionSets>force__FSCInsurance</permissionSets>
+    <permissionSets>force__InsuranceClaimMgmt</permissionSets>
+    <permissionSets>force__InsurancePolicyAndClaim</permissionSets>
+    <permissionSets>force__OmniStudioAdmin</permissionSets>
+    <permissionSets>force__OmniStudioExecution</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

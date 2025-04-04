@@ -1,0 +1,2923 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <businessProcesses>
+        <fullName>CS_Indemnizacion</fullName>
+        <isActive>true</isActive>
+        <values>
+            <fullName>Abierto</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Cerrado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>En Proceso</fullName>
+            <default>false</default>
+        </values>
+    </businessProcesses>
+    <fields>
+        <fullName>CS_Nombre_Reclamante__c</fullName>
+        <externalId>false</externalId>
+        <label>Nombre Reclamante</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_Numero_Identificacion_Reclamante__c</fullName>
+        <externalId>false</externalId>
+        <label>Número Identificación Reclamante</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CS_Siniestro__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Campo relación de búsqueda hacia el objeto Claim (reclamación).</description>
+        <externalId>false</externalId>
+        <label>Número de Siniestro</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Claim.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Siniestro</value>
+            </filterItems>
+            <filterItems>
+                <field>Claim.AccountId</field>
+                <operation>equals</operation>
+                <valueField>$Source.AccountId</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Claim</referenceTo>
+        <relationshipLabel>Casos</relationshipLabel>
+        <relationshipName>Casos</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Claim__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Campo que almacena los claims de las llamadas de SLE</description>
+        <externalId>false</externalId>
+        <label>Indemnización</label>
+        <referenceTo>Claim</referenceTo>
+        <relationshipLabel>Casos (Indemnización)</relationshipLabel>
+        <relationshipName>Indemnizacion</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>type_of_companion_document__c</fullName>
+        <description>Campo que indica el tipo de documento del acompañante para el agendamiento de formularios medicalización 1 - 5 SLE</description>
+        <externalId>false</externalId>
+        <label>Tipo de documento del acompanante</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Carné diplomático</fullName>
+                    <default>false</default>
+                    <label>Carné diplomático</label>
+                </value>
+                <value>
+                    <fullName>Cédula de ciudadanía</fullName>
+                    <default>false</default>
+                    <label>Cédula de ciudadanía</label>
+                </value>
+                <value>
+                    <fullName>Cédula de extranjería</fullName>
+                    <default>false</default>
+                    <label>Cédula de extranjería</label>
+                </value>
+                <value>
+                    <fullName>Fideicomiso, fondos de inversión colectiva, fondo o patrimonio autónomo</fullName>
+                    <default>false</default>
+                    <label>Fideicomiso, fondos de inversión colectiva, fondo o patrimonio autónomo</label>
+                </value>
+                <value>
+                    <fullName>No informa</fullName>
+                    <default>false</default>
+                    <label>No informa</label>
+                </value>
+                <value>
+                    <fullName>Número de identificación tributaria (NIT)</fullName>
+                    <default>false</default>
+                    <label>Número de identificación tributaria (NIT)</label>
+                </value>
+                <value>
+                    <fullName>Número único de identificación personal (NUIP)</fullName>
+                    <default>false</default>
+                    <label>Número único de identificación personal (NUIP)</label>
+                </value>
+                <value>
+                    <fullName>Pasaporte</fullName>
+                    <default>false</default>
+                    <label>Pasaporte</label>
+                </value>
+                <value>
+                    <fullName>Permiso especial de permanencia (PEP)</fullName>
+                    <default>false</default>
+                    <label>Permiso especial de permanencia (PEP)</label>
+                </value>
+                <value>
+                    <fullName>Permiso por protección temporal (PPT)</fullName>
+                    <default>false</default>
+                    <label>Permiso por protección temporal (PPT)</label>
+                </value>
+                <value>
+                    <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                    <default>false</default>
+                    <label>Sociedad extranjera sin NIT en Colombia</label>
+                </value>
+                <value>
+                    <fullName>Tarjeta de identidad</fullName>
+                    <default>false</default>
+                    <label>Tarjeta de identidad</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <recordTypes>
+        <fullName>Agendamiento</fullName>
+        <active>true</active>
+        <businessProcess>CS Colmena</businessProcess>
+        <label>Agendamiento</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instagram</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Twitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YouTube</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>APT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Afiliación%2FIBC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Asesoría Derecho Petición y otros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audiencias</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Autorización de Traslado</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Autorización prestación médica</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COVID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Charlas %2F Conversatorios%2F Reuniones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comité Pensiones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comité Siniestros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contra de Colmena ARL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contra terceros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Copia de la respuesta requerimientos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EPP %E2%80%93 Pruebas %E2%80%93P%26P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Implementación de normas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información afiliados en mora</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información eventos mortales %E2%80%93 AT grave</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información procesos judiciales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información sobre asesoría PyP%2FSGSST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Informes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inspección o visitas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Interpretación normativa%2F Conceptos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Licitaciones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medicamentos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No registra DP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No resuelve de fondo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P%26P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago Honorarios</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago de honorarios JCI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pensión %E2%80%93 Aux%2E Funerario</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prest%2E Asistenciales y económicas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proc%2E Calificación</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Procesos judiciales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proyectos normativos %2F Apoyo iniciativas -proyectos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reembolso de gastos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reintegro Laboral tercero</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reportes Periodicos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Societario</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Suministro PAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vincula Compañía</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Buzon</fullName>
+        <active>true</active>
+        <businessProcess>CS Colmena</businessProcess>
+        <description>Medio de comunicación electrónica a través del cual se reciben las PQRs de los clientes.</description>
+        <label>Buzón</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instagram</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Twitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YouTube</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Derecho_de_peticion</fullName>
+        <active>true</active>
+        <businessProcess>CS Colmena</businessProcess>
+        <description>Mecanismo contemplado en la Constitución Nacional, para radicar PQRs ante las entidades.</description>
+        <label>Derecho de peticion</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Firma_investigadora</fullName>
+        <active>true</active>
+        <businessProcess>CS_Indemnizacion</businessProcess>
+        <label>Firma investigadora</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instagram</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Twitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YouTube</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>colmenabuzonsle%40gmail%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>colmenasle2%40gmail%2Ecom</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>APT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Afiliación%2FIBC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Asesoría Derecho Petición y otros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audiencias</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Autorización de Traslado</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Autorización prestación médica</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COVID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Charlas %2F Conversatorios%2F Reuniones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comité Pensiones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comité Siniestros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contra de Colmena ARL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contra terceros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Copia de la respuesta requerimientos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EPP %E2%80%93 Pruebas %E2%80%93P%26P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Implementación de normas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información afiliados en mora</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información eventos mortales %E2%80%93 AT grave</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información procesos judiciales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información sobre asesoría PyP%2FSGSST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Informes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inspección o visitas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Interpretación normativa%2F Conceptos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Licitaciones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medicamentos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No registra DP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No resuelve de fondo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P%26P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago Honorarios</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago de honorarios JCI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pensión %E2%80%93 Aux%2E Funerario</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prest%2E Asistenciales y económicas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proc%2E Calificación</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Procesos judiciales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proyectos normativos %2F Apoyo iniciativas -proyectos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reembolso de gastos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reintegro Laboral tercero</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reportes Periodicos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Societario</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Suministro PAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vincula Compañía</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Gestion_de_Operaciones</fullName>
+        <active>true</active>
+        <businessProcess>CS_Indemnizacion</businessProcess>
+        <label>Gestión de Operaciones</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instagram</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Twitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YouTube</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>colmenabuzonsle%40gmail%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>colmenasle2%40gmail%2Ecom</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>APT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Afiliación%2FIBC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Asesoría Derecho Petición y otros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audiencias</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Autorización de Traslado</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Autorización prestación médica</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COVID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Charlas %2F Conversatorios%2F Reuniones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comité Pensiones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comité Siniestros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contra de Colmena ARL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contra terceros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Copia de la respuesta requerimientos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EPP %E2%80%93 Pruebas %E2%80%93P%26P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Implementación de normas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información afiliados en mora</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información eventos mortales %E2%80%93 AT grave</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información procesos judiciales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información sobre asesoría PyP%2FSGSST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Informes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inspección o visitas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Interpretación normativa%2F Conceptos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Licitaciones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medicamentos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No registra DP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No resuelve de fondo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P%26P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago Honorarios</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago de honorarios JCI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pensión %E2%80%93 Aux%2E Funerario</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prest%2E Asistenciales y económicas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proc%2E Calificación</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Procesos judiciales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proyectos normativos %2F Apoyo iniciativas -proyectos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reembolso de gastos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reintegro Laboral tercero</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reportes Periodicos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Societario</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Suministro PAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vincula Compañía</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Incidente</fullName>
+        <active>true</active>
+        <businessProcess>CS Colmena</businessProcess>
+        <description>Queja que se da con ocasión de una evidencia al interior de la compañía que no fue detectada por el cliente externo</description>
+        <label>Incidente</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Novedad</fullName>
+        <active>true</active>
+        <businessProcess>CS Colmena</businessProcess>
+        <description>Modificación o actualización requerida por el Cliente de su póliza o contrato.</description>
+        <label>Novedad</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instagram</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Twitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YouTube</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Profesional_de_la_Salud</fullName>
+        <active>true</active>
+        <businessProcess>CS_Indemnizacion</businessProcess>
+        <label>Profesional de la Salud</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instagram</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Twitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YouTube</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>colmenabuzonsle%40gmail%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>colmenasle2%40gmail%2Ecom</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>APT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Afiliación%2FIBC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Asesoría Derecho Petición y otros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audiencias</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Autorización de Traslado</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Autorización prestación médica</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COVID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Charlas %2F Conversatorios%2F Reuniones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comité Pensiones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comité Siniestros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contra de Colmena ARL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contra terceros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Copia de la respuesta requerimientos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EPP %E2%80%93 Pruebas %E2%80%93P%26P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Implementación de normas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información afiliados en mora</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información eventos mortales %E2%80%93 AT grave</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información procesos judiciales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información sobre asesoría PyP%2FSGSST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Informes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inspección o visitas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Interpretación normativa%2F Conceptos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Licitaciones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medicamentos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No registra DP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No resuelve de fondo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P%26P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago Honorarios</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago de honorarios JCI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pensión %E2%80%93 Aux%2E Funerario</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prest%2E Asistenciales y económicas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proc%2E Calificación</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Procesos judiciales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proyectos normativos %2F Apoyo iniciativas -proyectos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reembolso de gastos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reintegro Laboral tercero</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reportes Periodicos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Societario</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Suministro PAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vincula Compañía</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Queja</fullName>
+        <active>true</active>
+        <businessProcess>CS Colmena</businessProcess>
+        <description>Inconformidad manifestada por un Cliente frente al servicio o producto ofrecido.</description>
+        <label>Queja</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Queja_Superintendencia</fullName>
+        <active>true</active>
+        <businessProcess>CS Colmena</businessProcess>
+        <description>Inconformidad manifestada por un Cliente a través de la Superintendencia Financiera de Colombia</description>
+        <label>Queja Superintendencia</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Requerimiento_Juridico</fullName>
+        <active>true</active>
+        <businessProcess>CS Colmena</businessProcess>
+        <description>Comunicación de un ente de control dirigido a la compañía, para su gestión</description>
+        <label>Requerimiento Jurídico</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>APT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Afiliación%2FIBC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Asesoría Derecho Petición y otros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audiencias</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Autorización de Traslado</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Autorización prestación médica</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COVID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Charlas %2F Conversatorios%2F Reuniones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comité Pensiones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comité Siniestros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contra de Colmena ARL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contra terceros</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Copia de la respuesta requerimientos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EPP %E2%80%93 Pruebas %E2%80%93P%26P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Implementación de normas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información afiliados en mora</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información eventos mortales %E2%80%93 AT grave</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información procesos judiciales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Información sobre asesoría PyP%2FSGSST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Informes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inspección o visitas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Interpretación normativa%2F Conceptos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Licitaciones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medicamentos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No registra DP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No resuelve de fondo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P%26P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago Honorarios</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago de honorarios JCI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pensión %E2%80%93 Aux%2E Funerario</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prest%2E Asistenciales y económicas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proc%2E Calificación</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Procesos judiciales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proyectos normativos %2F Apoyo iniciativas -proyectos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reembolso de gastos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reintegro Laboral tercero</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reportes Periodicos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Societario</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Suministro PAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vincula Compañía</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Solicitud</fullName>
+        <active>true</active>
+        <businessProcess>CS Colmena</businessProcess>
+        <description>Solicitud formal para realizar o validar estado de un proceso</description>
+        <label>Solicitud</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CS_Tutela</fullName>
+        <active>true</active>
+        <businessProcess>CS Tutelas</businessProcess>
+        <description>Proceso Jurídico notificado a la compañía por parte de un Juez</description>
+        <label>Tutela</label>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Aplicación móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Respuesta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Correo Electrónico</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oficina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otros Puntos de recepción</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bajo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medio</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>type_of_companion_document__c</picklist>
+            <values>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No informa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número de identificación tributaria %28NIT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Número único de identificación personal %28NUIP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permiso por protección temporal %28PPT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+</CustomObject>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Auxiliar Indemnizaciones</label>
+    <permissionSets>ClaimFIlerManage</permissionSets>
+    <permissionSets>ClaimFilerBase</permissionSets>
+    <permissionSets>FinServ__ApexAuraAccess</permissionSets>
+    <permissionSets>FinServ__FinancialServicesCloudStandard</permissionSets>
+    <permissionSets>SeeClaims</permissionSets>
+    <permissionSets>editReports</permissionSets>
+    <permissionSets>force__FSCInsurance</permissionSets>
+    <permissionSets>force__InsuranceClaimMgmt</permissionSets>
+    <permissionSets>force__InsurancePolicyAndClaim</permissionSets>
+    <permissionSets>force__OmniStudioAdmin</permissionSets>
+    <permissionSets>force__OmniStudioExecution</permissionSets>
+    <permissionSets>seeAccounts</permissionSets>
+    <permissionSets>seeCases</permissionSets>
+    <permissionSets>seeContacts</permissionSets>
+    <permissionSets>seePolicies</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

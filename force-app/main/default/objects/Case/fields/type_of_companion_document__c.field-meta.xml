@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>type_of_companion_document__c</fullName>
+    <description>Campo que indica el tipo de documento del acompañante para el agendamiento de formularios medicalización 1 - 5 SLE</description>
+    <externalId>false</externalId>
+    <label>Tipo de documento del acompanante</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Carné diplomático</fullName>
+                <default>false</default>
+                <label>Carné diplomático</label>
+            </value>
+            <value>
+                <fullName>Cédula de ciudadanía</fullName>
+                <default>false</default>
+                <label>Cédula de ciudadanía</label>
+            </value>
+            <value>
+                <fullName>Cédula de extranjería</fullName>
+                <default>false</default>
+                <label>Cédula de extranjería</label>
+            </value>
+            <value>
+                <fullName>Fideicomiso, fondos de inversión colectiva, fondo o patrimonio autónomo</fullName>
+                <default>false</default>
+                <label>Fideicomiso, fondos de inversión colectiva, fondo o patrimonio autónomo</label>
+            </value>
+            <value>
+                <fullName>No informa</fullName>
+                <default>false</default>
+                <label>No informa</label>
+            </value>
+            <value>
+                <fullName>Número de identificación tributaria (NIT)</fullName>
+                <default>false</default>
+                <label>Número de identificación tributaria (NIT)</label>
+            </value>
+            <value>
+                <fullName>Número único de identificación personal (NUIP)</fullName>
+                <default>false</default>
+                <label>Número único de identificación personal (NUIP)</label>
+            </value>
+            <value>
+                <fullName>Pasaporte</fullName>
+                <default>false</default>
+                <label>Pasaporte</label>
+            </value>
+            <value>
+                <fullName>Permiso especial de permanencia (PEP)</fullName>
+                <default>false</default>
+                <label>Permiso especial de permanencia (PEP)</label>
+            </value>
+            <value>
+                <fullName>Permiso por protección temporal (PPT)</fullName>
+                <default>false</default>
+                <label>Permiso por protección temporal (PPT)</label>
+            </value>
+            <value>
+                <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+                <default>false</default>
+                <label>Sociedad extranjera sin NIT en Colombia</label>
+            </value>
+            <value>
+                <fullName>Tarjeta de identidad</fullName>
+                <default>false</default>
+                <label>Tarjeta de identidad</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Siniestro__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Campo relación de búsqueda hacia el objeto Claim (reclamación).</description>
+    <externalId>false</externalId>
+    <label>Número de Siniestro</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Claim.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Siniestro</value>
+        </filterItems>
+        <filterItems>
+            <field>Claim.AccountId</field>
+            <operation>equals</operation>
+            <valueField>$Source.AccountId</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Claim</referenceTo>
+    <relationshipLabel>Casos</relationshipLabel>
+    <relationshipName>Casos</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

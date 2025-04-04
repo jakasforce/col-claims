@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Validar_Producto_Colmena</fullName>
+    <active>false</active>
+    <description>Valida que cuando un caso no tiene asociado ni póliza, ni siniestro, ni título de capitalización, el campo Producto debe ser obligatorio para el registro.</description>
+    <errorConditionFormula>AND(
+    RecordType.Name &lt;&gt; &quot;Formulario&quot;, 
+    ISBLANK(Product.Id), 
+    NOT(ISPICKVAL( Origin , &quot;Facebook&quot;)), 
+    RecordType.DeveloperName != &quot;CS_Queja_Superintendencia&quot;,
+    RecordType.DeveloperName != &quot;CS_Buzon&quot;,
+    RecordType.DeveloperName != &quot;CS_Tutela&quot;, 
+    RecordType.DeveloperName != &quot;Consulta&quot;, 
+    RecordType.DeveloperName != &quot;CS_Gestion_de_Operaciones&quot;,
+				RecordType.DeveloperName != &quot;CS_Profesional_de_la_Salud&quot;,
+				RecordType.DeveloperName != &quot;CS_CasoIndemnizacion&quot;,
+    ISBLANK(CS_Numero_Poliza_de_seguro__c), 
+    ISBLANK( CS_Numero_de_Control_ARL__c ), 
+    ISBLANK( CS_Siniestro__c ),
+    ISBLANK( CS_Numero_de_ATEL__c ),
+    ISBLANK( CS_Titulo_de_Capitalizaci_n__c ), 
+    ISNEW()
+)</errorConditionFormula>
+    <errorMessage>Se debe llenar el campo Producto para la radicación del caso</errorMessage>
+</ValidationRule>

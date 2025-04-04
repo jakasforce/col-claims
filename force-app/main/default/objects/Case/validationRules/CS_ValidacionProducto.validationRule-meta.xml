@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_ValidacionProducto</fullName>
+    <active>false</active>
+    <description>Validar que el campo Producto M2 tenga un valor para poder guardar el registro.</description>
+    <errorConditionFormula>AND(ISPICKVAL( CS_ProductoM2__c , &quot;&quot;),
+RecordType.DeveloperName&lt;&gt;&quot;CS_Queja_Superintendencia&quot;,
+RecordType.DeveloperName&lt;&gt;&quot;Excepciones_comercial&quot;,
+RecordType.DeveloperName&lt;&gt;&quot;Exclusividad&quot;,
+RecordType.DeveloperName&lt;&gt;&quot;CS_Buzon&quot;,
+RecordType.DeveloperName&lt;&gt;&quot;Consulta&quot;, 
+RecordType.DeveloperName &lt;&gt; &quot;QuoteValidation&quot;,
+RecordType.Name&lt;&gt;&quot;Formulario&quot;, 
+RecordType.DeveloperName&lt;&gt;&quot;CS_Profesional_de_la_Salud&quot;, 
+RecordType.DeveloperName&lt;&gt;&quot;CS_Gestion_de_Operaciones&quot;,
+RecordType.DeveloperName &lt;&gt; &quot;CS_CasoIndemnizacion&quot;)</errorConditionFormula>
+    <errorDisplayField>CS_ProductoM2__c</errorDisplayField>
+    <errorMessage>El campo Producto M2 debe de completarse para poder guardar el registro.</errorMessage>
+</ValidationRule>

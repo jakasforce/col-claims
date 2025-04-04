@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <assignments>
+        <description>se asignan los valores que conformarn la llave</description>
+        <name>Asignaci_n_a_variables_para_generar_identificador</name>
+        <label>Asignación a variables para generar identificador</label>
+        <locationX>50</locationX>
+        <locationY>611</locationY>
+        <assignmentItems>
+            <assignToReference>TipoIdentificacion</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CS_TipoIdentificacion__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NumeroIdentificacion</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CS_NumeroIdentificacion__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Asignacion_de_valor_de_identificaci_n</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>se asignan los valores que conformaran la llave</description>
+        <name>Asignaci_n_a_variables_para_generar_identificadorPC</name>
+        <label>Asignación a variables para generar identificadorPC</label>
+        <locationX>578</locationX>
+        <locationY>611</locationY>
+        <assignmentItems>
+            <assignToReference>TipoIdentificacionPC</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CS_TipoIdentificacionCP__pc</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NumeroIdenficacionPC</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CS_NumeroIdentificacionCP__pc</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Asignacion_de_valor_de_identificacion</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Se asigna el valor que llevara el campo CS_Identificador__c</description>
+        <name>Asignacion_de_valor_de_identificaci_n</name>
+        <label>Asignacion de valor de identificación</label>
+        <locationX>50</locationX>
+        <locationY>719</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CS_Identificador__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CS_Identificador</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Se asigna el valor que llevara el campo CS_dentificador__pc</description>
+        <name>Asignacion_de_valor_de_identificacion</name>
+        <label>Asignacion de valor de identificación</label>
+        <locationX>578</locationX>
+        <locationY>719</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CS_Identificador__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CS_identificadorPC</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Debe tener llenos los campos de Tipo de CS_TipoIdentificacion__c y CS_NumeroIdentificacion__c</description>
+        <name>Cumple_con_las_condiciones_para_generar_Idenficador</name>
+        <label>Cumple con las condiciones para generar Idenficador</label>
+        <locationX>182</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Cuenta Juridica No</defaultConnectorLabel>
+        <rules>
+            <name>Cuenta_Juridica_SI</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CS_TipoIdentificacion__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CS_NumeroIdentificacion__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RecordTypeAccount</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Asignaci_n_a_variables_para_generar_identificador</targetReference>
+            </connector>
+            <label>Cuenta Juridica SI</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Debe tener llenos los campos de Tipo de CS_TipoIdentificacion__c y CS_NumeroIdentificacion__c</description>
+        <name>Cumple_con_las_condiciones_para_generar_IdenficadorPC</name>
+        <label>Cumple con las condiciones para generar IdenficadorPC</label>
+        <locationX>710</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Cuenta Personal No</defaultConnectorLabel>
+        <rules>
+            <name>Cuenta_Personal_SI</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CS_TipoIdentificacionCP__pc</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CS_NumeroIdentificacionCP__pc</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RecordTypePersonAccount</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Asignaci_n_a_variables_para_generar_identificadorPC</targetReference>
+            </connector>
+            <label>Cuenta Personal SI</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Se valida el tipo de cuenta que se esta creando.</description>
+        <name>Es_Cuenta_Juridica</name>
+        <label>Es Cuenta Juridica</label>
+        <locationX>446</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>GetRecordTypePersonAccount</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Si</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsPersonAccount</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetRecordypeAccount</targetReference>
+            </connector>
+            <label>Si</label>
+        </rules>
+    </decisions>
+    <description>Flow que se encarga de llenar el campo de CS_Identificador__c para la generación de clave.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Se asigna el valor para conformar el campo.</description>
+        <name>CS_Identificador</name>
+        <dataType>String</dataType>
+        <expression>{!TipoIdentificacion}+&apos;-&apos;+{!NumeroIdentificacion}</expression>
+    </formulas>
+    <formulas>
+        <description>Se asigna el valor correspondiente a este campo.</description>
+        <name>CS_identificadorPC</name>
+        <dataType>String</dataType>
+        <expression>{!TipoIdentificacionPC}+&apos;-&apos;+{!NumeroIdenficacionPC}</expression>
+    </formulas>
+    <interviewLabel>Identificador Juridico Account {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Identificador Juridico Account</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Se obiene el recordType de Person Account</description>
+        <name>GetRecordTypePersonAccount</name>
+        <label>GetRecordTypePersonAccount</label>
+        <locationX>710</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Cumple_con_las_condiciones_para_generar_IdenficadorPC</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PersonAccount</stringValue>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <outputAssignments>
+            <assignToReference>RecordTypePersonAccount</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>Se obtiene el recordType de cuentas juridicas.</description>
+        <name>GetRecordypeAccount</name>
+        <label>GetRecordypeAccount</label>
+        <locationX>182</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Cumple_con_las_condiciones_para_generar_Idenficador</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CS_Juridico</stringValue>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <outputAssignments>
+            <assignToReference>RecordTypeAccount</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Es_Cuenta_Juridica</targetReference>
+        </connector>
+        <object>Account</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>lmacena el valor del campo CS_NumeroIdentificacionCP__pc</description>
+        <name>NumeroIdenficacionPC</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>almacena el valor del campo CS_NumeroIdentificacion__c</description>
+        <name>NumeroIdentificacion</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Almacena el tipo de registro de las cuentas juridicas.</description>
+        <name>RecordTypeAccount</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Almacena el tipo de registro de las cuentas personales.</description>
+        <name>RecordTypePersonAccount</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Almacena el valor del tipo del campo CS_TipoIdentificacion__c</description>
+        <name>TipoIdentificacion</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Almacena el valor del campo CS_TipoIdentificacionCP__pc</description>
+        <name>TipoIdentificacionPC</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

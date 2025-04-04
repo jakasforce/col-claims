@@ -1,0 +1,32 @@
+<template>
+    <div>
+        <p>Seleccione los datos de la Propina</p>
+        <div>
+            <lightning-combobox 
+                name="tipType"
+                label="Tipo de propina "
+                value={product2}
+                placeholder="Selecciona el Tipo de Propina"
+                options={avaliableProducts}
+                onchange={product2change} >
+            </lightning-combobox>
+        </div>
+        <div>
+            <lightning-input type="text" label="Concepto" required onchange={conceptChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="number" label="Cuartos Noche" required onchange={quantityChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="number" label="Valor" required step="0.01" formatter="currency" onchange={priceChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="text" label="Descripción" onchange={descriptionChange}></lightning-input>
+        </div>
+    </div>
+
+    <div class="slds-m-top_small slds-m-bottom_medium">
+        <lightning-button label="Cancelar" onclick={backToMain} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button label="Añadir" onclick={addProducts} variant="brand" class="slds-m-left_x-small"></lightning-button>
+    </div>
+</template>

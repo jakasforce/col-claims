@@ -1,0 +1,6 @@
+checklistComponent.css 
+.slds-line-clamp--wrap {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: visible;
+}

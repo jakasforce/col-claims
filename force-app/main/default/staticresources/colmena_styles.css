@@ -1,0 +1,18 @@
+/* Cambiar el color y la fuente de los botones de siguiente y anterior */
+.omniscript-btn-next .slds-button {
+    background-color: #0097AE !important;
+    border-color: #0097AE !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.omniscript-btn-previous .slds-button {
+    border-color: #0097AE !important;
+    color: #0097AE !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+/* Cambiar la fuente y el color de cualquier texto específico en OmniScript */
+label {
+    font-family: 'Roboto', sans-serif !important;
+    color: #0097AE !important;
+}

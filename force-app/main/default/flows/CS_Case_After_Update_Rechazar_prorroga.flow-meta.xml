@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <description>Actualizar el estado de la prórroga  abierta a Rechazada</description>
+    <environments>Default</environments>
+    <interviewLabel>Case After Update (Rechazar prórroga) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case After Update (Rechazar prórroga)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CS_Actualizar_registro_de_prorroga_mas_reciente</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CS_ProrrogaAutorizada__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CS_ProrrogaAutorizada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rechazada</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Invoca el flujo para actualizar el registro de prórroga mas reciente con el valor Rechazada</description>
+        <name>CS_Actualizar_registro_de_prorroga_mas_reciente</name>
+        <label>Actualizar registro de prórroga más reciente</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <flowName>CS_Actualizar_registro_de_prorroga_mas_reciente</flowName>
+        <inputAssignments>
+            <name>CS_Caso</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

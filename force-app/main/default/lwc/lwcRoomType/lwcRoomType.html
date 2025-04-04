@@ -1,0 +1,61 @@
+<template>
+    <div>
+        <div>
+            <h1 class="slds-text-heading_small">Seleccione los datos de las habitaciones</h1> <br/>
+        </div>
+        <div>
+            <p class="slds-text-body_medium">Fechas</p>
+            <lightning-layout>
+                <lightning-layout-item padding="around-small">
+                    <lightning-input type="date" name="" label="Fecha de inicio" onchange={startDateChange} required></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small">
+                    <lightning-input type="date" name="" label="Fecha de fin" onchange={endDateChange} required></lightning-input>    
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <div>
+            <p class="slds-text-body_medium">Impuestos</p>
+            <lightning-layout>
+                <lightning-layout-item padding="around-small">
+                    <lightning-input type="number" label="IVA*" onchange={ivaChange} required step="0.01"  formatter="percent-fixed" value={_iva}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small">
+                    <lightning-input type="number" label="ISH*" onchange={ishChange} required step="0.01"  formatter="percent-fixed" value={defaultIsh}></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <div>
+            <lightning-input type="text" label="Concepto" onchange={conceptChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-dual-listbox name="roomTypes"
+                label="Categoría de habitación"
+                source-label="Disponibles"
+                selected-label="Seleccionadas"
+                field-level-help="Selecciona el o los tipos de habitación a agregar"
+                options={_avaliableRoomsByHotel}
+                onchange={roomTypeChange}>
+            </lightning-dual-listbox>
+            <br/>
+        </div>
+        <template for:each={_roomTypes} for:item="room">
+            <div key={room}>
+                <p class="slds-text-body_medium">Datos para {room}</p>
+                <lightning-layout>
+                    <lightning-layout-item padding="around-small">
+                        <lightning-input type="number" label="Cantidad" onchange={quantityChange} required data-room={room}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <lightning-input type="number" label="Precio" onchange={priceChange} required step="0.01"  formatter="currency" data-room={room}></lightning-input>
+                    </lightning-layout-item>    
+                </lightning-layout>
+            </div>
+        </template>
+    </div>
+
+    <div class="slds-m-top_small slds-m-bottom_medium">
+        <lightning-button label="Cancelar" onclick={backToMain} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button label="Añadir" onclick={addProducts} variant="brand" class="slds-m-left_x-small"></lightning-button>
+    </div>
+</template>

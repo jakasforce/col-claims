@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <name>SetListsSize</name>
+        <label>Set lists size</label>
+        <locationX>446</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>var_AllMonopolicySIze</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>GetMonopolicys</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_MonopolicyFilterSize</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>FilterByStatus</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>CheckListsSize</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>SetStatusToClosed</name>
+        <label>Set status to closed</label>
+        <locationX>314</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>var_MultipolicyStatus</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>UpdateMultipolicyStatus</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>SetStatusToInProgress</name>
+        <label>Set status to in progress</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>var_MultipolicyStatus</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>En proceso</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>UpdateMultipolicyStatus</targetReference>
+        </connector>
+    </assignments>
+    <collectionProcessors>
+        <name>FilterByStatus</name>
+        <elementSubtype>FilterCollectionProcessor</elementSubtype>
+        <label>Filter by status</label>
+        <locationX>446</locationX>
+        <locationY>539</locationY>
+        <assignNextValueToReference>currentItem_FilterByStatus</assignNextValueToReference>
+        <collectionProcessorType>FilterCollectionProcessor</collectionProcessorType>
+        <collectionReference>GetMonopolicys</collectionReference>
+        <conditionLogic>or</conditionLogic>
+        <conditions>
+            <leftValueReference>currentItem_FilterByStatus.Status</leftValueReference>
+            <operator>EqualTo</operator>
+            <rightValue>
+                <stringValue>Pagado</stringValue>
+            </rightValue>
+        </conditions>
+        <conditions>
+            <leftValueReference>currentItem_FilterByStatus.Status</leftValueReference>
+            <operator>EqualTo</operator>
+            <rightValue>
+                <stringValue>Objetado</stringValue>
+            </rightValue>
+        </conditions>
+        <connector>
+            <targetReference>SetListsSize</targetReference>
+        </connector>
+    </collectionProcessors>
+    <decisions>
+        <name>CheckListsSize</name>
+        <label>Check lists size</label>
+        <locationX>446</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>AreEqueals</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_AllMonopolicySIze</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>var_MonopolicyFilterSize</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetStatusToClosed</targetReference>
+            </connector>
+            <label>Are equeals</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>ValidateUpdateStatus</name>
+        <label>Validate update status</label>
+        <locationX>248</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>GetMonopolicys</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Change to closed</defaultConnectorLabel>
+        <rules>
+            <name>ChangeToInProgress</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Análisis</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Motor de reglas</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>En Pagador</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pago parcial</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Suspendido</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetStatusToInProgress</targetReference>
+            </connector>
+            <label>Change to in progress</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>DateToday</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <interviewLabel>Change Status Claim {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Change Status Claim</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>GetMonopolicys</name>
+        <label>Get monopolicys</label>
+        <locationX>446</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>FilterByStatus</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CS_Multipolicy__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CS_Multipolicy__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Claim</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Status</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>UpdateMultipolicyStatus</name>
+        <label>Update multipolicy status</label>
+        <locationX>248</locationX>
+        <locationY>1139</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CS_Multipolicy__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CS_DateStatusChange__c</field>
+            <value>
+                <elementReference>DateToday</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <elementReference>var_MultipolicyStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Claim</object>
+    </recordUpdates>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>ValidateUpdateStatus</targetReference>
+        </connector>
+        <filterFormula>TEXT({!$Record.Status}) &lt;&gt; TEXT({!$Record__Prior.Status})
+&amp;&amp; {!$Record.RecordType.DeveloperName} == &apos;CS_Monopoliza&apos; 
+&amp;&amp;
+(
+(
+NOT(ISPICKVAL({!$Record.CS_Multipolicy__r.Status},&apos;En proceso&apos;))
+&amp;&amp; 
+(ISPICKVAL({!$Record.Status},&apos;Análisis&apos;)
+|| ISPICKVAL({!$Record.Status},&apos;Motor de reglas&apos;)
+|| ISPICKVAL({!$Record.Status},&apos;En Pagador&apos;)
+|| ISPICKVAL({!$Record.Status},&apos;Pago parcial&apos;)
+|| ISPICKVAL({!$Record.Status},&apos;Suspendido&apos;))
+)
+||
+(
+NOT(ISPICKVAL({!$Record.CS_Multipolicy__r.Status},&apos;Cerrado&apos;))
+&amp;&amp;
+(
+ISPICKVAL({!$Record.Status},&apos;Objetado&apos;)
+|| ISPICKVAL({!$Record.Status},&apos;Pagado&apos;)
+)
+)
+)</filterFormula>
+        <object>Claim</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>currentItem_FilterByStatus</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Claim</objectType>
+    </variables>
+    <variables>
+        <name>var_AllMonopolicySIze</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>var_MonopolicyFilterSize</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>var_MultipolicyStatus</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

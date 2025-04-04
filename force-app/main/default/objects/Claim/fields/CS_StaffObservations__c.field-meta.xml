@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_StaffObservations__c</fullName>
+    <description>Campo obligatorio cuando pasa a estado en pagador</description>
+    <externalId>false</externalId>
+    <label>Observaciones del personal</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

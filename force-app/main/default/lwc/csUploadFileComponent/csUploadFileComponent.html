@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="Carga de Archivos">
+        <div class="slds-m-around_medium">
+            <p>Antes de cargar el documento seleccione la Clasificación y el Tipo de Documento.</p>
+            <lightning-combobox
+                name="clasificacion"
+                label="Clasificación"
+                value={selectedClasificacion}
+                placeholder="Seleccione una opción"
+                options={clasificacionOptions}
+                onchange={handleClasificacionChange}
+                required>
+            </lightning-combobox>
+
+            <lightning-combobox
+                name="tipoDocumento"
+                label="Tipo de Documento"
+                value={selectedTipoDocumento}
+                placeholder="Seleccione una opción"
+                options={tipoDocumentoOptions}
+                onchange={handleTipoDocumentoChange}
+                required>
+            </lightning-combobox>
+
+            <lightning-file-upload
+                label="Cargar archivos"
+                name="fileUploader"
+                record-id={recordId}
+                onuploadfinished={handleUploadFinished}
+                disabled={isUploadDisabled}>
+            </lightning-file-upload>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Natural</fullName>
+        <default>false</default>
+        <label>Natural</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Accidental</fullName>
+        <default>false</default>
+        <label>Accidental</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Desempleo</fullName>
+        <default>false</default>
+        <label>Desempleo</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Incapacidad Temporal</fullName>
+        <default>false</default>
+        <label>Incapacidad Temporal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Otras</fullName>
+        <default>false</default>
+        <label>Otras</label>
+    </standardValue>
+</StandardValueSet>

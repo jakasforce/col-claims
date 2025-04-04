@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>07</fullName>
+        <default>false</default>
+        <label>BANCOLOMBIA</label>
+    </customValue>
+    <customValue>
+        <fullName>51</fullName>
+        <default>false</default>
+        <label>BANCO DAVIVIENDA S.A</label>
+    </customValue>
+    <customValue>
+        <fullName>52</fullName>
+        <default>false</default>
+        <label>BANCO AV VILLAS</label>
+    </customValue>
+    <customValue>
+        <fullName>08</fullName>
+        <default>false</default>
+        <label>BANCO DE BOGOTA</label>
+    </customValue>
+    <customValue>
+        <fullName>32</fullName>
+        <default>false</default>
+        <label>CAJA SOCIAL</label>
+    </customValue>
+    <customValue>
+        <fullName>40</fullName>
+        <default>false</default>
+        <label>BANCO AGRARIO</label>
+    </customValue>
+    <customValue>
+        <fullName>12</fullName>
+        <default>false</default>
+        <label>BANCO GNB SUDAMERIS</label>
+    </customValue>
+    <customValue>
+        <fullName>13</fullName>
+        <default>false</default>
+        <label>BBVA COLOMBIA</label>
+    </customValue>
+    <customValue>
+        <fullName>19</fullName>
+        <default>false</default>
+        <label>BANCO COLPATRIA</label>
+    </customValue>
+    <customValue>
+        <fullName>65</fullName>
+        <default>false</default>
+        <label>BANCO CAFETERO</label>
+    </customValue>
+    <customValue>
+        <fullName>14</fullName>
+        <default>false</default>
+        <label>BANCO DE CREDITO</label>
+    </customValue>
+    <customValue>
+        <fullName>64</fullName>
+        <default>false</default>
+        <label>BANCO POPULAR</label>
+    </customValue>
+    <customValue>
+        <fullName>23</fullName>
+        <default>false</default>
+        <label>BANCO DE OCCIDENTE</label>
+    </customValue>
+    <customValue>
+        <fullName>62</fullName>
+        <default>false</default>
+        <label>CMR FALABELLA</label>
+    </customValue>
+    <customValue>
+        <fullName>02</fullName>
+        <default>false</default>
+        <label>CITIBANK</label>
+    </customValue>
+    <customValue>
+        <fullName>289</fullName>
+        <default>false</default>
+        <label>COTRAFA COOPERATIVA FINANCIERA</label>
+    </customValue>
+    <customValue>
+        <fullName>NO DEFINIDA</fullName>
+        <default>false</default>
+        <label>NO DEFINIDA</label>
+    </customValue>
+    <customValue>
+        <fullName>292</fullName>
+        <default>false</default>
+        <label>CONFIAR S.,A.</label>
+    </customValue>
+    <customValue>
+        <fullName>59</fullName>
+        <default>false</default>
+        <label>BANCAMIA</label>
+    </customValue>
+    <customValue>
+        <fullName>507</fullName>
+        <default>false</default>
+        <label>BANCO NEQUI</label>
+    </customValue>
+    <customValue>
+        <fullName>70</fullName>
+        <default>false</default>
+        <label>BANCO GNB COLOMBIA</label>
+    </customValue>
+    <customValue>
+        <fullName>66</fullName>
+        <default>false</default>
+        <label>BANCO CORPBANCA</label>
+    </customValue>
+    <customValue>
+        <fullName>61</fullName>
+        <default>false</default>
+        <label>BANCOOMEVA</label>
+    </customValue>
+    <customValue>
+        <fullName>71</fullName>
+        <default>false</default>
+        <label>BANCO PICHINCHA</label>
+    </customValue>
+    <customValue>
+        <fullName>283</fullName>
+        <default>false</default>
+        <label>COOP FINANCIERA DE ANTIOQUIA</label>
+    </customValue>
+    <customValue>
+        <fullName>121</fullName>
+        <default>false</default>
+        <label>FINANCIERA JURISCOOP SA COMPAÑÍA DE FIN.</label>
+    </customValue>
+    <customValue>
+        <fullName>63</fullName>
+        <default>false</default>
+        <label>BANCO FINANDINA S.A.</label>
+    </customValue>
+    <customValue>
+        <fullName>68</fullName>
+        <default>false</default>
+        <label>SCOTIABANK COLOMBIA S.A.</label>
+    </customValue>
+    <customValue>
+        <fullName>29</fullName>
+        <default>false</default>
+        <label>BANCO TEQUENDAMA</label>
+    </customValue>
+    <masterLabel>Bancos</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <assignments>
+        <name>Asignar_valor_nuevo</name>
+        <label>Asignar valor nuevo</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignmentItems>
+            <assignToReference>NumeroCelular</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Concatenar57</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>Concatenar57</name>
+        <dataType>String</dataType>
+        <expression>&apos;57&apos;+{!NumeroCelular}</expression>
+    </formulas>
+    <interviewLabel>Concatenar 57 chatbot {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Concatenar 57 chatbot</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Asignar_valor_nuevo</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>NumeroCelular</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

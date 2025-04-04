@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>ColmenaLetter</letterhead>
+    <name>Basic template</name>
+    <style>formalLetter</style>
+    <subject>Confirmación radicación solicitud de indemnización # {!Claim.ClaimNumber__c}</subject>
+    <textOnly>Apreciado(a) {!Claim.CS_NombreReclamante__c},
+
+
+Reciba un cordial saludo.
+
+
+Hemos recibido de manera exitosa la radicación de los documentos y la solicitud de indemnización, nuestro aplicativo ha asignado el Siniestro # {!Claim.ClaimNumber__c}  el cual le servirá para realizar las consultas que considere al estado de su solicitud de Indemnización.  Tenga en cuenta que con la recepción completa de los documentos, definiremos la solicitud en el menor tiempo posible y en los mejores términos.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

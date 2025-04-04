@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tipo_de_documento__c</fullName>
+    <description>Campo que almacena el tipo de documento de la alerta</description>
+    <externalId>false</externalId>
+    <label>Tipo de documento</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cedula de Ciudadanía</fullName>
+                <default>false</default>
+                <label>Cedula de Ciudadanía</label>
+            </value>
+            <value>
+                <fullName>Nit</fullName>
+                <default>false</default>
+                <label>Nit</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

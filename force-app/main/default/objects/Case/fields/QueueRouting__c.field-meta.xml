@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QueueRouting__c</fullName>
+    <externalId>false</externalId>
+    <label>Enrutar a cola de asignación</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Form_type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Asesor Virtual</fullName>
+                <default>false</default>
+                <label>Asesor Virtual</label>
+            </value>
+            <value>
+                <fullName>Autogestionable</fullName>
+                <default>false</default>
+                <label>Autogestionable</label>
+            </value>
+            <value>
+                <fullName>Autorizaciones</fullName>
+                <default>false</default>
+                <label>Autorizaciones</label>
+            </value>
+            <value>
+                <fullName>Biológico</fullName>
+                <default>false</default>
+                <label>Biológico</label>
+            </value>
+            <value>
+                <fullName>Buena Venta</fullName>
+                <default>false</default>
+                <label>Buena Venta</label>
+            </value>
+            <value>
+                <fullName>Colmena Gestión</fullName>
+                <default>false</default>
+                <label>Colmena Gestión</label>
+            </value>
+            <value>
+                <fullName>Deudores Vida</fullName>
+                <default>false</default>
+                <label>Deudores Vida</label>
+            </value>
+            <value>
+                <fullName>Estándares Mínimos</fullName>
+                <default>false</default>
+                <label>Estándares Mínimos</label>
+            </value>
+            <value>
+                <fullName>Intermediarios</fullName>
+                <default>false</default>
+                <label>Intermediarios</label>
+            </value>
+            <value>
+                <fullName>Línea Información</fullName>
+                <default>false</default>
+                <label>Línea Información</label>
+            </value>
+            <value>
+                <fullName>Novedades</fullName>
+                <default>false</default>
+                <label>Novedades</label>
+            </value>
+            <value>
+                <fullName>SAP</fullName>
+                <default>false</default>
+                <label>SAP</label>
+            </value>
+            <value>
+                <fullName>Servicio al cliente ARL</fullName>
+                <default>false</default>
+                <label>Servicio al cliente ARL</label>
+            </value>
+            <value>
+                <fullName>Servicio al cliente Vida</fullName>
+                <default>false</default>
+                <label>Servicio al cliente Vida</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Formulario 11</controllingFieldValue>
+            <controllingFieldValue>Formulario 9</controllingFieldValue>
+            <valueName>Buena Venta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 11</controllingFieldValue>
+            <controllingFieldValue>Formulario 9</controllingFieldValue>
+            <valueName>Deudores Vida</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 11</controllingFieldValue>
+            <controllingFieldValue>Formulario 9</controllingFieldValue>
+            <valueName>Intermediarios</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 11</controllingFieldValue>
+            <controllingFieldValue>Formulario 1</controllingFieldValue>
+            <controllingFieldValue>Formulario 6</controllingFieldValue>
+            <controllingFieldValue>Formulario 9</controllingFieldValue>
+            <valueName>SAP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 11</controllingFieldValue>
+            <controllingFieldValue>Formulario 9</controllingFieldValue>
+            <valueName>Servicio al cliente Vida</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 1</controllingFieldValue>
+            <valueName>Autorizaciones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 1</controllingFieldValue>
+            <valueName>Biológico</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 6</controllingFieldValue>
+            <valueName>Línea Información</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 6</controllingFieldValue>
+            <valueName>Novedades</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 6</controllingFieldValue>
+            <valueName>Servicio al cliente ARL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 7</controllingFieldValue>
+            <valueName>Asesor Virtual</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 7</controllingFieldValue>
+            <valueName>Autogestionable</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 7</controllingFieldValue>
+            <valueName>Colmena Gestión</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Formulario 7</controllingFieldValue>
+            <valueName>Estándares Mínimos</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

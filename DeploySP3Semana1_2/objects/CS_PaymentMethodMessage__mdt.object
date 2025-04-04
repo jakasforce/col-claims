@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Configuracion que contiene el mensaje de validacion de metodos de pago en el formulario de OmniScript.</description>
+    <label>Mensaje Metodos de Pago</label>
+    <pluralLabel>Mensaje Metodos de Pagos</pluralLabel>
+    <visibility>Public</visibility>
+    <fields>
+        <fullName>CS_Message__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Campo que muestra mensaje de validacion de metodos de pago en OmniScript - Indemnizaciones.</inlineHelpText>
+        <label>Message</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+</CustomObject>

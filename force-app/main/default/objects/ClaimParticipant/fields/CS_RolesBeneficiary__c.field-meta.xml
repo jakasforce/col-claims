@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_RolesBeneficiary__c</fullName>
+    <externalId>false</externalId>
+    <label>Roles Beneficiario</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cónyuge</fullName>
+                <default>false</default>
+                <label>Cónyuge</label>
+            </value>
+            <value>
+                <fullName>Compañera(o) Permanente</fullName>
+                <default>false</default>
+                <label>Compañera(o) Permanente</label>
+            </value>
+            <value>
+                <fullName>Padre</fullName>
+                <default>false</default>
+                <label>Padre</label>
+            </value>
+            <value>
+                <fullName>Hijo(a)</fullName>
+                <default>false</default>
+                <label>Hijo(a)</label>
+            </value>
+            <value>
+                <fullName>Madre</fullName>
+                <default>false</default>
+                <label>Madre</label>
+            </value>
+            <value>
+                <fullName>Hermano(s)</fullName>
+                <default>false</default>
+                <label>Hermano(s)</label>
+            </value>
+            <value>
+                <fullName>Primo(a)</fullName>
+                <default>false</default>
+                <label>Primo(a)</label>
+            </value>
+            <value>
+                <fullName>Hijastro(a)</fullName>
+                <default>false</default>
+                <label>Hijastro(a)</label>
+            </value>
+            <value>
+                <fullName>Abuelo(a)</fullName>
+                <default>false</default>
+                <label>Abuelo(a)</label>
+            </value>
+            <value>
+                <fullName>Tio(a)</fullName>
+                <default>false</default>
+                <label>Tio(a)</label>
+            </value>
+            <value>
+                <fullName>Cuñado(a)</fullName>
+                <default>false</default>
+                <label>Cuñado(a)</label>
+            </value>
+            <value>
+                <fullName>Sobrino(a)</fullName>
+                <default>false</default>
+                <label>Sobrino(a)</label>
+            </value>
+            <value>
+                <fullName>Otro Parentesco</fullName>
+                <default>false</default>
+                <label>Otro Parentesco</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

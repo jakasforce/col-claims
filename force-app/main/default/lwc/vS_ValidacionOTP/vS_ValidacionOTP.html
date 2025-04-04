@@ -1,0 +1,338 @@
+<template>
+    <div style="width:115%;margin-left:-32px;margin-top:-15px;" class="slds-col modal-header slds-modal__header">
+        <h2 class="title slds-text-heading--medium">Validación de Identidad</h2>
+    </div>
+    <div style="height: 280px; max-height: 400px; overflow-y: auto !important;margin-left: -05%;width: 110%;padding-top: 0px;"
+        class="slds-col modal-body scrollable slds-p-around--medium">
+        <!-- Contenct Modal-->
+        <div style="max-width: 95%;margin: auto; margin-top: 10px;">
+            <div if:true={isLoading} class="custom-spinner" style="margin-top: 90px;">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+            <div if:false={isLoading}>
+
+                <div if:true={isError}>
+                    <div style="margin-top: 100px;" class="slds-notify slds-notify_alert slds-alert_warning" role="alert">
+                        <span class="slds-assistive-text">warning</span>
+                        <h2 style="color: aliceblue;">{warningMessage}
+                        </h2>
+                    </div>
+                </div> 
+
+                <div if:false={isError}>
+                    <div if:true={approvedCodeOTP}>
+                        <div style="text-align: center;margin-top: 90px;margin-bottom: 20px;">
+                            <lightning-icon icon-name="action:approval" alternative-text="Approved" title="Approved" ></lightning-icon>
+                            <h2 style="font-weight: bold;font-size: 14px; margin-top: 15px;">OTP APROBADO</h2>
+                            
+                        </div>
+                    </div>
+                    <div if:true={ErrorApprovedCodeOTP}>
+                        <div style="text-align: center;margin-top: 90px;margin-bottom: 20px">
+                            <lightning-icon icon-name="action:close" alternative-text="Rejected" title="Rejected"></lightning-icon>
+                            <h2 style="font-weight: bold;font-size: 14px; margin-top: 15px;">{ErrorApprovedCodeOTPMessagge}</h2>
+                            
+                        </div>
+                    </div>
+
+                    <!--/div>Pantalla para seleccinar a la persona que se le realizará la validación</div-->
+                    <div if:true={screenToSelectPerson}>
+                        <center><h2 style="font-weight: bold;font-size: 13px; margin-top: 70px;margin-bottom: 20px;">¿A quién desea realizar la validación de identidad?</h2></center>
+
+                        <div style="display: flex;justify-content: space-evenly;text-align: center;margin: auto;max-width: 400px">
+                            <div style="display: grid;">
+                                <a title="Titular" onclick={handleGoTitular}><img style="border-radius: 7px;width: 80px;" src="https://www.lightningdesignsystem.com/assets/images/avatar1.jpg"></img></a>
+                                <h2 style="font-weight: bold;font-size: 10px; margin-top: 3px;">Titular</h2>
+                            </div>
+                            <div style="display: grid;">
+                                <a title="Beneficiario" onclick={getInformationFormBeneficiario}><img style="border-radius: 7px;width: 80px;" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"></img></a>
+                                <h2 style="font-weight: bold;font-size: 10px; margin-top: 3px;">Beneficiario</h2>
+                            </div>
+                            <div style="display: grid;">
+                                <a title="tercero" onclick={getInformationFormFromContact}><img style="border-radius: 7px;width: 80px;" src="https://www.lightningdesignsystem.com/assets/images/avatar3.jpg"></img></a>
+                                <h2 style="font-weight: bold;font-size: 10px; margin-top: 3px;">Tercero</h2>
+                            </div>
+
+                        </div>
+                        <!--div style="">
+                            <lightning-button variant="brand" title="Titular" label="Titular" onclick={initQuestionM}></lightning-button>
+
+                            <lightning-button variant="brand" title="Beneficiario" label="Beneficiario" onclick={initQuestionM}></lightning-button>
+
+                            <lightning-button variant="brand" title="Tercero" label="Tercero" onclick={initQuestionM}></lightning-button>
+                        </div-->
+                    </div>
+
+                    <!--/div>Pantalla para seleccionar póliza o beneficiario para realizar las validaciones</div-->
+                    <div if:true={screenToSelectpolicyOrBen}>
+
+                        <div if:false={areTherePolicyToSelect}>
+                            <center><h2 style="font-weight: bold;font-size: 14px; margin-bottom: 8px;padding-top: 10px;">Beneficiarios disponibles de la Póliza seleccionada</h2></center>
+                            <center><h2 style="font-size: 12px; margin-bottom: 12px">Selecciona el beneficiario al que se desea realizar la validación</h2></center>
+
+                            <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr class="">
+                                        <th scope="col">
+                                            <div class="slds-truncate"></div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Nombres</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Identificación</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={beneficiariosList} for:item="bene" for:index="index">
+                                        <tr key={bene.account.Id} onclick={handleRowClick} data-index={index} class={bene.claseName}>
+                                            <template if:true={bene.isAccount}>
+                                                <template if:true={bene.account.IsPersonAccount}>
+                                                    <td data-label="">
+                                                        <lightning-avatar size="x-small" src="https://www.lightningdesignsystem.com/assets/images/avatar1.jpg" alternative-text="Jane Doe" class="slds-m-right_small"></lightning-avatar>
+                                                    </td>
+                                                    <td data-label="Nombres">
+                                                        <div class="slds-truncate">{bene.account.FirstName} {bene.account.MiddleName} {bene.account.LastName} {bene.account.Suffix}</div>
+                                                    </td>
+                                                    <td data-label="Identificación">
+                                                        <div class="slds-truncate">{bene.tipoIdent} - {bene.account.CS_NumeroIdentificacionCP__pc}</div>
+                                                    </td>
+                                                </template>
+    
+                                                <template if:false={bene.account.IsPersonAccount}>
+                                                    <td data-label="">
+                                                        <lightning-avatar size="x-small" src="https://www.lightningdesignsystem.com/assets/images/avatar3.jpg" alternative-text="Jane Doe" class="slds-m-right_small"></lightning-avatar>
+                                                    </td>
+                                                    <td data-label="Nombres">
+                                                        <div class="slds-truncate">{bene.account.Name} {bene.account.LastName} {bene.account.Suffix}</div>
+                                                    </td>
+                                                    <td data-label="Identificación">
+                                                        <div class="slds-truncate">{bene.tipoIdent} - {bene.account.CS_NumeroIdentificacion__c}</div>
+                                                    </td>
+                                                </template>
+                                            </template>
+                                            
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        
+                        <div if:true={areTherePolicyToSelect}>
+                            <center>
+                                <lightning-icon icon-name="utility:warning" alternative-text="Warning!" title="Warning"></lightning-icon>
+                                <h2 style="font-weight: bold;font-size: 14px; margin-bottom: 8px;padding-top: 10px;">Pólizas disponibles del cliente</h2>
+                            </center>
+                            <center><h2 style="font-size: 12px; margin-bottom: 12px">Es necesario relacionar una Póliza a la llamada para poder hacer la consulta sobre sus beneficiarios</h2></center>
+
+                            <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr class="">
+                                        <th scope="col">
+                                            <div class="slds-truncate">Nombre</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Producto</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Ramo</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Descipción</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={policyList} for:item="policy" for:index="index">
+                                        <tr key={policy.pol.Id} onclick={handleRowClick} data-index={index} class={policy.claseName}>
+                                            <td data-label="Nombre">
+                                                <div class="slds-truncate">{policy.pol.Name}</div>
+                                            </td>
+                                            <td data-label="Producto">
+                                                <div class="slds-truncate">{policy.product.Name}</div>
+                                            </td>
+                                            <td data-label="Ramo">
+                                                <div class="slds-truncate">{policy.pol.CS_Ramo__c}</div>
+                                            </td>
+                                            <td data-label="Descipción">
+                                                <div class="slds-truncate">{policy.pol.PolicyDescription}</div>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div if:false={areTherePolicyToSelect}>
+
+                        </div>
+
+                    </div>
+
+                    <!--/div>Pantalla de formulario de la persona</div-->
+                    <div if:true={screenA}>
+                        <center><h2 style="font-weight: bold;font-size: 13px; margin-bottom: 10px;">Ingresa la información del cliente a validar</h2></center>
+
+                        <div class="form_grid slds-grid slds-wrap slds-size_11-of-12 slds-align_absolute-center">
+                            <div class="slds-form-element slds-col slds-size_6-of-12 slds-p-around_x-small">
+                                <lightning-input required type="text" name="Tipo de identificación" label="Tipo de identificación"
+                                    placeholder="Tipo de identificación" value={accountTipIdenLabel}
+                                    disabled></lightning-input>
+                            </div>
+                            <div class="slds-form-element slds-col slds-size_6-of-12 slds-p-around_x-small">
+                                <lightning-input required type="text" name="Número de identificación"
+                                    label="Número de identificación" placeholder="Número de identificación"
+                                    value={accountInfo.CS_NumeroIdentificacionCP__pc} disabled></lightning-input>
+                            </div>
+                            <div class="slds-form-element slds-col slds-size_3-of-12 slds-p-around_x-small">
+                                <lightning-input required type="text" name="PrimerNombre" label="Primer nombre"
+                                    placeholder="Primer nombre" value={accountInfo.FirstName}
+                                    onchange={handleInputChange}></lightning-input>
+                            </div>
+                            <div class="slds-form-element slds-col slds-size_3-of-12 slds-p-around_x-small">
+                                <lightning-input type="text" name="SegundoNombre" label="Segundo nombre"
+                                    placeholder="Segundo nombre" value={accountInfo.MiddleName}
+                                    onchange={handleInputChange}></lightning-input>
+                            </div>
+                            <div class="slds-form-element slds-col slds-size_3-of-12 slds-p-around_x-small">
+                                <lightning-input required type="text" name="PrimerApellido" label="Primer apellido"
+                                    placeholder="Primer apellido" value={accountInfo.LastName}
+                                    onchange={handleInputChange}></lightning-input>
+                            </div>
+                            <div class="slds-form-element slds-col slds-size_3-of-12 slds-p-around_x-small">
+                                <lightning-input required type="text" name="SegundoApellido" label="Segundo apellido"
+                                    placeholder="Segundo apellido" value={accountInfo.Suffix}
+                                    onchange={handleInputChange}></lightning-input>
+                            </div>
+                            <div class="slds-form-element slds-col slds-size_6-of-12 slds-p-around_x-small">
+                                <lightning-input required type="date" name="FechaExpedicion" label="Fecha de expedición"
+                                    placeholder="Fecha de expedición" value={accountInfo.CS_FechaExpedicion__pc}
+                                    onchange={handleInputChange}></lightning-input>
+                            </div>
+                            <div class="slds-form-element slds-col slds-size_6-of-12 slds-p-around_x-small">
+                                <lightning-input required type="text" name="Celular" label="Celular" placeholder="Celular"
+                                    value={accountInfo.PersonMobilePhone} onchange={handleInputChange}></lightning-input>
+                            </div>
+    
+                            <!--div>
+                                <lightning-button variant="brand" label="Consultar" title="Consultar" onclick={consultClient}
+                                    class="slds-m-left_x-small"></lightning-button>
+                            </div-->
+                        </div>
+                    </div>
+
+                    <!--/div>Pantalla pregunta de confirmación de generación OTP</div-->
+                    <div if:true={screenB}>
+                        <center><h2 style="font-weight: bold;font-size: 14px; margin-bottom: 10px;padding-top: 40px;">¿Desea hacer la validación OTP?</h2></center>
+                        <center><h2 style="font-size: 12px; margin-bottom: 10px">Se hará el envío de un código de verificación vía {canalToSend}, el cual el cliente debe tener acceso.</h2></center>
+
+                        <div style="max-width: 200px;margin: auto;">
+                            <lightning-radio-group  name="radioGroup"
+                                                    options={options}
+                                                    value={canalToSend}
+                                                    type="button"
+                                                    onchange={handleCanalChange}
+                                                    disabled
+                                                    >
+                            </lightning-radio-group>
+                        </div>
+                        <div if:true={IsSMS}>
+                            <div style="max-width: 200px;margin: auto;margin-top: 10px;">
+                                <lightning-input type="text" name="Celular" label="Celular" placeholder="Celular"
+                                    value={accountInfo.PersonMobilePhone} disabled></lightning-input>
+                            </div>
+                        </div>
+                        <div if:true={IsEmail}>
+                            <div style="max-width: 200px;margin: auto;margin-top: 10px;">
+                                <lightning-input type="text" name="Correo electrónico" label="Correo electrónico" placeholder="Celular"
+                                    value={accountInfo.PersonEmail} disabled></lightning-input>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--/div>Pantalla recepción de código OTP</div-->
+                    <div if:true={screenC}>
+                        
+                        <center>
+                            <div style="margin-top: 50px">
+                                <lightning-progress-ring value={showCountTime} size="large" variant="warning"> </lightning-progress-ring>
+                                <h2 style="font-weight: bold;font-size: 10px;">{countTime} segundos restantes</h2>
+                            </div>
+
+                            <h2 style="font-size: 13px; margin-bottom: 10px;padding-top: 20px;margin-left: 50px;margin-right: 50px;">
+                                Ingrese el código que fue enviado al número celular o correo electrónico registrado
+                            </h2>
+                        </center>
+
+                        <div style="max-width: 200px;margin: auto;margin-top: -15px;">
+                            <lightning-input required label="OTP" type="text" name="Código" placeholder="" 
+                                             onchange={handleOPTCode}
+                                             value={OTPCode}></lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div if:true={screenToSelectpolicyOrBen}>
+            <div if:true={areTherePolicyToSelect}>
+                <div style="text-align: end">
+                    <div style="border: 1px solid #c7c7c7;width: 120%;margin-left: -44px;margin-bottom: 10px;"></div>
+                    <lightning-button style="margin-right: 15px;" title="Anterior" label="Anterior" onclick={handleGoSelectPerson} disabled={disableNextButton}></lightning-button>
+                    <lightning-button title="Guardar Póliza" label="Guardar Póliza" variant="brand" onclick={savingPoliza} disabled={disableNextButton}></lightning-button>
+                </div>
+
+            </div>
+
+            <div if:false={areTherePolicyToSelect}>
+                <div style="text-align: end">
+                    <div style="border: 1px solid #c7c7c7;width: 120%;margin-left: -44px;margin-bottom: 10px;"></div>
+                    <lightning-button style="margin-right: 15px;" title="Anterior" label="Anterior" onclick={handleGoSelectPerson} disabled={disableNextButton}></lightning-button>
+                    <lightning-button title="Seleccionar" label="Seleccionar" variant="brand" onclick={selectBene} disabled={disableNextButton}></lightning-button>
+                </div>
+            </div>
+            
+        </div>
+        <div if:true={screenA}>
+            <div style="text-align: end">
+                <div style="border: 1px solid #c7c7c7;width: 120%;margin-left: -44px;margin-bottom: 10px;"></div>
+                <lightning-button style="margin-right: 15px;" title="Anterior" label="Anterior" onclick={handleGoSelectPerson} disabled={disableNextButton}></lightning-button>
+                <lightning-button title="Consultar" label="Consultar" variant="brand" onclick={consultClient} disabled={disableNextButton}></lightning-button>
+            </div>
+        </div>
+        <div if:true={screenB}>
+            <div style="text-align: end">
+                <div style="border: 1px solid #c7c7c7;width: 120%;margin-left: -44px;margin-bottom: 10px;"></div>
+                <lightning-button style="margin-right: 15px;" title="Omitir Validación OTP" label="Omitir Validación OTP" onclick={initQuestionM} disabled={disableNextButton}></lightning-button>
+                <lightning-button title="Validación OTP" label="Validación OTP" variant="brand" onclick={sendingOTPCode} disabled={disableNextButton}></lightning-button>
+            </div>
+        </div>
+        <div if:true={screenC}>
+            <div style="text-align: end">
+                <div style="border: 1px solid #c7c7c7;width: 120%;margin-left: -44px;margin-bottom: 10px;"></div>
+                <lightning-button style="margin-right: 15px;" title="No informa código" label="No informa código" onclick={noInformaCodigo} disabled={disableNextButton}></lightning-button>
+                <lightning-button title="Validar Código" label="Validar Código" variant="brand" onclick={validateOTPCode} disabled={disableNextButton}></lightning-button>
+            </div>
+        </div>
+        <div if:true={ErrorApprovedCodeOTP}>
+            <div style="text-align: end">
+                <div style="border: 1px solid #c7c7c7;width: 120%;margin-left: -44px;margin-bottom: 10px;"></div>
+                <lightning-button variant="brand" title="Validación de Preguntas" label="Validación de Preguntas" onclick={initQuestionM} disabled={disableNextButton}></lightning-button>
+            </div>
+        </div>
+        <div if:true={nextScreenAfterCorrectValidation}>
+            <div if:true={approvedCodeOTP}>
+                <div style="text-align: end">
+                    <div style="border: 1px solid #c7c7c7;width: 120%;margin-left: -44px;margin-bottom: 10px;"></div>
+                    <lightning-button variant="brand" title="Continuar" label="Continuar" onclick={eventAfterCorrectValidation} disabled={disableNextButton}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

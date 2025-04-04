@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Solicitud</fullName>
+    <active>true</active>
+    <businessProcess>CS Colmena</businessProcess>
+    <description>Solicitud formal para realizar o validar estado de un proceso</description>
+    <label>Solicitud</label>
+    <picklistValues>
+        <picklist>Origin</picklist>
+        <values>
+            <fullName>Aplicación móvil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Audio Respuesta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call center</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Correo Electrónico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oficina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Otros Puntos de recepción</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>Alto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bajo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medio</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason</picklist>
+        <values>
+            <fullName>Complex functionality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instructions not clear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>User didn%27t attend training</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Feature Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Question</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>type_of_companion_document__c</picklist>
+        <values>
+            <fullName>Carné diplomático</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cédula de ciudadanía</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cédula de extranjería</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fideicomiso%2C fondos de inversión colectiva%2C fondo o patrimonio autónomo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No informa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Número de identificación tributaria %28NIT%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Número único de identificación personal %28NUIP%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pasaporte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Permiso especial de permanencia %28PEP%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Permiso por protección temporal %28PPT%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sociedad extranjera sin NIT en Colombia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tarjeta de identidad</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

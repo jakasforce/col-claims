@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_SolicitudIndemnización</fullName>
+    <description>se crea suport processes con los mismos estados de la indemnización</description>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Abierto</fullName>
+        <default>true</default>
+    </values>
+    <values>
+        <fullName>Análisis</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Cerrado</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>En Pagador</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Motor de reglas</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Objetado</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Pagado</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Pago parcial</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Suspendido</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

@@ -1,0 +1,8 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><span style="font-family:Helvetica,Arial,Helvetica,sans-serif;">En nuestro proceso de seguimiento encontramos el caso radicado con el <strong>Nº {{{Case.CaseNumber}}}</strong>,<br />
+el cual remitimos para tu conocimiento ya que se encuentra vencido en el flujo de trabajo,<br />
+agradecemos tu intervención para la atención inmediata del mismo.</span></body>
+</html>

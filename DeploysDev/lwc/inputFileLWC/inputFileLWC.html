@@ -1,0 +1,37 @@
+<!--
+  @description       : 
+  @author            : diego.jacanamijoy@vass.com
+  @group             : 
+  @last modified on  : 02-23-2024
+  @last modified by  : diego.jacanamijoy@gmail.com
+-->
+<template>
+
+  <template for:each={document_by_coverage} for:item="document" for:index="index">
+    <lightning-file-upload
+        label={document.document_label}
+        name="Input doc"
+        accept={acceptedFormats}
+        record-id={recordId}
+        onuploadfinished={handleUploadFinished}
+        file-field-name="DocumentCode_fileupload__c"
+        file-field-value={document.document_code}
+        key={document.document_code}
+        data-key={document.document_code}
+        class="slds-var-p-bottom_x-large"
+        multiple>
+    </lightning-file-upload>
+
+    <template for:each={document.files} for:item="file" for:index="index">
+      <div class="slds-grid slds-gutters slds-box" key={document.document_code}>
+        <div class="slds-col slds-size_2-of-3">
+          <p><lightning-formatted-text value={file.document_name} ></lightning-formatted-text></p>
+        </div>
+        <div class="slds-col slds-size_1-of-3">
+          <lightning-button-icon icon-name="utility:delete"  data-docid={file.document_id} data-key={file.document_code} onclick={handleDelete}  alternative-text="Delete"   class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+        </div>
+      </div>
+    </template>
+  </template>
+    
+</template>

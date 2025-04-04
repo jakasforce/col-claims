@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Se asigna el auxiliar de Indemnizaciones al Claim.</description>
+        <name>Asignar_Auxiliar_de_Indemnizaciones</name>
+        <label>Asignar Auxiliar de Indemnizaciones</label>
+        <locationX>2426</locationX>
+        <locationY>1055</locationY>
+        <actionName>CS_ClaimUtilsInvocable</actionName>
+        <actionType>apex</actionType>
+        <dataTypeMappings>
+            <typeName>T__records</typeName>
+            <typeValue>Claim</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>U__records</typeName>
+            <typeValue>Claim</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>action</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>records</name>
+            <value>
+                <elementReference>claims</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>stringFormat</name>
+            <value>
+                <elementReference>Get_Queue.DeveloperName</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>CS_ClaimUtilsInvocable</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Pagoparcial</name>
+        <label>Envio correo status pago parcial</label>
+        <locationX>842</locationX>
+        <locationY>731</locationY>
+        <actionName>Claim.SendEmailStatusPartialPayment</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>UpdateFechaPagado</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Claim.SendEmailStatusPartialPayment</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>SendEmailGroundObjection</name>
+        <label>Envió de correo causal de objeción</label>
+        <locationX>50</locationX>
+        <locationY>731</locationY>
+        <actionName>Claim.objectionFiledWithoutPolicy</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>ClaimCreatingEmailMessageObjection</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Claim.objectionFiledWithoutPolicy</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>En Pagador</description>
+        <name>SendEmailStatusInPayer</name>
+        <label>Envio correo status en pagador</label>
+        <locationX>314</locationX>
+        <locationY>731</locationY>
+        <actionName>Claim.SendEmailStatusInPayer</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>UpdateFechaCambioEstado</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Claim.SendEmailStatusInPayer</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>StatusPagado</name>
+        <label>Envio correo status pagado</label>
+        <locationX>578</locationX>
+        <locationY>731</locationY>
+        <actionName>Claim.SendEmailStatusPaid</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>UpdateFechaPagoParcial</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Claim.SendEmailStatusPaid</nameSegment>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <assignments>
+        <name>Asigment_Claim</name>
+        <label>Asigment Claim</label>
+        <locationX>2558</locationX>
+        <locationY>839</locationY>
+        <assignmentItems>
+            <assignToReference>claims</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Validate_Update_Status</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Asignacion_Caso_Asociado</name>
+        <label>Asignacion Caso Asociado</label>
+        <locationX>1502</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>SendEmailCauseObjection</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Asociado</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CaseId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Case_Status</targetReference>
+            </connector>
+            <label>Asociado</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>SendEmailCauseObjection</name>
+        <label>Envio de correo causal de objecion</label>
+        <locationX>1502</locationX>
+        <locationY>623</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Objetado</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Objetado</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SendEmailGroundObjection</targetReference>
+            </connector>
+            <label>Objetado</label>
+        </rules>
+        <rules>
+            <name>En_pagador</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>En Pagador</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SendEmailStatusInPayer</targetReference>
+            </connector>
+            <label>En pagador</label>
+        </rules>
+        <rules>
+            <name>Pagado</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pagado</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>StatusPagado</targetReference>
+            </connector>
+            <label>Pagado</label>
+        </rules>
+        <rules>
+            <name>Pago_parcial</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pago parcial</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Pagoparcial</targetReference>
+            </connector>
+            <label>Pago parcial</label>
+        </rules>
+        <rules>
+            <name>Suspendido</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Suspendido</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CS_SubEstado__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Documentos Solicitados</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Suspendido</label>
+        </rules>
+        <rules>
+            <name>Motor_de_reglas</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Motor de reglas</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateNotificationDateMotor</targetReference>
+            </connector>
+            <label>Motor de reglas</label>
+        </rules>
+        <rules>
+            <name>Abierto</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Abierto</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateNotificationStatusAbierto</targetReference>
+            </connector>
+            <label>Abierto</label>
+        </rules>
+        <rules>
+            <name>Homologacion_de_cobertura</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Homologación de cobertura</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateNotificationStatusHomologacion</targetReference>
+            </connector>
+            <label>Homologación de cobertura</label>
+        </rules>
+        <rules>
+            <name>Consultar_y_Radicar_VT</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Consultar y Radicar VT</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateNotificationStatusConsultar</targetReference>
+            </connector>
+            <label>Consultar y Radicar VT</label>
+        </rules>
+        <rules>
+            <name>Validar_VT</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Validar VT</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Queue</targetReference>
+            </connector>
+            <label>Validar VT</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Validate_Update_Status</name>
+        <label>Validate Update Status</label>
+        <locationX>2558</locationX>
+        <locationY>947</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Asigment_Queue_Auxiliar_Indemnizacion</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Validar VT</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.CS_ErrorMessage__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CS_ErrorMessage__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Asignar_Auxiliar_de_Indemnizaciones</targetReference>
+            </connector>
+            <label>Asigment Queue Auxiliar Indemnizacion</label>
+        </rules>
+    </decisions>
+    <description>Se modifica flow en el estado Validar VT para asignación de Auxiliar según sea el caso  11/02/2025</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>DateChangeStatus</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <formulas>
+        <name>varCoverageTypeF</name>
+        <dataType>String</dataType>
+        <expression>CASE(TEXT({!$Record.CS_CoverageType__c}),
+&quot;1&quot;,&quot;Auxilio adicional por fallecimiento del asegurado principal (Seguro Exequial)&quot;,
+&quot;2&quot;,&quot;Auxilio de maternidad y paternidad&quot;,
+&quot;3&quot;,&quot;Auxilio para Gastos Exequiales&quot;,
+&quot;4&quot;,&quot;Auxilio Por Fuerza Mayor&quot;,
+&quot;5&quot;,&quot;Auxilio por Hurto en Cajero&quot;,
+&quot;6&quot;,&quot;Auxilio Por lote en Propiedad&quot;,
+&quot;7&quot;,&quot;Auxilio por no utilización exequial&quot;,
+&quot;8&quot;,&quot;Auxilio Post Destino Final&quot;,
+&quot;9&quot;,&quot;Beneficios o renta por hospitalización&quot;,
+&quot;10&quot;,&quot;Beneficios por Desmembración&quot;,
+&quot;11&quot;,&quot;Cobertura Cirugía Ambulatoria&quot;,
+&quot;12&quot;,&quot;Cobertura Indemnización Adicional por Unidad de Cuidados Intensivos&quot;,
+&quot;13&quot;,&quot;Cobertura para Cáncer Invasivo de Mama, Cérvix Uterino y Próstata&quot;,
+&quot;14&quot;,&quot;Desempleo Involuntario&quot;,
+&quot;15&quot;,&quot;Enfermedades Graves&quot;,
+&quot;16&quot;,&quot;Fallecimiento o Muerte por Cualquier Causa&quot;,
+&quot;17&quot;,&quot;Muerte accidental (N)&quot;,
+&quot;18&quot;,&quot;Fractura de huesos&quot;,
+&quot;19&quot;,&quot;Gasto Exequial&quot;,
+&quot;20&quot;,&quot;Gastos de Traslado&quot;,
+&quot;21&quot;,&quot;Incapacidad parcial permanente (IPP)&quot;,
+&quot;22&quot;,&quot;Incapacidad total temporal (ITT)&quot;,
+&quot;23&quot;,&quot;Incapacidad total temporal (Tu cuota protegida)&quot;,
+&quot;24&quot;,&quot;Incapacidad total temporal Accidental&quot;,
+&quot;25&quot;,&quot;Incapacidad Total y Permanente (ITP)&quot;,
+&quot;26&quot;,&quot;Incapacidad Total y Permanente Accidental (N)&quot;,
+&quot;27&quot;,&quot;Indemnización Adicional por Homicidio (N)&quot;,
+&quot;28&quot;,&quot;Indemnización Adicional por ITP Accidental (N)&quot;,
+&quot;29&quot;,&quot;Indemnización Adicional por Muerte Accidental&quot;,
+&quot;30&quot;,&quot;Medicamentos para Enfermedades Graves&quot;,
+&quot;31&quot;,&quot;Momentos significativos&quot;,
+&quot;32&quot;,&quot;Reembolso de Gastos Médicos por Accidente&quot;,
+&quot;33&quot;,&quot;Renta Educativa&quot;,
+&quot;34&quot;,&quot;Repatriación&quot;,
+&quot;35&quot;,&quot;Renta Mensual para Gastos del Hogar&quot;,
+&quot;36&quot;,&quot;Renta diaria por incapacidad total temporal por accidente&quot;,
+&quot;&quot;
+)</expression>
+    </formulas>
+    <interviewLabel>Envio de correo por cambio de estado {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Envio de correo por cambio de estado</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>ClaimCreatingEmailMessageObjection</name>
+        <label>Claim Creacion Mensaje de Correo Electronico - Objecion</label>
+        <locationX>50</locationX>
+        <locationY>839</locationY>
+        <connector>
+            <targetReference>UpdateDateChangeStatus</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>FromName</field>
+            <value>
+                <stringValue>No responder</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>HtmlBody</field>
+            <value>
+                <elementReference>htmlBodyObjected</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RelatedToId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>varClaimCoverageSubjectFiledClaimObjected</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ToAddress</field>
+            <value>
+                <elementReference>$Record.CS_correoReclamante__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ValidatedFromAddress</field>
+            <value>
+                <stringValue>no-responder@ext.colmenaseguros.com</stringValue>
+            </value>
+        </inputAssignments>
+        <object>EmailMessage</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Queue</name>
+        <label>Get Queue</label>
+        <locationX>2558</locationX>
+        <locationY>731</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Asigment_Claim</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CS_CompensationsFiledWithoutPolicy</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Case_Status</name>
+        <label>Update Case Status</label>
+        <locationX>1370</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>SendEmailCauseObjection</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <elementReference>$Record.Status</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Case</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateDateChangeStatus</name>
+        <label>UpdateFechaCambioEstado</label>
+        <locationX>50</locationX>
+        <locationY>947</locationY>
+        <inputAssignments>
+            <field>CS_DateStatusChange__c</field>
+            <value>
+                <elementReference>DateChangeStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateFechaCambioEstado</name>
+        <label>UpdateFechaCambioEstado</label>
+        <locationX>314</locationX>
+        <locationY>839</locationY>
+        <inputAssignments>
+            <field>CS_DateStatusChange__c</field>
+            <value>
+                <elementReference>DateChangeStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateFechaPagado</name>
+        <label>UpdateFechaCambioEstado</label>
+        <locationX>842</locationX>
+        <locationY>839</locationY>
+        <inputAssignments>
+            <field>CS_DateStatusChange__c</field>
+            <value>
+                <elementReference>DateChangeStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateFechaPagoParcial</name>
+        <label>UpdateFechaCambioEstado</label>
+        <locationX>578</locationX>
+        <locationY>839</locationY>
+        <inputAssignments>
+            <field>CS_DateStatusChange__c</field>
+            <value>
+                <elementReference>DateChangeStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateNotificationDateMotor</name>
+        <label>UpdateNotificationDate</label>
+        <locationX>1370</locationX>
+        <locationY>731</locationY>
+        <inputAssignments>
+            <field>CS_DateStatusChange__c</field>
+            <value>
+                <elementReference>DateChangeStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateNotificationStatusAbierto</name>
+        <label>UpdateNotificationDate</label>
+        <locationX>1634</locationX>
+        <locationY>731</locationY>
+        <inputAssignments>
+            <field>CS_DateStatusChange__c</field>
+            <value>
+                <elementReference>DateChangeStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateNotificationStatusConsultar</name>
+        <label>UpdateNotificationDate</label>
+        <locationX>2162</locationX>
+        <locationY>731</locationY>
+        <inputAssignments>
+            <field>CS_DateStatusChange__c</field>
+            <value>
+                <elementReference>DateChangeStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateNotificationStatusHomologacion</name>
+        <label>UpdateNotificationDate</label>
+        <locationX>1898</locationX>
+        <locationY>731</locationY>
+        <inputAssignments>
+            <field>CS_DateStatusChange__c</field>
+            <value>
+                <elementReference>DateChangeStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1376</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Asignacion_Caso_Asociado</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ClaimEmail__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Claim</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>htmlBodyObjected</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 151, 174); font-family: Arial, sans-serif; font-size: 15pt;&quot;&gt;Proceso de Indemnizaciones&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;Señor&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;{!varNombreReclamante}&lt;/strong&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;Agradecemos el tiempo que tomó para acercarse a nuestra compañía mediante la solicitud&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;{!varName}&lt;/strong&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;. Al respecto, debemos manifestarle lo siguiente:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;Una vez realizada la validación de la información que soportan el caso, hemos definido una comunicación de objeción para el amparo&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;{!varCoverageTypeF}&lt;/strong&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt; por la causal “&lt;/span&gt;&lt;strong style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;{!varGroundObjection}”&lt;/strong&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;Por favor no responda a esta dirección de correo electrónico, no le estamos haciendo seguimiento. Si desea remitir información adicional o si tiene un requerimiento sobre la solicitud, podrá enviárnosla a través de&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://www.colmenaseguros.com/solicita-tu-indemnizacion&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(5, 99, 193); font-family: Calibri, sans-serif; font-size: 11pt;&quot;&gt;Colmena Seguros - Solicita tu indemnización en Colmena&lt;/a&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 11pt;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;en la opción Retomar y haciendo referencia al número de radicado citado en el asunto.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;em style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;Queremos informarle que nuestro defensor del consumidor financiero es Andrés Augusto Garavito Colmenares y el defensor suplente es César Alejandro Pérez Hamilton.&amp;nbsp;Puede comunicarse con él en Bogotá a los teléfonos: (601) 2131370 - 2131322, celular 321 9240479 - 323 2322934 - 323 2322911, Correo electrónico:&amp;nbsp;&lt;/em&gt;&lt;a href=&quot;mailto:defensordelconsumidorfinancierovida@colmenaseguros.com&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(5, 99, 193); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;&lt;em&gt;defensordelconsumidorfinancierovida@colmenaseguros.com&lt;/em&gt;&lt;/a&gt;&lt;em style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;&amp;nbsp;&amp;nbsp;o a la avenida 19 No. 114 - 09 Of. 502.&lt;/em&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;Colmena Seguros, adelante valientes&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;Atentamente,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 11pt;&quot;&gt;Gerencia de Indemnizaciones Colmena Seguros&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>claims</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Claim</objectType>
+    </variables>
+    <variables>
+        <name>varClaimCoverageSubjectFiledClaimObjected</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Record.Subject_to_template_Declined_Payment__c</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>varGroundObjection</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Record.GroundObjection__c</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>varName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Record.Name</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>varNombreReclamante</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Record.CS_NombreReclamante__c</elementReference>
+        </value>
+    </variables>
+</Flow>

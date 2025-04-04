@@ -1,0 +1,130 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__body">
+                <h2 class="slds-card__header-title inlineTitle slds-p-top_medium slds-p-bottom_medium slds-p-horizontal--medium slds-text-heading--medium">
+                    <span><b>Nuevo Caso</b><template if:true={selectedLabel}>: </template>{selectedLabel}</span>
+                </h2>
+            </div>
+          </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+
+            <template if:true={showLoading}>
+                <lightning-spinner alternative-text="Cargando" size="medium" class="spinnerClass"></lightning-spinner>
+            </template>
+
+            <template if:true={showMessage}>
+                {message}
+            </template>
+
+            <template if:false={showMessage}>
+            
+                <template if:false={showForm}>
+                    <lightning-radio-group 
+                        label="" 
+                        name="radioButtonGroup" 
+                        onchange={handleChange} 
+                        options={options}
+                        value={selectedRT}
+                        type="radio"
+                        class="slds-var-m-around_x-small"
+                        >
+                    </lightning-radio-group>
+                </template>
+                <template if:true={showForm}>
+                    <lightning-combobox 
+                        name="entity" 
+                        label="Entidad" 
+                        value={selectedEntity}
+                        options={entityValues}
+                        required
+                        read-only
+                        >Número de contrato
+                    </lightning-combobox>
+                    
+                    <template if:true={isSegurosVida}>
+                        <lightning-input 
+                            type="text" 
+                            label="Número Póliza de seguro" 
+                            value={insurancePolicyName} 
+                            required
+                            read-only
+                            >
+                        </lightning-input>
+                    </template>
+
+                    <template if:true={isARL}>
+                        <lightning-input 
+                            type="text" 
+                            label="Número de contrato" 
+                            value={insurancePolicyName} 
+                            required
+                            read-only
+                            >
+                        </lightning-input>
+                    </template>
+
+                    <template if:true={isSiniestro}>
+                        <lightning-input 
+                            type="text" 
+                            label="Número de siniestro" 
+                            value={numeroReclamacion} 
+                            required
+                            read-only
+                            >
+                        </lightning-input>
+                    </template>
+
+                    <template if:true={isATEL}>
+                        <lightning-input 
+                            type="text" 
+                            label="Número de ATEL" 
+                            value={numeroReclamacion} 
+                            required
+                            read-only
+                            >
+                        </lightning-input>
+                    </template>
+
+                    <template if:true={isTituloCapitalizacion}>
+                        <lightning-input 
+                            type="text" 
+                            label="Título de capitalización" 
+                            value={numeroTituloCapitalizacion} 
+                            required
+                            read-only
+                            >
+                        </lightning-input>
+                    </template>
+
+                    <lightning-input 
+                        type="text" 
+                        label="Nombre de la cuenta" 
+                        value={accountName} 
+                        required
+                        read-only
+                        >
+                    </lightning-input>
+
+                    <lightning-combobox 
+                        name="contact" 
+                        label="Nombre del contacto" 
+                        value={selectedContact}
+                        options={contactValues}
+                        onchange={handleFieldChange}
+                        required
+                        >
+                    </lightning-combobox>
+                </template>
+            </template>    
+        </div>
+        <footer class="slds-card__footer">
+            <lightning-button variant="neutral" label="Cancelar" class="slds-m-right_medium" onclick={handleCancel} disabled={disableCancelButton}> </lightning-button>
+            <template if:false={showMessage}>
+                <lightning-button variant="brand" label={buttonLabel} onclick={handleSave} disabled={disableButton}></lightning-button>
+            </template>
+        </footer>
+    </article>
+</template>

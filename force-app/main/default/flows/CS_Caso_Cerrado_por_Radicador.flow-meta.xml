@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>54.0</apiVersion>
+    <assignments>
+        <name>CS_Asignacion_de_variables</name>
+        <label>Asignación de variables</label>
+        <locationX>378</locationX>
+        <locationY>391</locationY>
+        <assignmentItems>
+            <assignToReference>CS_Obtener_Caso.CS_Favorabilidad__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CS_Favorabilidad</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CS_Obtener_Caso.CS_AnexosQueja__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CS_AnexoQueja</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CS_Obtener_Caso.CS_AnexosRespuestaFinal__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CS_AnexosRespuestaFinal</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CS_Obtener_Caso.CS_DocumentacionRespuesta__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CS_DocumentacionRespuestaFinal</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CS_Obtener_Caso.CS_RespuestaFinal__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CS_RespuestaFinal</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CS_Obtener_Caso.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Cerrado Atendido</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CS_Obtener_Caso.CS_Cerrado_en_radicacion__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>CS_Cuando_favorable_campos_obligatorios</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>CS_Asignacion_de_variables_2</name>
+        <label>Asignación de variables</label>
+        <locationX>720</locationX>
+        <locationY>584</locationY>
+        <assignmentItems>
+            <assignToReference>CS_Obtener_Caso.CS_TipificacionSalida__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CS_TipificacionSalidaDependiente.middleValue</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CS_Obtener_Caso.CS_CausaRaiz__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CS_CausaRaiz_2</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CS_Obtener_Caso.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Cerrado Atendido</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Actualizar_Caso</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Modificaremos el estado de los pasos de atención</description>
+        <name>Modificar_Asignacion_Pasos</name>
+        <label>Modificar Asignacion Pasos</label>
+        <locationX>870</locationX>
+        <locationY>784</locationY>
+        <assignmentItems>
+            <assignToReference>CS_Bucle_de_Asignaciones_Abiertas.CS_Estado__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Completado</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CS_Bucle_de_Asignaciones_Abiertas.CS_FechaHoraRealCompletado__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Recolectar_Asignaciones_Cerradas</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Recolectar_Asignaciones_Cerradas</name>
+        <label>Recolectar Asignaciones Cerradas</label>
+        <locationX>870</locationX>
+        <locationY>967</locationY>
+        <assignmentItems>
+            <assignToReference>Todas_las_Asignaciones_Cerradas</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>CS_Bucle_de_Asignaciones_Abiertas</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>CS_Bucle_de_Asignaciones_Abiertas</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Si el valor seleccionado en el campo Favorabilidad es igual a &quot;Favorable&quot;, se debe solicitar diligenciar de forma obligatoria los siguientes campos:</description>
+        <name>CS_Cuando_favorable_campos_obligatorios</name>
+        <label>Cuando favorable campos obligatorios</label>
+        <locationX>508</locationX>
+        <locationY>393</locationY>
+        <defaultConnector>
+            <targetReference>Actualizar_Caso</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Favorable</defaultConnectorLabel>
+        <rules>
+            <name>Caso_Favorable</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CS_Favorabilidad</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>1</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CS_CerrarCaso_2</targetReference>
+            </connector>
+            <label>Caso Favorable</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Si el caso esta en algún estado diferente a Nuevo o En Análisis también no se puede ejecutar esta funcionalidad.</description>
+        <name>CS_Validar_estatus_del_caso</name>
+        <label>Validar estatus del caso</label>
+        <locationX>335</locationX>
+        <locationY>208</locationY>
+        <defaultConnector>
+            <targetReference>CS_El_Caso_no_se_puede_cerrar_ahora</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No ejecutar</defaultConnectorLabel>
+        <rules>
+            <name>CS_Ejecutar_Flow</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>CS_Obtener_Caso.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Nuevo</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CS_Obtener_Caso.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>En Análisis</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CS_CerrarCaso_1</targetReference>
+            </connector>
+            <label>Ejecutar Flow</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>CS_Verificar_Null</name>
+        <label>Verificar Null</label>
+        <locationX>507</locationX>
+        <locationY>866</locationY>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>CS_No_es_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CS_Pasos_de_atencion_abiertos</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CS_Bucle_de_Asignaciones_Abiertas</targetReference>
+            </connector>
+            <label>No es Null</label>
+        </rules>
+    </decisions>
+    <description>Incluye el proceso de cierre de pasos asignados abiertos y solo se ejecuta si el Status es nuevo o está en análisis, ademas muestra la segunda pantalla si el caso es Favorable.</description>
+    <dynamicChoiceSets>
+        <name>CS_Anexosdelarespuestafinal</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>CS_AnexosRespuestaFinal__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>CS_DesistimientoFlujo</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>CS_Desistimiento__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>CS_FavorabilidadFlujo</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>CS_Favorabilidad__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>CS_TipificaciondeSalida</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>CS_TipificacionSalida__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <interviewLabel>Caso Cerrado por radicador {!$Flow.CurrentDateTime}</interviewLabel>
+    <isAdditionalPermissionRequiredToRun>true</isAdditionalPermissionRequiredToRun>
+    <label>Caso Cerrado por Radicador</label>
+    <loops>
+        <name>CS_Bucle_de_Asignaciones_Abiertas</name>
+        <label>Bucle de Asignaciones Abiertas</label>
+        <locationX>704</locationX>
+        <locationY>863</locationY>
+        <collectionReference>CS_Pasos_de_atencion_abiertos</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Modificar_Asignacion_Pasos</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Actualizar_Asignaciones_Abiertas</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>CS_Obtener_Caso</name>
+        <label>Obtener Caso</label>
+        <locationX>516</locationX>
+        <locationY>206</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>CS_Validar_estatus_del_caso</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>CS_Pasos_de_atencion_abiertos</name>
+        <label>Pasos de atencion abiertos</label>
+        <locationX>517</locationX>
+        <locationY>710</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>CS_Verificar_Null</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CS_CasoRelacionado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>CS_Estado__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Completado</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>CS_AsginacionPasosAtencion__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Actualizar_Asignaciones_Abiertas</name>
+        <label>Actualizar Asignaciones Abiertas</label>
+        <locationX>702</locationX>
+        <locationY>1034</locationY>
+        <inputReference>Todas_las_Asignaciones_Cerradas</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Actualizar_Caso</name>
+        <label>Actualizar Caso</label>
+        <locationX>516</locationX>
+        <locationY>584</locationY>
+        <connector>
+            <targetReference>CS_Pasos_de_atencion_abiertos</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Error</targetReference>
+        </faultConnector>
+        <inputReference>CS_Obtener_Caso</inputReference>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>CS_CerrarCaso_1</name>
+        <label>Cerrar caso - paso 1</label>
+        <locationX>236</locationX>
+        <locationY>392</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>CS_Asignacion_de_variables</targetReference>
+        </connector>
+        <fields>
+            <name>CS_Favorabilidad</name>
+            <choiceReferences>CS_FavorabilidadFlujo</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Favorabilidad</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>CS_AnexoQueja</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <booleanValue>false</booleanValue>
+            </defaultValue>
+            <fieldText>Anexo de la queja</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;Debe seleccionar la casilla de Anexo de queja&lt;/p&gt;</errorMessage>
+                <formulaExpression>IF({!CS_AnexoQueja}=TRUE,TRUE,FALSE)</formulaExpression>
+            </validationRule>
+        </fields>
+        <fields>
+            <name>CS_AnexosRespuestaFinal</name>
+            <choiceReferences>CS_Anexosdelarespuestafinal</choiceReferences>
+            <dataType>String</dataType>
+            <defaultValue>
+                <stringValue>1</stringValue>
+            </defaultValue>
+            <fieldText>Anexos de la respuesta final</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>CS_DocumentacionRespuestaFinal</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <booleanValue>false</booleanValue>
+            </defaultValue>
+            <fieldText>Documentación de Respuesta Final</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;Debe seleccionar la casilla de respuesta final.&lt;/p&gt;</errorMessage>
+                <formulaExpression>IF({!CS_DocumentacionRespuestaFinal}=TRUE,TRUE,FALSE)</formulaExpression>
+            </validationRule>
+        </fields>
+        <fields>
+            <name>CS_RespuestaFinal</name>
+            <dataType>String</dataType>
+            <fieldText>Respuesta Final</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <nextOrFinishButtonLabel>Next</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>CS_CerrarCaso_2</name>
+        <label>Cerrar caso -  Paso 2</label>
+        <locationX>723</locationX>
+        <locationY>389</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>CS_Asignacion_de_variables_2</targetReference>
+        </connector>
+        <fields>
+            <name>CS_TipificacionSalidaDependiente</name>
+            <extensionName>flowruntime:dependentPicklists</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>topValue</name>
+                <value>
+                    <elementReference>CS_Obtener_Caso.CS_Subtipo__c</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>dependencyWrapperApiName</name>
+                <value>
+                    <stringValue>Case</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>topPicklistApiName</name>
+                <value>
+                    <stringValue>CS_Subtipo__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>middlePicklistApiName</name>
+                <value>
+                    <stringValue>CS_TipificacionSalida__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>topLabel</name>
+                <value>
+                    <stringValue>Entidad</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>topRequired</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>middleLabel</name>
+                <value>
+                    <stringValue>Tipificación Salida</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>middleRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>CS_CausaRaiz_2</name>
+            <dataType>String</dataType>
+            <fieldText>Causa Raíz</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Cuando el caso ya no está en Status Nuevo o En Análisis ya no se puede cerrar con este flow.</description>
+        <name>CS_El_Caso_no_se_puede_cerrar_ahora</name>
+        <label>El Caso no se puede cerrar ahora</label>
+        <locationX>137</locationX>
+        <locationY>205</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>CS_El_Caso_no_se_puede_cerrar</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <stringValue>Cuando el caso no está en Status Nuevo o En Análisis ya no se puede cerrar mediante esta funcionalidad.</stringValue>
+            </defaultValue>
+            <fieldText>El Caso no se puede cerrar</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <helpText>&lt;p&gt;Cuando el caso ya no está en Status Nuevo o En Análisis ya no se puede cerrar con este flow.&lt;/p&gt;</helpText>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Error</name>
+        <label>Error</label>
+        <locationX>293</locationX>
+        <locationY>584</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Mensaje_de_error</name>
+            <defaultValue>
+                <stringValue>Algo salió mal con este flujo.
+El administrador del sistema recibió un email acerca de este error.
+Detalles del error:
+{!$Flow.FaultMessage}</stringValue>
+            </defaultValue>
+            <fieldText>Mensaje de error</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>390</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>CS_Obtener_Caso</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Mensaje de error a mostrar al usuario</description>
+        <name>CS_Mensaje_Error</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;pre class=&quot;ql-syntax&quot; spellcheck=&quot;false&quot;&gt;Algo salio mal con este flujo.
+El administrador del sistema ha recibido un email acerca de este error.
+
+
+
+&lt;/pre&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Variable para guardar cada asignación modficada al el estado cerrado</description>
+        <name>Todas_las_Asignaciones_Cerradas</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>CS_AsginacionPasosAtencion__c</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GroundObjection__c</fullName>
+    <description>Lista de valores relacionadas al estado Objetado en una reclamación</description>
+    <externalId>false</externalId>
+    <label>Causal de objeción</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Clausula de No Objeción</fullName>
+                <default>false</default>
+                <label>Clausula de No Objeción</label>
+            </value>
+            <value>
+                <fullName>Desempleo - No ajustado a la legislación laboral</fullName>
+                <default>false</default>
+                <label>Desempleo - No ajustado a la legislación laboral</label>
+            </value>
+            <value>
+                <fullName>La enfermedad se encuentra excluida o no cumple con las condiciones de cobertura establecidas</fullName>
+                <default>false</default>
+                <label>La enfermedad se encuentra excluida o no cumple con las condiciones de cobertura establecidas</label>
+            </value>
+            <value>
+                <fullName>No adjunta calificación de Invalidez - No hay prueba de ocurrencia</fullName>
+                <default>false</default>
+                <label>No adjunta calificación de Invalidez - No hay prueba de ocurrencia</label>
+            </value>
+            <value>
+                <fullName>Objeción Reticencia Básico de Vida</fullName>
+                <default>false</default>
+                <label>Objeción Reticencia Básico de Vida</label>
+            </value>
+            <value>
+                <fullName>Objeción Reticencia ITP</fullName>
+                <default>false</default>
+                <label>Objeción Reticencia ITP</label>
+            </value>
+            <value>
+                <fullName>Terminación de contrato por mora en pago de prima</fullName>
+                <default>false</default>
+                <label>Terminación de contrato por mora en pago de prima</label>
+            </value>
+            <value>
+                <fullName>Desempleo - contrato terminó naturalmente (se cumplió el plazo pactado)</fullName>
+                <default>false</default>
+                <label>Desempleo - contrato terminó naturalmente (se cumplió el plazo pactado)</label>
+            </value>
+            <value>
+                <fullName>Desempleo - Despido por justa causa</fullName>
+                <default>false</default>
+                <label>Desempleo - Despido por justa causa</label>
+            </value>
+            <value>
+                <fullName>Desempleo - Evento antes del inicio de vigencia</fullName>
+                <default>false</default>
+                <label>Desempleo - Evento antes del inicio de vigencia</label>
+            </value>
+            <value>
+                <fullName>Desempleo - Mutuo acuerdo sin pago de indemnización</fullName>
+                <default>false</default>
+                <label>Desempleo - Mutuo acuerdo sin pago de indemnización</label>
+            </value>
+            <value>
+                <fullName>Desempleo - No laboró seis meses continuos</fullName>
+                <default>false</default>
+                <label>Desempleo - No laboró seis meses continuos</label>
+            </value>
+            <value>
+                <fullName>Desempleo - Período de prueba</fullName>
+                <default>false</default>
+                <label>Desempleo - Período de prueba</label>
+            </value>
+            <value>
+                <fullName>Desempleo - Prestación de servicios</fullName>
+                <default>false</default>
+                <label>Desempleo - Prestación de servicios</label>
+            </value>
+            <value>
+                <fullName>Desempleo - Amparo de ITT - Tratamiento en los 6 meses antes del ingreso ITT</fullName>
+                <default>false</default>
+                <label>Desempleo - Amparo de ITT - Tratamiento en los 6 meses antes del ingreso ITT</label>
+            </value>
+            <value>
+                <fullName>La enfermedad no corresponde a una de las cubiertas</fullName>
+                <default>false</default>
+                <label>La enfermedad no corresponde a una de las cubiertas</label>
+            </value>
+            <value>
+                <fullName>Los días de hospitalización o ITT son inferiores a los cubiertos en la póliza</fullName>
+                <default>false</default>
+                <label>Los días de hospitalización o ITT son inferiores a los cubiertos en la póliza</label>
+            </value>
+            <value>
+                <fullName>No existe amparo</fullName>
+                <default>false</default>
+                <label>No existe amparo</label>
+            </value>
+            <value>
+                <fullName>Por edad limite de permanencia en el amparo</fullName>
+                <default>false</default>
+                <label>Por edad limite de permanencia en el amparo</label>
+            </value>
+            <value>
+                <fullName>Prescripción</fullName>
+                <default>false</default>
+                <label>Prescripción</label>
+            </value>
+            <value>
+                <fullName>Siniestro dentro de período de carencia</fullName>
+                <default>false</default>
+                <label>Siniestro dentro de período de carencia</label>
+            </value>
+            <value>
+                <fullName>Improcedencia por carencia por ITP</fullName>
+                <default>false</default>
+                <label>Improcedencia por carencia por ITP</label>
+            </value>
+            <value>
+                <fullName>La calificación es inferior al 50% en ITP, Si aporta Calificación</fullName>
+                <default>false</default>
+                <label>La calificación es inferior al 50% en ITP, Si aporta Calificación</label>
+            </value>
+            <value>
+                <fullName>La calificación es inferior al 50% en ITP, Aporta Calificación, Régimen Especial, Inf 75%</fullName>
+                <default>false</default>
+                <label>La calificación es inferior al 50% en ITP, Aporta Calificación, Régimen Especial, Inf 75%</label>
+            </value>
+            <value>
+                <fullName>No es asegurado</fullName>
+                <default>false</default>
+                <label>No es asegurado</label>
+            </value>
+            <value>
+                <fullName>Causa natural, no accidental</fullName>
+                <default>false</default>
+                <label>Causa natural, no accidental</label>
+            </value>
+            <value>
+                <fullName>Excedió el máximo de cuotas / días pagados</fullName>
+                <default>false</default>
+                <label>Excedió el máximo de cuotas / días pagados</label>
+            </value>
+            <value>
+                <fullName>Gastos funerarios asumidos por persona jurídica</fullName>
+                <default>false</default>
+                <label>Gastos funerarios asumidos por persona jurídica</label>
+            </value>
+            <value>
+                <fullName>No incurrió en gastos médicos</fullName>
+                <default>false</default>
+                <label>No incurrió en gastos médicos</label>
+            </value>
+            <value>
+                <fullName>Improcedencia por cancelación de Crédito</fullName>
+                <default>false</default>
+                <label>Improcedencia por cancelación de Crédito</label>
+            </value>
+            <value>
+                <fullName>Improcedencia por exceder edad de ingreso</fullName>
+                <default>false</default>
+                <label>Improcedencia por exceder edad de ingreso</label>
+            </value>
+            <value>
+                <fullName>Póliza no existe</fullName>
+                <default>false</default>
+                <label>Póliza no existe</label>
+            </value>
+            <value>
+                <fullName>Póliza existe pero está cancelada</fullName>
+                <default>false</default>
+                <label>Póliza existe pero está cancelada</label>
+            </value>
+            <value>
+                <fullName>Superó los términos de 2 años para realizar la reclamación frente a la fecha de la ocurrencia registrada en el formulario.</fullName>
+                <default>false</default>
+                <label>Superó los términos de 2 años para realizar la reclamación frente a la fecha de la ocurrencia registrada en el formulario.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

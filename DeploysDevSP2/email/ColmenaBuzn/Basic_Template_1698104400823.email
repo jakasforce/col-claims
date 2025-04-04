@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><span style="font-size:16px;"><span style="font-family:Arial,Helvetica,sans-serif;"><span style="line-height:normal"><i><span lang="ES-MX"><span style="color:black">Apreciado(a) Cliente,</span></span></i></span><br />
+<br />
+<br />
+<em><span lang="ES-MX"><span style="background:white"><span style="line-height:107%"><span style="color:black">Hemos recibido de manera exitosa la radicación de los documentos y la solicitud de indemnización, nuestro aplicativo ha asignado el Siniestro </span></span></span></span></em><i><span lang="ES-MX"><span style="line-height:107%"><span style="color:black">No.<strong>{{{Claim.ClaimNumber__c}}}</strong></span></span></span></i> </span></span><em><span lang="ES-MX" style="font-size:13.5pt"><span style="background:white"><span style="line-height:107%"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:black"><span style="font-size:16px;"><span style="font-family:Arial,Helvetica,sans-serif;">el cual le servirá para realizar las consultas que considere al estado de su solicitud de Indemnización. Tenga en cuenta que, con la recepción completa de los documentos, definiremos la solicitud en el menor tiempo posible y en los mejores términos.</span></span><br />
+<br />
+<span style="font-size:16px;"><span style="font-family:Arial,Helvetica,sans-serif;">{{{Claim.CS_DocumentosFaltantes__c}}}</span></span></span></span></span></span></span></em><br />
+<br />
+<br />
+&nbsp;</body>
+</html>

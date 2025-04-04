@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><span style="font-size:16px;"><span style="font-family:Arial,Helvetica,sans-serif;"><i>Apreciado(a) Cliente,</i><br />
+<br />
+<br />
+<em>Hemos recibido de manera exitosa la actualización de los documentos relacionados a la solicitud de indemnización&nbsp;</em><i>No.<strong>{{{Claim.ClaimNumber__c}}}</strong></i> <em>el cual le servirá para realizar las consultas que considere al estado de su solicitud de Indemnización. Tenga en cuenta que, con la recepción completa de los documentos, definiremos la solicitud en el menor tiempo posible y en los mejores términos.<br />
+<br />
+{{{Claim.CS_DocumentosFaltantes__c}}}</em></span></span><br />
+&nbsp;</body>
+</html>

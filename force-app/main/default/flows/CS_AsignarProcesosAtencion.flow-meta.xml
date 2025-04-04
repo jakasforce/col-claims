@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <assignments>
+        <name>CS_AsignarFechaTentativaCierre_0_0</name>
+        <label>Asignar fecha tentativa de cierre</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <assignmentItems>
+            <assignToReference>CS_ObtenerCaso.CS_FechaTentativaDeCierre__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CS_FechaTentativaAtencion</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>CS_ActualizarCaso_0_0</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>CS_ValidarExisteCaso</name>
+        <label>Validar si existe caso</label>
+        <locationX>182</locationX>
+        <locationY>455</locationY>
+        <defaultConnectorLabel>No existe caso</defaultConnectorLabel>
+        <rules>
+            <name>CS_ExisteCaso</name>
+            <conditionLogic>1 AND (2 OR 3 OR 4) AND 5</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CS_CasoRelacionado__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CS_ObtenerCaso.CS_Subtipo__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>1</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CS_ObtenerCaso.CS_Subtipo__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>2</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CS_ObtenerCaso.CS_Subtipo__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>3</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CS_ObtenerCaso.CS_FechaTentativaDeCierre__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CS_AsignarFechaTentativaCierre_0_0</targetReference>
+            </connector>
+            <label>Existe caso</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <name>CS_FechaTentativaAtencion</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE({!CS_ObtenerCaso.CreatedDate}) +
+case(
+  MOD(
+    DATEVALUE({!CS_ObtenerCaso.CreatedDate}) - DATE(1900, 1, 1), 7),5,1,0
+)
++
+{!$Record.CS_ProcesoAtencion__r.CS_TiempoGlobalAtencion__c}
++
+2 * (
+        FLOOR(
+          ({!$Record.CS_ProcesoAtencion__r.CS_TiempoGlobalAtencion__c} +
+            case(MOD(DATEVALUE({!CS_ObtenerCaso.CreatedDate}) - DATE(1900, 1, 1), 7),
+                    0,0,
+                    1,1,
+                    2,2,
+                    3,3,
+                    4,4,
+                    5,-1,
+                    6,-1,
+                    0
+                    )
+          )/5
+        )
+      )</expression>
+    </formulas>
+    <interviewLabel>Procesos de atención Covid19 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Asignar fecha tentativa de cierre</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>CS_ObtenerCaso</name>
+        <label>Obtener caso</label>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>CS_ValidarExisteCaso</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CS_CasoRelacionado__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>CreatedDate</queriedFields>
+        <queriedFields>CS_FechaTentativaDeCierre__c</queriedFields>
+        <queriedFields>CS_Submotivo__c</queriedFields>
+        <queriedFields>CS_MacroMotivo__c</queriedFields>
+        <queriedFields>CS_Subtipo__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>CS_ActualizarCaso_0_0</name>
+        <label>Actualizar caso</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <inputReference>CS_ObtenerCaso</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CS_ObtenerCaso</targetReference>
+        </connector>
+        <object>CS_AsginacionPasosAtencion__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>IndemnizacionPaginaRegistro</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <searchLayouts>
+        <customTabListAdditionalFields>Account</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ClaimReasonType</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ApprovedAmount</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Account</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ClaimReasonType</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ApprovedAmount</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Account</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ClaimReasonType</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Status</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ApprovedAmount</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CS_TelefonoContacto1__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CS_TelefonoContacto2__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CS_TelefonoContacto3__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ContactPhoneNumber4__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Account</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ClaimReasonType</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ApprovedAmount</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <fields>
+        <fullName>CS_DocumentosFaltantes__c</fullName>
+        <externalId>false</externalId>
+        <label>Documentos Faltantes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CS_ExpectedSolutionDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Fecha Prevista de Solución</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CS_SubEstado__c</fullName>
+        <description>Sub Estado del estado actual</description>
+        <externalId>false</externalId>
+        <label>Sub Estado</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Status</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pendiente</fullName>
+                    <default>false</default>
+                    <label>Pendiente</label>
+                </value>
+                <value>
+                    <fullName>Nuevo</fullName>
+                    <default>false</default>
+                    <label>Nuevo</label>
+                </value>
+                <value>
+                    <fullName>Pago Rechazado</fullName>
+                    <default>false</default>
+                    <label>Pago Rechazado</label>
+                </value>
+                <value>
+                    <fullName>En Aprobación</fullName>
+                    <default>false</default>
+                    <label>En Aprobación</label>
+                </value>
+                <value>
+                    <fullName>Documentos Solicitados</fullName>
+                    <default>false</default>
+                    <label>Documentos Solicitados</label>
+                </value>
+                <value>
+                    <fullName>Documentos Adicionales</fullName>
+                    <default>false</default>
+                    <label>Documentos Adicionales</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Cerrado</controllingFieldValue>
+                <controllingFieldValue>Abierto</controllingFieldValue>
+                <controllingFieldValue>Pago parcial</controllingFieldValue>
+                <controllingFieldValue>Análisis</controllingFieldValue>
+                <controllingFieldValue>En Pagador</controllingFieldValue>
+                <controllingFieldValue>Pagado</controllingFieldValue>
+                <controllingFieldValue>Objetado</controllingFieldValue>
+                <controllingFieldValue>Suspendido</controllingFieldValue>
+                <valueName>Pendiente</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Abierto</controllingFieldValue>
+                <controllingFieldValue>Análisis</controllingFieldValue>
+                <valueName>Nuevo</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Abierto</controllingFieldValue>
+                <valueName>Pago Rechazado</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Análisis</controllingFieldValue>
+                <valueName>Documentos Adicionales</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>En Pagador</controllingFieldValue>
+                <valueName>En Aprobación</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Suspendido</controllingFieldValue>
+                <valueName>Documentos Solicitados</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ClaimEmail__c</fullName>
+        <description>Email del asegurado de una reclamación</description>
+        <externalId>false</externalId>
+        <label>ClaimEmail</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FirstNotificationDateWaitingForDocument__c</fullName>
+        <description>Campo que almacena la primera fecha de notificación</description>
+        <externalId>false</externalId>
+        <label>Fecha primer notificación espera docs</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>GroundObjection__c</fullName>
+        <description>Lista de valores relacionadas al estado Objetado en una reclamación</description>
+        <externalId>false</externalId>
+        <label>Causal de objeción</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Clausula de No Objeción</fullName>
+                    <default>false</default>
+                    <label>Clausula de No Objeción</label>
+                </value>
+                <value>
+                    <fullName>Desempleo - No ajustado a la legislación laboral</fullName>
+                    <default>false</default>
+                    <label>Desempleo - No ajustado a la legislación laboral</label>
+                </value>
+                <value>
+                    <fullName>La enfermedad se encuentra excluida o no cumple con las condiciones de cobertura establecidas</fullName>
+                    <default>false</default>
+                    <label>La enfermedad se encuentra excluida o no cumple con las condiciones de cobertura establecidas</label>
+                </value>
+                <value>
+                    <fullName>No adjunta calificación de Invalidez - No hay prueba de ocurrencia</fullName>
+                    <default>false</default>
+                    <label>No adjunta calificación de Invalidez - No hay prueba de ocurrencia</label>
+                </value>
+                <value>
+                    <fullName>Objeción Reticencia Básico de Vida</fullName>
+                    <default>false</default>
+                    <label>Objeción Reticencia Básico de Vida</label>
+                </value>
+                <value>
+                    <fullName>Objeción Reticencia ITP</fullName>
+                    <default>false</default>
+                    <label>Objeción Reticencia ITP</label>
+                </value>
+                <value>
+                    <fullName>Terminación de contrato por mora en pago de prima</fullName>
+                    <default>false</default>
+                    <label>Terminación de contrato por mora en pago de prima</label>
+                </value>
+                <value>
+                    <fullName>Desempleo - contrato terminó naturalmente (se cumplió el plazo pactado)</fullName>
+                    <default>false</default>
+                    <label>Desempleo - contrato terminó naturalmente (se cumplió el plazo pactado)</label>
+                </value>
+                <value>
+                    <fullName>Desempleo - Despido por justa causa</fullName>
+                    <default>false</default>
+                    <label>Desempleo - Despido por justa causa</label>
+                </value>
+                <value>
+                    <fullName>Desempleo - Evento antes del inicio de vigencia</fullName>
+                    <default>false</default>
+                    <label>Desempleo - Evento antes del inicio de vigencia</label>
+                </value>
+                <value>
+                    <fullName>Desempleo - Mutuo acuerdo sin pago de indemnización</fullName>
+                    <default>false</default>
+                    <label>Desempleo - Mutuo acuerdo sin pago de indemnización</label>
+                </value>
+                <value>
+                    <fullName>Desempleo - No laboró seis meses continuos</fullName>
+                    <default>false</default>
+                    <label>Desempleo - No laboró seis meses continuos</label>
+                </value>
+                <value>
+                    <fullName>Desempleo - Período de prueba</fullName>
+                    <default>false</default>
+                    <label>Desempleo - Período de prueba</label>
+                </value>
+                <value>
+                    <fullName>Desempleo - Prestación de servicios</fullName>
+                    <default>false</default>
+                    <label>Desempleo - Prestación de servicios</label>
+                </value>
+                <value>
+                    <fullName>Desempleo - Amparo de ITT - Tratamiento en los 6 meses antes del ingreso ITT</fullName>
+                    <default>false</default>
+                    <label>Desempleo - Amparo de ITT - Tratamiento en los 6 meses antes del ingreso ITT</label>
+                </value>
+                <value>
+                    <fullName>La enfermedad no corresponde a una de las cubiertas</fullName>
+                    <default>false</default>
+                    <label>La enfermedad no corresponde a una de las cubiertas</label>
+                </value>
+                <value>
+                    <fullName>Los días de hospitalización o ITT son inferiores a los cubiertos en la póliza</fullName>
+                    <default>false</default>
+                    <label>Los días de hospitalización o ITT son inferiores a los cubiertos en la póliza</label>
+                </value>
+                <value>
+                    <fullName>No existe amparo</fullName>
+                    <default>false</default>
+                    <label>No existe amparo</label>
+                </value>
+                <value>
+                    <fullName>Por edad limite de permanencia en el amparo</fullName>
+                    <default>false</default>
+                    <label>Por edad limite de permanencia en el amparo</label>
+                </value>
+                <value>
+                    <fullName>Prescripción</fullName>
+                    <default>false</default>
+                    <label>Prescripción</label>
+                </value>
+                <value>
+                    <fullName>Siniestro dentro de período de carencia</fullName>
+                    <default>false</default>
+                    <label>Siniestro dentro de período de carencia</label>
+                </value>
+                <value>
+                    <fullName>Improcedencia por carencia por ITP</fullName>
+                    <default>false</default>
+                    <label>Improcedencia por carencia por ITP</label>
+                </value>
+                <value>
+                    <fullName>La calificación es inferior al 50% en ITP, Si aporta Calificación</fullName>
+                    <default>false</default>
+                    <label>La calificación es inferior al 50% en ITP, Si aporta Calificación</label>
+                </value>
+                <value>
+                    <fullName>La calificación es inferior al 50% en ITP, Aporta Calificación, Régimen Especial, Inf 75%</fullName>
+                    <default>false</default>
+                    <label>La calificación es inferior al 50% en ITP, Aporta Calificación, Régimen Especial, Inf 75%</label>
+                </value>
+                <value>
+                    <fullName>No es asegurado</fullName>
+                    <default>false</default>
+                    <label>No es asegurado</label>
+                </value>
+                <value>
+                    <fullName>Causa natural, no accidental</fullName>
+                    <default>false</default>
+                    <label>Causa natural, no accidental</label>
+                </value>
+                <value>
+                    <fullName>Excedió el máximo de cuotas / días pagados</fullName>
+                    <default>false</default>
+                    <label>Excedió el máximo de cuotas / días pagados</label>
+                </value>
+                <value>
+                    <fullName>Gastos funerarios asumidos por persona jurídica</fullName>
+                    <default>false</default>
+                    <label>Gastos funerarios asumidos por persona jurídica</label>
+                </value>
+                <value>
+                    <fullName>No incurrió en gastos médicos</fullName>
+                    <default>false</default>
+                    <label>No incurrió en gastos médicos</label>
+                </value>
+                <value>
+                    <fullName>Improcedencia por cancelación de Crédito</fullName>
+                    <default>false</default>
+                    <label>Improcedencia por cancelación de Crédito</label>
+                </value>
+                <value>
+                    <fullName>Improcedencia por exceder edad de ingreso</fullName>
+                    <default>false</default>
+                    <label>Improcedencia por exceder edad de ingreso</label>
+                </value>
+                <value>
+                    <fullName>Póliza no existe</fullName>
+                    <default>false</default>
+                    <label>Póliza no existe</label>
+                </value>
+                <value>
+                    <fullName>Póliza existe pero está cancelada</fullName>
+                    <default>false</default>
+                    <label>Póliza existe pero está cancelada</label>
+                </value>
+                <value>
+                    <fullName>Superó los términos de 2 años para realizar la reclamación frente a la fecha de la ocurrencia registrada en el formulario.</fullName>
+                    <default>false</default>
+                    <label>Superó los términos de 2 años para realizar la reclamación frente a la fecha de la ocurrencia registrada en el formulario.</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LastNotificationDateWaitingForDocument__c</fullName>
+        <description>Campo que se crea para almacenar la ultima fecha de notificación de envió de correo en una reclamación.</description>
+        <externalId>false</externalId>
+        <label>Fecha ultima notificación espera documen</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ReasonWaitingDocument__c</fullName>
+        <description>Almacena motivo espera de documentos en el proceso de siniestros</description>
+        <externalId>false</externalId>
+        <label>Motivo espera documento</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SendClaimEmail__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Campo que valida el envió de correo de una reclamación.</description>
+        <externalId>false</externalId>
+        <label>Envio Correo Reclamación</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>StateRequesting__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(Status, &apos;Abierto&apos;, &apos;Análisis&apos;, &apos;Análisis&apos;, &apos;Análisis&apos;,&apos;En Pagador&apos;, &apos;En Pagador&apos;,&apos;Pagado&apos;, &apos;Pagado&apos;,&apos;Pago parcial&apos;, &apos;Pago parcial&apos;,&apos;Objetado&apos;, &apos;Objetado&apos;,&apos;Suspendido&apos;, &apos;Espera Documentos&apos;,&apos;Cerrado&apos;, &apos;Cerrado&apos;,&apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Estado solicitante</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <recordTypes>
+        <fullName>CS_Siniestro</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Claim</compactLayoutAssignment>
+        <description>Siniestros de seguros de vida</description>
+        <label>Siniestro</label>
+        <picklistValues>
+            <picklist>CS_SubEstado__c</picklist>
+            <values>
+                <fullName>Documentos Adicionales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Documentos Solicitados</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>En Aprobación</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Nuevo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago Rechazado</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ClaimReasonType</picklist>
+            <values>
+                <fullName>Accidental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desempleo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incapacidad Temporal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Natural</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otras</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ClaimType</picklist>
+            <values>
+                <fullName>Anualidad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Automático</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compensación de trabajadores</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inicio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vida</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>FnolChannel</picklist>
+            <values>
+                <fullName>Chatbot</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Móvil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teléfono</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GroundObjection__c</picklist>
+            <values>
+                <fullName>Causa natural%2C no accidental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clausula de No Objeción</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desempleo - Amparo de ITT - Tratamiento en los 6 meses antes del ingreso ITT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desempleo - Despido por justa causa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desempleo - Evento antes del inicio de vigencia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desempleo - Mutuo acuerdo sin pago de indemnización</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desempleo - No ajustado a la legislación laboral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desempleo - No laboró seis meses continuos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desempleo - Período de prueba</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desempleo - Prestación de servicios</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desempleo - contrato terminó naturalmente %28se cumplió el plazo pactado%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Excedió el máximo de cuotas %2F días pagados</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gastos funerarios asumidos por persona jurídica</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improcedencia por cancelación de Crédito</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improcedencia por carencia por ITP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improcedencia por exceder edad de ingreso</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>La calificación es inferior al 50%25 en ITP%2C Aporta Calificación%2C Régimen Especial%2C Inf 75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>La calificación es inferior al 50%25 en ITP%2C Si aporta Calificación</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>La enfermedad no corresponde a una de las cubiertas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>La enfermedad se encuentra excluida o no cumple con las condiciones de cobertura establecidas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Los días de hospitalización o ITT son inferiores a los cubiertos en la póliza</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No adjunta calificación de Invalidez - No hay prueba de ocurrencia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No es asegurado</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No existe amparo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No incurrió en gastos médicos</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Objeción Reticencia Básico de Vida</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Objeción Reticencia ITP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Por edad limite de permanencia en el amparo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prescripción</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Póliza existe pero está cancelada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Póliza no existe</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Siniestro dentro de período de carencia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Superó los términos de 2 años para realizar la reclamación frente a la fecha de la ocurrencia registrada en el formulario%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Terminación de contrato por mora en pago de prima</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LossType</picklist>
+            <values>
+                <fullName>Discapacidad parcial permanente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discapacidad parcial temporal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discapacidad total permanente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discapacidad total temporal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pérdida parcial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reparaciones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sustitución</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>RenewalChannel</picklist>
+            <values>
+                <fullName>101</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>102</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>103</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>104</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>105</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>106</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>107</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>108</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>109</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>110</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>111</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>112</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Severity</picklist>
+            <values>
+                <fullName>Alta inmediata</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grave</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leve</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moderado</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Muy leve</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Severo</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Abierto</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Análisis</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cerrado</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>En Pagador</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Objetado</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pagado</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pago parcial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Suspendido</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <validationRules>
+        <fullName>DontChangeToPaymentStatus</fullName>
+        <active>false</active>
+        <description>Regla de validación que inhabilita  el cambio del registro cuando el estado sea pagado o pago parcial</description>
+        <errorConditionFormula>ISCHANGED(Status) &amp;&amp; (ISPICKVAL(Status, &apos;Pagado&apos;) || ISPICKVAL(Status, &apos;Pago parcial&apos;))</errorConditionFormula>
+        <errorDisplayField>Status</errorDisplayField>
+        <errorMessage>No es posible realizar el cambio de estado a Pagado o Pago parcial manualmente.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GroundObjectionRequired</fullName>
+        <active>true</active>
+        <description>Cuando el estado pasa a Objetado se debe diligenciar el campo causal de Objeción</description>
+        <errorConditionFormula>ISCHANGED( Status )  &amp;&amp;  ISPICKVAL( Status , &apos;Objetado&apos;)  &amp;&amp;  ISBLANK(TEXT( GroundObjection__c ))</errorConditionFormula>
+        <errorDisplayField>GroundObjection__c</errorDisplayField>
+        <errorMessage>Para pasar a Estado Objetado se debe diligenciar el campo Causal de Objeción</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ReasonWaitingDocumentRequired</fullName>
+        <active>true</active>
+        <description>Cuando el estado pasa a Suspendido se debe diligenciar el campo motivo en espera de documento.</description>
+        <errorConditionFormula>ISCHANGED( Status )  &amp;&amp;  ISPICKVAL(Status, &apos;Suspendido&apos;)  &amp;&amp;  ISBLANK( ReasonWaitingDocument__c )</errorConditionFormula>
+        <errorDisplayField>ReasonWaitingDocument__c</errorDisplayField>
+        <errorMessage>Para pasar a Estado Suspendido se debe diligenciar el campo Motivo espera documento</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Aportes</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Aportes</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://www.aportesenlinea.com/autoservicio/CertificadoAportes.aspx</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Fiscalia</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Fiscalía</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://www.fiscalia.gov.co/colombia/servicios-de-informacion-al-ciudadano/consultas/#1536851620255-61ce92ac-374f</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Medicina_Legal</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Medicina Legal</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://sirdec.medicinalegal.gov.co:38181/consultasPublicas/Cadaveres.xhtml</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Procuraduria</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Procuraduría</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://www.procuraduria.gov.co/Pages/Generacion-de-antecedentes.aspx</url>
+    </webLinks>
+    <webLinks>
+        <fullName>RUAF</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>RUAF</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://ruaf.sispro.gov.co</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Registraduria</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Registraduría</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://registraduria.gov.co/</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Registro_Civil_Registraduria</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Registro Civil - Registraduría</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://consultasrc.registraduria.gov.co</url>
+    </webLinks>
+</CustomObject>

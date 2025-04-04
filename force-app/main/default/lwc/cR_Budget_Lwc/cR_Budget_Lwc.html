@@ -1,0 +1,56 @@
+<template>
+    <lightning-card  title="Partidas de Presupuesto">
+    <template lwc:if={principal}>
+        <lightning-card>
+            <p class="slds-p-horizontal_medium">
+                
+                <lightning-layout>
+                    <lightning-layout-item padding="around-small" >
+                        <lightning-combobox
+                            name="productSelect"
+                            label="Seleccionar Producto"
+                            value={productType}
+                            placeholder="Tipo de Producto"
+                            options={productTypes}
+                            onchange={handleChange} >
+                        </lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <br/>
+                        <lightning-button variant="brand" label="Agregar" onclick={launchAddProducts} class="slds-align_absolute-center"></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </p>
+            <template for:each={quoteLineItemsByType} for:item="typeData">
+                <div key={typeData}>
+                    <br/>
+                    <b><h1 style="color:rgb(12, 56, 12); text-align:center; background-color:rgb(201, 201, 201) ">
+                        {typeData.type}
+                    </h1></b>
+                    <lightning-spinner
+                        alternative-text="Cargando..." 
+                        variant="brand"
+                        if:false={isLoaded}
+                    ></lightning-spinner>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={typeData.lineItems}
+                        columns={typeData.columns}
+                        column-widths-mode="fixed"
+                        onrowaction={rowAction}
+                        onsave={saveRecords}
+                        hide-checkbox-column="true"
+                        if:true={isLoaded}
+                    ></lightning-datatable>
+                </div>
+            </template>
+        </lightning-card>
+    </template>
+
+    <template lwc:elseif={createProductsLwc}>
+        <c-lwc-add-products-c-r product-type={productType} record-id={recordId} default-ish={defaultIsh} lounges-in-hotel={loungesInHotel} onmain={backToMain}></c-lwc-add-products-c-r>
+    </template>
+    
+    <p slot="footer">CAMINO REAL HOTELES</p>
+    </lightning-card>
+</template>

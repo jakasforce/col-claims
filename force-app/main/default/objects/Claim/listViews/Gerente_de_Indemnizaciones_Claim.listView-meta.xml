@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gerente_de_Indemnizaciones_Claim</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Gerente de Indemnizaciones</label>
+    <queue>Gerente_de_Indemnizaciones</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

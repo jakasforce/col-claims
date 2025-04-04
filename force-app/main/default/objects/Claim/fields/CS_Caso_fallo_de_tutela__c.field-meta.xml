@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Caso_fallo_de_tutela__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>El caso surge por un fallo de tutela (SI/NO)</description>
+    <externalId>false</externalId>
+    <label>Caso fallo de tutela</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

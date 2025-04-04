@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DontChangeToPaymentStatus</fullName>
+    <active>true</active>
+    <description>Regla de validación que inhabilita  el cambio del registro cuando el estado sea pagado o pago parcial</description>
+    <errorConditionFormula>ISCHANGED(Status) &amp;&amp; (ISPICKVAL(Status, &apos;Pagado&apos;) || ISPICKVAL(Status, &apos;Pago parcial&apos;))</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>No es posible realizar el cambio de estado a Pagado o Pago parcial manualmente.</errorMessage>
+</ValidationRule>

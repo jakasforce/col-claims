@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_PersonType__c</fullName>
+    <description>Campo que almacena tipo persona en reclamación</description>
+    <externalId>false</externalId>
+    <label>Tipo Persona</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Natural</fullName>
+                <default>false</default>
+                <label>Natural</label>
+            </value>
+            <value>
+                <fullName>Jurídica</fullName>
+                <default>false</default>
+                <label>Jurídica</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

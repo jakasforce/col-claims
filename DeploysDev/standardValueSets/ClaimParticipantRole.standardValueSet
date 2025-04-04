@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Yo soy el asegurado</fullName>
+        <default>true</default>
+        <label>Yo soy el asegurado</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cónyuge</fullName>
+        <default>false</default>
+        <label>Cónyuge</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Compañera(o) Permanente</fullName>
+        <default>false</default>
+        <label>Compañera(o) Permanente</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Padre</fullName>
+        <default>false</default>
+        <label>Padre</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hijo(a)</fullName>
+        <default>false</default>
+        <label>Hijo(a)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Madre</fullName>
+        <default>false</default>
+        <label>Madre</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hermano(s)</fullName>
+        <default>false</default>
+        <label>Hermano(s)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Primo(a)</fullName>
+        <default>false</default>
+        <label>Primo(a)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hijastro(a)</fullName>
+        <default>false</default>
+        <label>Hijastro(a)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Abuelo(a)</fullName>
+        <default>false</default>
+        <label>Abuelo(a)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Tio(a)</fullName>
+        <default>false</default>
+        <label>Tio(a)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cuñado(a)</fullName>
+        <default>false</default>
+        <label>Cuñado(a)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sobrino(a)</fullName>
+        <default>false</default>
+        <label>Sobrino(a)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Otro Parentesco</fullName>
+        <default>false</default>
+        <label>Otro Parentesco</label>
+    </standardValue>
+</StandardValueSet>

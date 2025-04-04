@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <assignments>
+        <name>XFLS_AssignExecutedTime</name>
+        <label>Assign Executed Time</label>
+        <locationX>138</locationX>
+        <locationY>638</locationY>
+        <assignmentItems>
+            <assignToReference>loopTotalOfHours</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>loopCurrentTimeInHours</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>XFLS_ServiceAppointmentLoop</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>XFLS_AssignIdToWorkOrderLineItemUpdate</name>
+        <label>Assign Id to Work Order Line Item Update</label>
+        <locationX>50</locationX>
+        <locationY>398</locationY>
+        <assignmentItems>
+            <assignToReference>workOrderLineItemUpdate.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>workOrderLineItemId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>workOrderLineItemUpdate.XFLS_TiempoEjecutado__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>XFLS_ServiceAppointmentLoop</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>XFLS_AssignTotalTime</name>
+        <label>Assign Total Time</label>
+        <locationX>50</locationX>
+        <locationY>854</locationY>
+        <assignmentItems>
+            <assignToReference>workOrderLineItemUpdate.XFLS_TiempoEjecutado__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>totalOfHoursRounded</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>XFLS_UpdateWorkOrderLineItem</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>XFLS_HasAppointments</name>
+        <label>Has Appointments</label>
+        <locationX>182</locationX>
+        <locationY>278</locationY>
+        <defaultConnectorLabel>NO</defaultConnectorLabel>
+        <rules>
+            <name>XFLS_HasAppointments_YES</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>XFLS_GetServiceAppointment</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>XFLS_AssignIdToWorkOrderLineItemUpdate</targetReference>
+            </connector>
+            <label>YES</label>
+        </rules>
+    </decisions>
+    <description>Flujo encargado de actualizar el tiempo ejecutado en un item de orden de trabajo.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>loopCurrentTimeInHours</name>
+        <dataType>Number</dataType>
+        <expression>{!XFLS_ServiceAppointmentLoop.ActualDuration}/60.00</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>totalOfHoursRounded</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+    AND(
+        MOD({!loopTotalOfHours}, 1) &gt; 0.00,
+        MOD({!loopTotalOfHours}, 1) &lt; 0.25
+    ),
+    {!loopTotalOfHours} - MOD({!loopTotalOfHours}, 1),
+    IF(
+        AND(
+            MOD({!loopTotalOfHours}, 1) &gt; 0.25,
+            MOD({!loopTotalOfHours}, 1) &lt; 0.50
+        ),
+        {!loopTotalOfHours} + (0.50 - MOD({!loopTotalOfHours}, 1)),
+        IF(
+            AND(
+                MOD({!loopTotalOfHours}, 1) &gt; 0.50,
+                MOD({!loopTotalOfHours}, 1) &lt; 0.75
+            ),
+            {!loopTotalOfHours} - (MOD({!loopTotalOfHours}, 1) - 0.50 ) ,
+            IF(
+                AND(
+                    MOD({!loopTotalOfHours}, 1) &gt; 0.75,
+                    MOD({!loopTotalOfHours}, 1) &lt; 1.00
+                ),
+                {!loopTotalOfHours} + (1.00 - MOD({!loopTotalOfHours}, 1)),
+                {!loopTotalOfHours}
+           )
+        )
+    )
+)</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Work Order Line Item Calculate Executed Time {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Work Order Line Item Calculate Executed Time</label>
+    <loops>
+        <name>XFLS_ServiceAppointmentLoop</name>
+        <label>Service Appointment Loop</label>
+        <locationX>50</locationX>
+        <locationY>518</locationY>
+        <collectionReference>XFLS_GetServiceAppointment</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>XFLS_AssignExecutedTime</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>XFLS_AssignTotalTime</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>XFLS_GetServiceAppointment</name>
+        <label>Get Service Appointment</label>
+        <locationX>182</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>XFLS_HasAppointments</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ParentRecordId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>workOrderLineItemId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>ServiceAppointment</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>ActualDuration</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>XFLS_UpdateWorkOrderLineItem</name>
+        <label>Update Work Order Line Item</label>
+        <locationX>50</locationX>
+        <locationY>974</locationY>
+        <inputReference>workOrderLineItemUpdate</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>XFLS_GetServiceAppointment</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>loopTotalOfHours</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <name>workOrderLineItemId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>workOrderLineItemUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>WorkOrderLineItem</objectType>
+    </variables>
+</Flow>

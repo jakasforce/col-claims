@@ -1,0 +1,16 @@
+<template>
+    <lightning-card>
+        <lightning-datatable
+            hide-checkbox-column
+            show-row-number-column
+            key-field="ContentDocumentId"
+            data={documentsData}
+            columns={columns}
+            onrowaction={handleRowAction}>
+        </lightning-datatable>
+    </lightning-card> 
+    <div style="text-align:center;">
+        <lightning-button label="Ver Todos" onclick={handleViewAllFiles} variant="brand-outline"></lightning-button>
+        
+    </div>
+</template>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgentsCausingAccident__c</fullName>
+    <externalId>false</externalId>
+    <label>Agentes causantes del accidente</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>100</fullName>
+                <default>false</default>
+                <label>Máquinas y/o equipos</label>
+            </value>
+            <value>
+                <fullName>200</fullName>
+                <default>false</default>
+                <label>Medios de transporte</label>
+            </value>
+            <value>
+                <fullName>300</fullName>
+                <default>false</default>
+                <label>Aparatos</label>
+            </value>
+            <value>
+                <fullName>400</fullName>
+                <default>false</default>
+                <label>Materiales o sustancias</label>
+            </value>
+            <value>
+                <fullName>500</fullName>
+                <default>false</default>
+                <label>Ambiente de trabajo (incluye superficies</label>
+            </value>
+            <value>
+                <fullName>600</fullName>
+                <default>false</default>
+                <label>Otros agentes no clasificados</label>
+            </value>
+            <value>
+                <fullName>700</fullName>
+                <default>false</default>
+                <label>Agentes no clasificados por falta de dat</label>
+            </value>
+            <value>
+                <fullName>4400</fullName>
+                <default>false</default>
+                <label>Radiaciones</label>
+            </value>
+            <value>
+                <fullName>336</fullName>
+                <default>false</default>
+                <label>Herramientas</label>
+            </value>
+            <value>
+                <fullName>661</fullName>
+                <default>false</default>
+                <label>Animales (vivos o productos animales)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

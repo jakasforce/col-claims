@@ -1,0 +1,80 @@
+<template>
+    <div>
+        <p>Seleccione los datos del Evento Programado</p>
+        <div>
+            <lightning-combobox 
+                name="productType"
+                label="Tipo "
+                value={_product2}
+                placeholder="Selecciona el Tipo"
+                options={avaliableProducts}
+                onchange={product2change} >
+            </lightning-combobox>
+        </div>
+        <div>
+            <lightning-combobox 
+                name="mountingType"
+                label="Tipo de Montaje"
+                value={_mounting}
+                placeholder="Montaje"
+                options={mountingTypes}
+                onchange={mountingTypeChange} >
+            </lightning-combobox>
+        </div>
+        <div>
+            <lightning-combobox 
+                name="eventType"
+                label="Tipo de Evento"
+                value={_event}
+                placeholder="Evento"
+                options={eventTypes}
+                onchange={eventTypeChange} >
+            </lightning-combobox>
+        </div>
+        <div>
+            <lightning-combobox 
+                name="loungeType"
+                label="Salon"
+                value={_lounge}
+                placeholder="Salón"
+                options={loungesInHotel}
+                onchange={loungeChange} >
+            </lightning-combobox>
+        </div>
+        <div>
+            <lightning-input type="date" name="" label="Fecha de inicio" required onchange={startDateChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="date" name="" label="Fecha de fin" required onchange={endDateChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="time" name="" label="Hora de inicio" required onchange={startTimeChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="time" name="" label="Hora de fin" required onchange={endTimeChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="text" label="Concepto" required onchange={conceptChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="text" label="Detalle de Renta por Día (Solo si es aplicable)" onchange={detailChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="number" label="Precio" required step="0.01" formatter="currency" onchange={priceChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="number" label="Número de Personas* (Solo si es aplicable)" onchange={quantityChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="number" label="IVA* (Solo si es aplicable)" step="0.01" formatter="percent-fixed" value={_iva} onchange={ivaChange}></lightning-input>
+        </div>
+        <div>
+            <lightning-input type="number" label="Servicio* (Solo si es aplicable)" step="0.01" formatter="percent-fixed" value={_service} onchange={serviceChange}></lightning-input>
+        </div>
+    </div>
+
+    <div class="slds-m-top_small slds-m-bottom_medium">
+        <lightning-button label="Cancelar" onclick={backToMain} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button label="Añadir" onclick={addProducts} variant="brand" class="slds-m-left_x-small"></lightning-button>
+    </div>
+</template>

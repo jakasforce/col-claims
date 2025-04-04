@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <assignments>
+        <description>Devolver variable al anterior estado para seguir validacion.</description>
+        <name>ComeBackVariables</name>
+        <label>Devolver variables a estado predeterminado</label>
+        <locationX>660</locationX>
+        <locationY>1847</locationY>
+        <assignmentItems>
+            <assignToReference>BooleanMayorQue</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>BooleanMenorQue</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ValidateEachRecord</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Asigna resultado falso cuando su validacion no es correcta.</description>
+        <name>ResultFalseGreater</name>
+        <label>Asigna resultado falso</label>
+        <locationX>440</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>BooleanMayorQue</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>FillReserveLess</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Asigna resultado falso cuando su validacion no es correcta.</description>
+        <name>ResultFalseLess</name>
+        <label>Asignar resultado falso</label>
+        <locationX>440</locationX>
+        <locationY>1463</locationY>
+        <assignmentItems>
+            <assignToReference>BooleanMenorQue</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ResultGreaterLess</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Evalua las condiciones una a una y si da true finaliza el proceso y asigna a la cola correspondiente.</description>
+        <name>EvaluetaConditions</name>
+        <label>Evaluacion de condicones</label>
+        <locationX>726</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>ValidateEachRecord</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>QueuAssingment</name>
+            <conditionLogic>1 AND (2 OR 3) AND (4 OR 5) AND (6 OR 7) AND( 8 OR NOT(9)) AND (10 OR NOT(11))</conditionLogic>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.Branch__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>$Record.Claim.PolicyNumber.Product.Family</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.ProductsContents__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.ProductsContents__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>$Record.Claim.PolicyNumber.Product.ProductCode</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.CoverageContents__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.CoverageContents__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>$Record.CS_CoverageCode__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.ProductsNoContents__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.ProductsNoContents__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>$Record.Claim.PolicyNumber.Product.ProductCode</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.CoverageNoContents__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.CoverageNoContents__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>$Record.CS_CoverageCode__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FillReserveGreater</targetReference>
+            </connector>
+            <label>Asignar a una cola</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Valida si la condicion a evaluar esta lleno.</description>
+        <name>FillReserveGreater</name>
+        <label>Condicion Reserva Mayor llena</label>
+        <locationX>528</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>FillReserveLess</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>FieldGreater</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.ReserveValueGreater__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ValidateConditionGreater</targetReference>
+            </connector>
+            <label>Campo mayor que</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Valida si la condicion menor que esta llena</description>
+        <name>FillReserveLess</name>
+        <label>Condicion Reserva Menor llena</label>
+        <locationX>528</locationX>
+        <locationY>1247</locationY>
+        <defaultConnector>
+            <targetReference>ResultGreaterLess</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>EvaluetaFieldLess</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ValidateEachRecord.ReserveValueLess__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ValidateConditionLess</targetReference>
+            </connector>
+            <label>Campo menor a evaluar</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Valida los resultado  de las ultimas condiciones.</description>
+        <name>ResultGreaterLess</name>
+        <label>Resultado Mayor y Menor que</label>
+        <locationX>528</locationX>
+        <locationY>1739</locationY>
+        <defaultConnector>
+            <targetReference>ComeBackVariables</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>MeetConditions</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>BooleanMayorQue</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>BooleanMenorQue</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetIdQueu</targetReference>
+            </connector>
+            <label>Cumple con la condicion</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Valida condicion mayor que</description>
+        <name>ValidateConditionGreater</name>
+        <label>Validar condicion mayor que</label>
+        <locationX>352</locationX>
+        <locationY>863</locationY>
+        <defaultConnector>
+            <targetReference>ResultFalseGreater</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>IsGreater</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetReserveValue.ExpenseReserveAmount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>$Record.CS_SumInsuranceCoverage__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FillReserveLess</targetReference>
+            </connector>
+            <label>Es mayor que</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Valida condicion menor que</description>
+        <name>ValidateConditionLess</name>
+        <label>Validar condicion menor que</label>
+        <locationX>352</locationX>
+        <locationY>1355</locationY>
+        <defaultConnector>
+            <targetReference>ResultFalseLess</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>IsLess</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetReserveValue.ExpenseReserveAmount</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>$Record.CS_SumInsuranceCoverage__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ResultGreaterLess</targetReference>
+            </connector>
+            <label>Es menor que</label>
+        </rules>
+    </decisions>
+    <description>Asignacion de colas cuando se pasa a etapa analisis y el sub estado esta en nuevo.</description>
+    <environments>Default</environments>
+    <interviewLabel>Asignacion Colas de Indemnizaciones {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Asignacion Colas de Indemnizaciones</label>
+    <loops>
+        <description>Validamos cada condicion para validar cual cumple para asignar la cola.</description>
+        <name>ValidateEachRecord</name>
+        <label>Validar cada registro</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <collectionReference>GetAssignmentConditions</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>EvaluetaConditions</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Se obtienes las condiciones de asignacion.</description>
+        <name>GetAssignmentConditions</name>
+        <label>Obtener condiciones de asignacion</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ValidateEachRecord</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Orden__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>CS_QueueAssignmentRulesClaimCoverage__mdt</object>
+        <sortField>Orden__c</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Obtener el id de la Queu</description>
+        <name>GetIdQueu</name>
+        <label>Obtener Id Cola</label>
+        <locationX>396</locationX>
+        <locationY>1847</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>UodateRecord</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ValidateEachRecord.Label</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Obtenemos valor de reserva que se evaluara.</description>
+        <name>GetReserveValue</name>
+        <label>Obtener valor de reserva</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetAssignmentConditions</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ClaimId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ClaimCoverage</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>ExpenseReserveAmount</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Actualiza el propietario del registro a la cola identificada.</description>
+        <name>UodateRecord</name>
+        <label>Actualizar registros</label>
+        <locationX>396</locationX>
+        <locationY>1955</locationY>
+        <connector>
+            <targetReference>ValidateEachRecord</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>GetIdQueu.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>GetReserveValue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Análisis</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>null__NotFound</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Nuevo</stringValue>
+            </value>
+        </filters>
+        <object>ClaimCoverage</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+    <variables>
+        <name>BooleanMayorQue</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>true</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>BooleanMenorQue</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>true</booleanValue>
+        </value>
+    </variables>
+</Flow>

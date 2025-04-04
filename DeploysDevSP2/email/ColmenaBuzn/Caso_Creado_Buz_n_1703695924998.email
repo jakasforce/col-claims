@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">Cordial saludo {{{Case.CS_ContactFirstName__c}}}<br />
+<br />
+{{{Case.CS_Subtipo__c}}}<br />
+<br />
+Con el fin de mantenerte informado te comunicamos que tu caso con el Nº {{{Case.CaseNumber}}}, ha sido creado para su gestión.<br />
+<br />
+Recuerda que ante cualquier inquietud puedes comunicarte a través de los canales alternos que hemos dispuesto: nuestro Whatsapp, https://wa.me/573157003033, nuestro asesor virtual de Colmena Seguros “Mari” en https://www.colmenaseguros.com/Paginas/landing/asesor-virtual/asesor.html o comunícate con nuestra Línea Efectiva #833 desde celular, 6014010447 en Bogotá, 01 8000 919667, en el resto del país.<br />
+<br />
+Comprometidos con nuestra política de calidad y servicio de "Satisfacer a nuestros clientes con un servicio integral de excelente calidad", estamos siempre a su disposición para resolver sus inquietudes y requerimientos.<br />
+<br />
+<br />
+Cordial saludo,<br />
+<br />
+<br />
+<strong>Colmena Seguros</strong></body>
+</html>

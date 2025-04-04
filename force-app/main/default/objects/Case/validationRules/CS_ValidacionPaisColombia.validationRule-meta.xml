@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_ValidacionPaisColombia</fullName>
+    <active>true</active>
+    <description>Cuando el País sea Colombia debe de solicitar Departamento y Municipio.</description>
+    <errorConditionFormula>AND (
+ISPICKVAL(CS_Pais__c, &quot;170&quot;) &amp;&amp;
+(
+ISPICKVAL(CS_Departamento__c, &quot;&quot;) ||
+ISPICKVAL(CS_Municipio__c, &quot;&quot;)
+)
+) &amp;&amp;
+(
+RecordType.DeveloperName &lt;&gt; &quot;QuoteValidation&quot; &amp;&amp;
+RecordType.DeveloperName &lt;&gt; &quot;Exclusividad&quot; &amp;&amp; 
+RecordType.DeveloperName &lt;&gt; &quot;Excepciones_comercial&quot; &amp;&amp;
+RecordType.Name &lt;&gt; &quot;Formulario&quot; &amp;&amp; 
+RecordType.DeveloperName &lt;&gt; &quot;CS_Profesional_de_la_Salud&quot; &amp;&amp; 
+RecordType.DeveloperName &lt;&gt; &quot;CS_Gestion_de_Operaciones&quot; &amp;&amp;
+RecordType.DeveloperName &lt;&gt; &quot;CS_CasoIndemnizacion&quot;
+)</errorConditionFormula>
+    <errorDisplayField>CS_Departamento__c</errorDisplayField>
+    <errorMessage>Si seleccionaste País de incidencia Colombia es necesario completar Departamento y Municipio de incidencia.</errorMessage>
+</ValidationRule>

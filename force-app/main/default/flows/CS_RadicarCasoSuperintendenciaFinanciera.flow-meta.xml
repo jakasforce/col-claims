@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>CS_ActualizarPantalla</name>
+        <label>Actualizar Pantalla</label>
+        <locationX>176</locationX>
+        <locationY>974</locationY>
+        <actionName>c:actualizarPantalla</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>CS_GetCase.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>c:actualizarPantalla</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>CS_SmartSupervisionEnviarCaso</name>
+        <label>Smart Supervision Enviar Caso</label>
+        <locationX>176</locationX>
+        <locationY>734</locationY>
+        <actionName>CS_SendCaseSS_Invocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>CS_EnvioIniciadoScreen</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>casos</name>
+            <value>
+                <elementReference>CS_GetCase</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>CS_SendCaseSS_Invocable</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <decisions>
+        <name>CS_EstadoCaso</name>
+        <label>Estado del Caso</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <defaultConnector>
+            <targetReference>CS_EnvioFallidoScreen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CS_NoRadicadoErrorRadicar</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CS_GetCase.CS_EstadoSincronizacionSuperfinanciera__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No radicado (error al radicar)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CS_SmartSupervisionEnviarCaso</targetReference>
+            </connector>
+            <label>No radicado (error al radicar)</label>
+        </rules>
+        <rules>
+            <name>CS_SinEstadoSincronizacion</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CS_GetCase.CS_EstadoSincronizacionSuperfinanciera__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CS_SmartSupervisionEnviarCaso</targetReference>
+            </connector>
+            <label>Sin estado de Sincronización</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Radicar Caso Superintendencia Financiera {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Radicar Caso Superintendencia Financiera</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>CS_GetCase</name>
+        <label>Get Case</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>CS_EstadoCaso</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>CS_EnvioFallidoScreen</name>
+        <label>Envío Fallido Screen</label>
+        <locationX>352</locationX>
+        <locationY>398</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>CS_EnvioFallidoMessage</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(179, 3, 3); background-color: rgb(255, 255, 255);&quot;&gt;CASO RADICADO PREVIAMENTE&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(179, 3, 3);&quot;&gt;Este caso ya se encuentra radicado en la Superintendencia Financiera. Recuerde que los casos solo pueden ser radicados una vez.&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;em style=&quot;color: rgb(179, 3, 3);&quot;&gt;Si el problema persiste contacte con el administrador de su sistema.&lt;/em&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>CS_EnvioIniciadoScreen</name>
+        <label>Envío Iniciado</label>
+        <locationX>176</locationX>
+        <locationY>854</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>CS_ActualizarPantalla</targetReference>
+        </connector>
+        <fields>
+            <name>CS_EnvioIniciadoMessage</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(4, 0, 137);&quot;&gt;ENVÍO INICIADO CORRECTAMENTE&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(7, 2, 98);&quot;&gt;El envío del caso se ha iniciado correctamente.  Verifique el estado del mismo en el campo &quot;Estado sincronización Superfinanciera&quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>Finalizar</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CS_GetCase</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AccidentHardness__c</fullName>
+    <externalId>false</externalId>
+    <label>Severidad de Accidente</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sin Seleccionar</fullName>
+                <default>false</default>
+                <label>Sin Seleccionar</label>
+            </value>
+            <value>
+                <fullName>Alta Inmediata</fullName>
+                <default>false</default>
+                <label>Alta Inmediata</label>
+            </value>
+            <value>
+                <fullName>Muy Leve</fullName>
+                <default>false</default>
+                <label>Muy Leve</label>
+            </value>
+            <value>
+                <fullName>Leve</fullName>
+                <default>false</default>
+                <label>Leve</label>
+            </value>
+            <value>
+                <fullName>Moderado</fullName>
+                <default>false</default>
+                <label>Moderado</label>
+            </value>
+            <value>
+                <fullName>Severo</fullName>
+                <default>false</default>
+                <label>Severo</label>
+            </value>
+            <value>
+                <fullName>Grave</fullName>
+                <default>false</default>
+                <label>Grave</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

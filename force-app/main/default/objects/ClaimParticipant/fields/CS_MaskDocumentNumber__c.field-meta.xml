@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_MaskDocumentNumber__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(!ISBLANK(CS_BankAccountNumber__c), 
+    &apos;XXXXXXXX&apos; + RIGHT(CS_BankAccountNumber__c,4),
+    IF(!ISBLANK(CS_DestinationAccountNumber__c), &apos;XXXXXXXX&apos; + RIGHT(CS_DestinationAccountNumber__c, 4),&apos;&apos;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Número de cuenta enmascarado</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

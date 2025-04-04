@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <decisions>
+        <description>Establece el tipo de registro de LE &quot;Formulario&quot; para que no se ejecute en otro tipo de registro.</description>
+        <name>Pertenece_a_LE</name>
+        <label>¿Pertenece a LE?</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>Tipo_de_registro_LE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Formulario</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Etapa_1</targetReference>
+            </connector>
+            <label>Tipo de registro LE</label>
+        </rules>
+    </decisions>
+    <description>Flujo de alertamiento caso LE, para cuando el usuario desea cancelar el caso o cerrarlo como atendido.</description>
+    <environments>Default</environments>
+    <interviewLabel>Flujo de alertamiento caso LE {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Flujo de alertamiento caso LE</label>
+    <orchestratedStages>
+        <name>Etapa_1</name>
+        <label>Etapa 1</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <exitConditionLogic>and</exitConditionLogic>
+    </orchestratedStages>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Orchestrator</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Pertenece_a_LE</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cerrado Atendido</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cancelado</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

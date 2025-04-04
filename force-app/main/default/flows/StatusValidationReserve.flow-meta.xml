@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <decisions>
+        <name>Validacion_Estado</name>
+        <label>Validacion Estado</label>
+        <locationX>182</locationX>
+        <locationY>731</locationY>
+        <defaultConnectorLabel>N/A</defaultConnectorLabel>
+        <rules>
+            <name>Libreacion_Objecion</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Adjustment_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Liberación por objeción</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Actualizar_Detalle_de_Reserva</targetReference>
+            </connector>
+            <label>Libreacion Objecion</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Validar_Valor_Ajustado</name>
+        <label>Validar Valor Ajustado</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Actualizar_Detalle_Diferente_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Valor != 0</defaultConnectorLabel>
+        <rules>
+            <name>Resultado_1_de_Decisi_n_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CS_AdjustedValue__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Actualizar_Detalle_Igual_0</targetReference>
+            </connector>
+            <label>Valor = 0</label>
+        </rules>
+    </decisions>
+    <description>Validacion sobre el estado del ajuste de reserva</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ISNEW</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>NuevoImporteForm</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.CS_AdjustedValue__c} - {!$Record.ClaimCoverageReserveDetail.ReserveAmount}</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>StatusValidationReserve {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>StatusValidationReserve</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Actualizar_Detalle_de_Reserva</name>
+        <label>Actualizar Detalle de Reserva</label>
+        <locationX>50</locationX>
+        <locationY>839</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Objetado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.ClaimCoverageReserveDetail</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Actualizar_Detalle_Diferente_0</name>
+        <label>Actualizar Detalle != 0</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Validacion_Estado</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ReserveAmount</field>
+            <value>
+                <elementReference>$Record.CS_AdjustedValue__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.ClaimCoverageReserveDetail</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Actualizar_Detalle_Igual_0</name>
+        <label>Actualizar Detalle = 0</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Validacion_Estado</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ReserveAmount</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.ClaimCoverageReserveDetail</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Asignar_valores_creacion_reserva_Positivos</name>
+        <label>Asignar valores creacion reserva Positivos</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <connector>
+            <targetReference>Validar_Valor_Ajustado</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CS_NewReserveAmount__c</field>
+            <value>
+                <elementReference>NuevoImporteForm</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Asignar_valores_creacion_reserva_Positivos</targetReference>
+        </connector>
+        <object>ClaimCovReserveAdjustment</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

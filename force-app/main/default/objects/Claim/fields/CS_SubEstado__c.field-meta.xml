@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_SubEstado__c</fullName>
+    <description>Sub Estado del estado actual</description>
+    <externalId>false</externalId>
+    <label>Sub Estado</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Status</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pendiente</fullName>
+                <default>false</default>
+                <label>Pendiente</label>
+            </value>
+            <value>
+                <fullName>Caso gestionado</fullName>
+                <default>false</default>
+                <label>Caso gestionado</label>
+            </value>
+            <value>
+                <fullName>Documentos Adicionales</fullName>
+                <default>false</default>
+                <label>Documentos Adicionales</label>
+            </value>
+            <value>
+                <fullName>Nuevo</fullName>
+                <default>false</default>
+                <label>Nuevo</label>
+            </value>
+            <value>
+                <fullName>Pago Rechazado</fullName>
+                <default>false</default>
+                <label>Pago Rechazado</label>
+            </value>
+            <value>
+                <fullName>En Aprobación</fullName>
+                <default>false</default>
+                <label>En Aprobación</label>
+            </value>
+            <value>
+                <fullName>Documentos Solicitados</fullName>
+                <default>false</default>
+                <label>Documentos Solicitados</label>
+            </value>
+            <value>
+                <fullName>Escalado</fullName>
+                <default>false</default>
+                <label>Escalado</label>
+            </value>
+            <value>
+                <fullName>Validación Asegurados</fullName>
+                <default>false</default>
+                <label>Validación Asegurados</label>
+            </value>
+            <value>
+                <fullName>Rechazo del Pagador</fullName>
+                <default>false</default>
+                <label>Rechazo del Pagador</label>
+            </value>
+            <value>
+                <fullName>Solicitud Reconsideración</fullName>
+                <default>false</default>
+                <label>Solicitud Reconsideración</label>
+            </value>
+            <value>
+                <fullName>Rev. Profesional Salud</fullName>
+                <default>false</default>
+                <label>Rev. Profesional Salud</label>
+            </value>
+            <value>
+                <fullName>Rev. Firma Investigadora</fullName>
+                <default>false</default>
+                <label>Rev. Firma Investigadora</label>
+            </value>
+            <value>
+                <fullName>Ejecución de pago</fullName>
+                <default>false</default>
+                <label>Ejecución de pago</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Cerrado</controllingFieldValue>
+            <controllingFieldValue>Abierto</controllingFieldValue>
+            <controllingFieldValue>Pago parcial</controllingFieldValue>
+            <controllingFieldValue>Análisis</controllingFieldValue>
+            <controllingFieldValue>En Pagador</controllingFieldValue>
+            <controllingFieldValue>Pagado</controllingFieldValue>
+            <controllingFieldValue>Objetado</controllingFieldValue>
+            <controllingFieldValue>Suspendido</controllingFieldValue>
+            <valueName>Pendiente</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Abierto</controllingFieldValue>
+            <controllingFieldValue>Análisis</controllingFieldValue>
+            <valueName>Nuevo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Abierto</controllingFieldValue>
+            <valueName>Validación Asegurados</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Análisis</controllingFieldValue>
+            <controllingFieldValue>Pagado</controllingFieldValue>
+            <valueName>Caso gestionado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Análisis</controllingFieldValue>
+            <valueName>Documentos Adicionales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Análisis</controllingFieldValue>
+            <valueName>Pago Rechazado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Análisis</controllingFieldValue>
+            <valueName>Rechazo del Pagador</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Análisis</controllingFieldValue>
+            <valueName>Solicitud Reconsideración</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Análisis</controllingFieldValue>
+            <valueName>Rev. Profesional Salud</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Análisis</controllingFieldValue>
+            <valueName>Rev. Firma Investigadora</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>En Pagador</controllingFieldValue>
+            <valueName>En Aprobación</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>En Pagador</controllingFieldValue>
+            <valueName>Ejecución de pago</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Suspendido</controllingFieldValue>
+            <valueName>Documentos Solicitados</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

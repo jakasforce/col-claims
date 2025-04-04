@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Configuración de documentos requeridos en la radicación de siniestros, por tipo de cobertura.</description>
+    <label>DocumentsByCoverage</label>
+    <pluralLabel>DocumentsByCoverages</pluralLabel>
+    <visibility>Public</visibility>
+    <fields>
+        <fullName>CoverageType__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Coverage type</label>
+        <referenceTo>CoverageType__mdt</referenceTo>
+        <relationshipLabel>DocumentsByCoverages</relationshipLabel>
+        <relationshipName>DocumentsByCoverages</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DocumentSetting__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Document setting</label>
+        <referenceTo>DocumentSetting__mdt</referenceTo>
+        <relationshipLabel>DocumentsByCoverages</relationshipLabel>
+        <relationshipName>DocumentsByCoverages</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+</CustomObject>

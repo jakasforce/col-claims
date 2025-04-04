@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Claim__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Campo que almacena los claims de las llamadas de SLE</description>
+    <externalId>false</externalId>
+    <label>Indemnización</label>
+    <referenceTo>Claim</referenceTo>
+    <relationshipLabel>Casos (Indemnización)</relationshipLabel>
+    <relationshipName>Indemnizacion</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Internet</fullName>
+        <default>false</default>
+        <label>Internet</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Aplicación móvil</fullName>
+        <default>false</default>
+        <label>Aplicación móvil</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Correo Electrónico</fullName>
+        <default>false</default>
+        <label>Correo Electrónico</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Call center</fullName>
+        <default>false</default>
+        <label>Call center</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Audio Respuesta</fullName>
+        <default>false</default>
+        <label>Audio Respuesta</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Otros Puntos de recepción</fullName>
+        <default>false</default>
+        <label>Otros Puntos de recepción</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Twitter</fullName>
+        <default>false</default>
+        <label>Twitter</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Facebook</fullName>
+        <default>false</default>
+        <label>Facebook</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Instagram</fullName>
+        <default>false</default>
+        <label>Instagram</label>
+    </standardValue>
+    <standardValue>
+        <fullName>YouTube</fullName>
+        <default>false</default>
+        <label>YouTube</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Oficina</fullName>
+        <default>false</default>
+        <label>Oficina</label>
+    </standardValue>
+    <standardValue>
+        <fullName>colmenasle2@gmail.com</fullName>
+        <default>false</default>
+        <label>colmenasle2@gmail.com</label>
+    </standardValue>
+    <standardValue>
+        <fullName>colmenabuzonsle@gmail.com</fullName>
+        <default>false</default>
+        <label>colmenabuzonsle@gmail.com</label>
+    </standardValue>
+</StandardValueSet>

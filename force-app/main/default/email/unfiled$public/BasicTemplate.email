@@ -1,0 +1,17 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<span style="background-color: rgb(255, 255, 255);"><font color="#202124" face="Roboto, arial, sans-serif" style=""><font color="#000000" face="arial"><span style="font-size: 13px; white-space-collapse: preserve;">Apreciado(a) </span></font><span style="font-size: 13px; white-space-collapse: preserve;">{!Claim.CS_NombreReclamante__c}</span><font color="#000000" face="arial"><span style="font-size: 13px; white-space-collapse: preserve;">,</span></font></font></span><div><span style="background-color: rgb(255, 255, 255);"><font color="#202124" face="Roboto, arial, sans-serif" style=""><font color="#000000" face="arial"><span style="font-size: 13px; white-space-collapse: preserve;">
+
+Reciba un cordial saludo.
+</span></font></font></span><div><span style="background-color: rgb(255, 255, 255);"><font color="#202124" face="Roboto, arial, sans-serif" style=""><font color="#000000" face="arial"><span style="font-size: 13px; white-space-collapse: preserve;"><br></span></font></font></span></div><div><span style="background-color: rgb(255, 255, 255);"><font color="#202124" face="Roboto, arial, sans-serif" style=""><font color="#000000" face="arial"><span style="font-size: 13px; white-space-collapse: preserve;"><br></span></font></font></span></div><div><em style="white-space-collapse: preserve; background-color: rgb(255, 255, 255); font-family: Calibri; font-size: 10pt;">Hemos recibido de manera exitosa la radicación de los documentos y la solicitud de indemnización, nuestro aplicativo ha asignado el Siniestro # </em><span style="background-color: rgb(255, 255, 255); font-size: 13px; white-space-collapse: preserve;">{!Claim.ClaimNumber__c}</span><em style="white-space-collapse: preserve; background-color: rgb(255, 255, 255); font-family: Calibri; font-size: 10pt;">  el cual le servirá para realizar las consultas que considere al estado de su solicitud de Indemnización.  Tenga en cuenta que con la recepción completa de los documentos, definiremos la solicitud en el menor tiempo posible y en los mejores términos.</em></div></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[]]></td>
+</tr>
+</table>

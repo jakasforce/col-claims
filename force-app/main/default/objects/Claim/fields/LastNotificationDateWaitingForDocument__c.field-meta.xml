@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LastNotificationDateWaitingForDocument__c</fullName>
+    <description>Campo que se crea para almacenar la ultima fecha de notificación de envió de correo en una reclamación.</description>
+    <externalId>false</externalId>
+    <label>Fecha ultima notificación espera documen</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

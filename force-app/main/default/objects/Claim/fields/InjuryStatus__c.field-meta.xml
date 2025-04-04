@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>InjuryStatus__c</fullName>
+    <externalId>false</externalId>
+    <label>Estado de la lesión</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>10</fullName>
+                <default>false</default>
+                <label>Deformidad</label>
+            </value>
+            <value>
+                <fullName>20</fullName>
+                <default>false</default>
+                <label>Hematoma</label>
+            </value>
+            <value>
+                <fullName>30</fullName>
+                <default>false</default>
+                <label>Hinchazón</label>
+            </value>
+            <value>
+                <fullName>40</fullName>
+                <default>false</default>
+                <label>Sangrado</label>
+            </value>
+            <value>
+                <fullName>50</fullName>
+                <default>false</default>
+                <label>Sensibilidad disminuida</label>
+            </value>
+            <value>
+                <fullName>70</fullName>
+                <default>false</default>
+                <label>Dificultad para respirar</label>
+            </value>
+            <value>
+                <fullName>80</fullName>
+                <default>false</default>
+                <label>Dolor intenso</label>
+            </value>
+            <value>
+                <fullName>90</fullName>
+                <default>false</default>
+                <label>Movilidad limitada</label>
+            </value>
+            <value>
+                <fullName>100</fullName>
+                <default>false</default>
+                <label>Inflamación</label>
+            </value>
+            <value>
+                <fullName>110</fullName>
+                <default>false</default>
+                <label>Incapacidad de movimiento</label>
+            </value>
+            <value>
+                <fullName>120</fullName>
+                <default>false</default>
+                <label>Dolor fuerte</label>
+            </value>
+            <value>
+                <fullName>130</fullName>
+                <default>false</default>
+                <label>Perdida de dientes</label>
+            </value>
+            <value>
+                <fullName>140</fullName>
+                <default>false</default>
+                <label>Confusión</label>
+            </value>
+            <value>
+                <fullName>150</fullName>
+                <default>false</default>
+                <label>Dolor</label>
+            </value>
+            <value>
+                <fullName>160</fullName>
+                <default>false</default>
+                <label>Moretones</label>
+            </value>
+            <value>
+                <fullName>170</fullName>
+                <default>false</default>
+                <label>Cuerpo extraño</label>
+            </value>
+            <value>
+                <fullName>180</fullName>
+                <default>false</default>
+                <label>Pérdida total del miembro</label>
+            </value>
+            <value>
+                <fullName>200</fullName>
+                <default>false</default>
+                <label>Tironazo</label>
+            </value>
+            <value>
+                <fullName>210</fullName>
+                <default>false</default>
+                <label>Enrojecimiento</label>
+            </value>
+            <value>
+                <fullName>220</fullName>
+                <default>false</default>
+                <label>Picazón</label>
+            </value>
+            <value>
+                <fullName>230</fullName>
+                <default>false</default>
+                <label>Ampollas</label>
+            </value>
+            <value>
+                <fullName>240</fullName>
+                <default>false</default>
+                <label>Perdida de conocimiento</label>
+            </value>
+            <value>
+                <fullName>250</fullName>
+                <default>false</default>
+                <label>No detectado</label>
+            </value>
+            <value>
+                <fullName>260</fullName>
+                <default>false</default>
+                <label>Dificultad para doblar o apoyar</label>
+            </value>
+            <value>
+                <fullName>270</fullName>
+                <default>false</default>
+                <label>Contacto con fuente conocida con VIH o sida</label>
+            </value>
+            <value>
+                <fullName>280</fullName>
+                <default>false</default>
+                <label>Contacto con persona diagnosticada con covid19 confirmado</label>
+            </value>
+            <value>
+                <fullName>290</fullName>
+                <default>false</default>
+                <label>Contacto con persona diagnosticada con covid19 sospechoso no confirmado</label>
+            </value>
+            <value>
+                <fullName>300</fullName>
+                <default>false</default>
+                <label>Contacto fluido corporal</label>
+            </value>
+            <value>
+                <fullName>320</fullName>
+                <default>false</default>
+                <label>Inhalación</label>
+            </value>
+            <value>
+                <fullName>330</fullName>
+                <default>false</default>
+                <label>Pinchazo elemento</label>
+            </value>
+            <value>
+                <fullName>340</fullName>
+                <default>false</default>
+                <label>Intoxicación</label>
+            </value>
+            <value>
+                <fullName>360</fullName>
+                <default>false</default>
+                <label>Picadura avispones o avispas o abejas</label>
+            </value>
+            <value>
+                <fullName>370</fullName>
+                <default>false</default>
+                <label>Mordedura animales venenosos</label>
+            </value>
+            <value>
+                <fullName>380</fullName>
+                <default>false</default>
+                <label>Vomito</label>
+            </value>
+            <value>
+                <fullName>390</fullName>
+                <default>false</default>
+                <label>Perdida de sensibilidad en manos o pies</label>
+            </value>
+            <value>
+                <fullName>410</fullName>
+                <default>false</default>
+                <label>Brazo descolgado</label>
+            </value>
+            <value>
+                <fullName>420</fullName>
+                <default>false</default>
+                <label>Dificultar para moverse</label>
+            </value>
+            <value>
+                <fullName>430</fullName>
+                <default>false</default>
+                <label>Incapacidad para caminar</label>
+            </value>
+            <value>
+                <fullName>440</fullName>
+                <default>false</default>
+                <label>Debilidad muscular</label>
+            </value>
+            <value>
+                <fullName>460</fullName>
+                <default>false</default>
+                <label>Vision borrosa o nublada</label>
+            </value>
+            <value>
+                <fullName>470</fullName>
+                <default>false</default>
+                <label>Hormigueo o entumecimiento</label>
+            </value>
+            <value>
+                <fullName>480</fullName>
+                <default>false</default>
+                <label>Ruido en los oídos</label>
+            </value>
+            <value>
+                <fullName>490</fullName>
+                <default>false</default>
+                <label>Contractura muscular</label>
+            </value>
+            <value>
+                <fullName>500</fullName>
+                <default>false</default>
+                <label>Dolor muscular</label>
+            </value>
+            <value>
+                <fullName>520</fullName>
+                <default>false</default>
+                <label>Dolor punzante</label>
+            </value>
+            <value>
+                <fullName>540</fullName>
+                <default>false</default>
+                <label>Dolor al caminar</label>
+            </value>
+            <value>
+                <fullName>550</fullName>
+                <default>false</default>
+                <label>Rigidez articular y/o muscular</label>
+            </value>
+            <value>
+                <fullName>560</fullName>
+                <default>false</default>
+                <label>Fatiga y cansancio</label>
+            </value>
+            <value>
+                <fullName>570</fullName>
+                <default>false</default>
+                <label>Dolor de pecho</label>
+            </value>
+            <value>
+                <fullName>590</fullName>
+                <default>false</default>
+                <label>Espasmo muscular</label>
+            </value>
+            <value>
+                <fullName>610</fullName>
+                <default>false</default>
+                <label>Liquido en la articulación</label>
+            </value>
+            <value>
+                <fullName>620</fullName>
+                <default>false</default>
+                <label>Dolor de cabeza</label>
+            </value>
+            <value>
+                <fullName>630</fullName>
+                <default>false</default>
+                <label>Ojo rojo</label>
+            </value>
+            <value>
+                <fullName>640</fullName>
+                <default>false</default>
+                <label>Distensión abdominal</label>
+            </value>
+            <value>
+                <fullName>650</fullName>
+                <default>false</default>
+                <label>Dolor al sentarse</label>
+            </value>
+            <value>
+                <fullName>660</fullName>
+                <default>false</default>
+                <label>Dolor al apoyar</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>
